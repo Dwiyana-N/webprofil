@@ -80,12 +80,12 @@
                     <div class="form-group">
                       <label for="short_description">Selayang Pandang (Ringkasan)</label>
                       <input type="text" name="short_description" class="form-control" id="short_description" placeholder="Masukkan Selayang Pandang Artikel">
-                    </div>                    
+                    </div>
                     <div class="form-group">
                       <label for="content">Konten</label>
                       <textarea name="content" class="form-control my-editor"></textarea>
                     </div>
-                  </div>                  
+                  </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
                     <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;Tambah</button>
@@ -176,10 +176,10 @@ $(document).ready(function () {
 </script>
 
 <!-- TinyMCE init -->
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
 <script>
   var editor_config = {
-    path_absolute : "http://disdik.test/", //diisi dengan url domain web
+    path_absolute : "http://localhost/webprofil/public/", //diisi dengan url domain web
     selector: 'textarea.my-editor',
     relative_urls: false,
     plugins: [
@@ -234,7 +234,7 @@ $(document).ready(function () {
     //Initialize Select2 Elements
     $('.select2bs4').select2({
       theme: 'bootstrap4'
-    })  
+    })
 
   })
 </script>

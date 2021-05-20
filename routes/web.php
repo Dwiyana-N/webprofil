@@ -189,10 +189,6 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
     });
 });
 
-Route::group(['prefix' => 'filemanager'], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
-
 Route::get('/storagelink', function () {
     Artisan::call('storage:link');
     return redirect()->back()->with(['success'=>'Storage Links have been created']);
@@ -213,4 +209,8 @@ Route::get('/viewcache', function () {
 Route::get('/configcache', function () {
     Artisan::call('config:cache');
     return redirect()->back()->with(['success'=>'Configuration cache cleared!']);
+});
+
+Route::group(['prefix' => 'filemanager'], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });

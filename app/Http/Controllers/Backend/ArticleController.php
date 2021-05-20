@@ -55,19 +55,19 @@ class ArticleController extends Controller
           $image = $request->file('img');
           $extension = $image->getClientOriginalExtension();
           $img = \Carbon\carbon::now()->translatedFormat('dmy').'-('.Str::camel($request->title).').'.$extension;
-          $image->storeAs('public/article/images', $img);  
-          $thumbnailPath = 'thumbnails/';                       
+          $image->storeAs('public/article/images', $img);
+          $thumbnailPath = public_path('thumbnails/');
           $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
         } else {
           $img = null;
-        }   
+        }
         $data = $this->bindData($request);
         $data['img'] = $img;
         $data['thumbnail'] = $img;
         $data['created_by'] = Auth::user()->name;
         $article = Article::create($data);
         $article->tags()->attach($request->tags);
-        return redirect()->route('admin.article.list')->with(['success' => 'Data Berhasil Ditambahkan!']);      
+        return redirect()->route('admin.article.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
       }catch(\QueryException $e){
         $basename = basename($img);
         $image = Storage::disk('local')->delete('public/article/images/'.$basename);
@@ -76,7 +76,7 @@ class ArticleController extends Controller
             File::delete($thumb_path);
         }
         $error = $e->getMessage();
-        return redirect()->route('admin.article.list')->with(['error' => $error]);        
+        return redirect()->route('admin.article.list')->with(['error' => $error]);
       }
     }
 
@@ -105,7 +105,7 @@ class ArticleController extends Controller
             $article->update($data);
         } else {
             //hapus image lama
-            $basename = basename($article->img);            
+            $basename = basename($article->img);
             $images = Storage::disk('local')->delete('public/article/images/'.$basename);
             $thumb_path = public_path('thumbnails/'.$article->thumbnail);
             if(File::exists($thumb_path)) {
@@ -116,9 +116,9 @@ class ArticleController extends Controller
             $extension = $image->getClientOriginalExtension();
             $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
             $image->storeAs('public/article/images', $img);
-            $thumbnailPath = 'thumbnails/';                       
+            $thumbnailPath = public_path('thumbnails/');
             $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
-            //update dengan image       
+            //update dengan image
             $data = $this->bindData($request);
             $data['img'] = $img;
             $data['thumbnail'] = $img;
@@ -126,9 +126,9 @@ class ArticleController extends Controller
             $article = Article::findOrFail($id);
             $article->tags()->sync($request->tags);
             $article->update($data);
-        }   
+        }
         return redirect()->route('admin.article.list')->with(['success' => 'Data Berhasil Disimpan!']);
-      }catch(\Exception $e){        
+      }catch(\Exception $e){
         $error = $e->getMessage();
         return redirect()->route('admin.article.list')->with(['error' => $error]);
       }
@@ -159,7 +159,7 @@ class ArticleController extends Controller
 
     public function restore($id)
     {
-      try{        
+      try{
         $post = Article::withTrashed()->where('id',$id)->first();
         $post->restore();
         return redirect()->route('admin.trash.list')->with(['success' => 'Data Berhasil Dipulihkan!']);
@@ -173,8 +173,8 @@ class ArticleController extends Controller
       try{
         $id = $request->input('id');
         $article = Article::withTrashed()->where('id',$id)->first();
-        $basename1 = basename($article->img);        
-        $image = Storage::disk('local')->delete('public/article/images/'.$basename1);        
+        $basename1 = basename($article->img);
+        $image = Storage::disk('local')->delete('public/article/images/'.$basename1);
         $thumb_path = public_path('thumbnails/'.$article->thumbnail);
         if(File::exists($thumb_path)) {
             File::delete($thumb_path);
@@ -184,14 +184,14 @@ class ArticleController extends Controller
         return redirect()->route('admin.trash.list')->with(['success' => 'Data Berhasil Dihapus!']);
       }catch(\Exception $e){
         $error = $e->getMessage();
-        return redirect()->route('admin.trash.list')->with(['error' => $error]);        
+        return redirect()->route('admin.trash.list')->with(['error' => $error]);
       }
     }
 
     public function bindData($request){
       if(!empty($request->id)){
           $article = Article::find($request->id);
-      }      
+      }
       $data = [
             'category_id'       => $request->input('category_id'),
             'title'             => $request->input('title'),
