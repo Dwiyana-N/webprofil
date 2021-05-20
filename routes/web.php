@@ -14,7 +14,7 @@ Route::namespace('Frontend')->group(static function () {
   Route::get('/kepegawaian/{slug}/list', 'HomeController@staff')->name('public.staff');
   Route::get('/kontak-kami', 'HomeController@contactUs')->name('public.contact');
   Route::post('/kontak-kami', 'HomeController@sendMessage')->name('public.sendmessage');
-  
+
   //artikel
   Route::get('/artikel', 'ArticleController@index')->name('public.article.list');
   Route::get('/artikel/{slug}', 'ArticleController@show')->name('public.article.detail');
@@ -189,7 +189,7 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
     });
 });
 
-Route::group(['prefix' => 'filemanager', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
