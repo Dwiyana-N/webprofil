@@ -93,6 +93,12 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{route('admin.wisata.list')}}" class="nav-link {{ Request::routeIs('admin.wisata.*') ? 'active' : '' }}">
+            <i class="fas fa-leaf nav-icon"></i>
+            <p class="text">Wisata</p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{route('admin.agenda.list')}}" class="nav-link {{ Request::routeIs('admin.agenda.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>Agenda</p>

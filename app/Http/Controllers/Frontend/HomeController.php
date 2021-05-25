@@ -18,6 +18,7 @@ use App\Models\Video;
 use App\Models\InfoGraphic;
 use App\Models\Slider;
 use App\Models\Profile;
+use App\Models\Wisata;
 use DB;
 
 class HomeController extends Controller
@@ -71,6 +72,19 @@ class HomeController extends Controller
         $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
         $profil = Profile::where('slug',$slug)->first();
         return view('public.profil.detail', compact('profil','article','announcement','agenda'));
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->back()->with(['error'=>$error]);
+      }
+    }
+
+    public function wisata($slug){
+      try{
+        $article = Article::where('status', 'show')->latest()->limit(5)->get();
+        $announcement = Announcement::where('status', 'show')->limit(5)->get();
+        $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
+        $wisata = Wisata::where('slug',$slug)->first();
+        return view('public.wisata.detail', compact('wisata','article','announcement','agenda'));
       }catch(\Exception $e){
         $error = $e->getMessage();
         return redirect()->back()->with(['error'=>$error]);

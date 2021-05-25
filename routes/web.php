@@ -10,6 +10,7 @@ Route::namespace('Frontend')->group(static function () {
   Route::get('/', 'HomeController@index')->name('public.homepage');
   Route::post('/pencarian', 'HomeController@search')->name('public.search');
   Route::get('/profil/{slug}', 'HomeController@profile')->name('public.profile');
+  Route::get('/wisata/{slug}', 'HomeController@wisata')->name('public.wisata');
   Route::get('/kepegawaian/unit-kerja', 'HomeController@field')->name('public.field');
   Route::get('/kepegawaian/{slug}/list', 'HomeController@staff')->name('public.staff');
   Route::get('/kontak-kami', 'HomeController@contactUs')->name('public.contact');
@@ -175,6 +176,14 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('admin.profile.edit');
         Route::post('/profile/edit', [ProfileController::class, 'update'])->name('admin.profile.update');
         Route::post('/profile/delete', [ProfileController::class, 'delete'])->name('admin.profile.delete');
+        // Wisata
+        Route::get('/wisata', [WisataController::class, 'index'])->name('admin.wisata.list');
+        Route::get('/wisata/show/{id}', [WisataController::class, 'show'])->name('admin.wisata.show');
+        Route::get('/wisata/add', [WisataController::class, 'create'])->name('admin.wisata.create');
+        Route::post('/wisata/add', [WisataController::class, 'store'])->name('admin.wisata.add');
+        Route::get('/wisata/edit/{id}', [WisataController::class, 'edit'])->name('admin.wisata.edit');
+        Route::post('/wisata/edit', [WisataController::class, 'update'])->name('admin.wisata.update');
+        Route::post('/wisata/delete', [WisataController::class, 'delete'])->name('admin.wisata.delete');
         // User
         Route::group(['middleware' => ['role:admin|super-admin']], function() {
             Route::get('/user/add', [UserController::class, 'create'])->name('admin.user.create');

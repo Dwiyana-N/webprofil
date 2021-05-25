@@ -65,12 +65,12 @@
 			      @endif
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Wisata</a>
-            @if(count($profils) > 0)
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.wisata') ? 'active' : '' }}">Wisata</a>
+            @if(count($wisata_menu) > 0)
       			<ul class="dropdown-menu">
-      				  @foreach($profils as $profil)
+      				  @foreach($wisata_menu as $row)
                 <li class="nav__item">
-      						<a href="{{route('public.profile', ['slug'=>$profil->slug])}}" class="nav__item-link">{{$profil->title}}</a>
+      						<a href="{{route('public.wisata', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
       					</li>
                 @endforeach
             </ul><!-- /.dropdown-menu -->
