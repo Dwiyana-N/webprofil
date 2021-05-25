@@ -53,7 +53,7 @@
 			      @endif
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Pemerintahan</a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Desa</a>
             @if(count($profils) > 0)
       			<ul class="dropdown-menu">
       				  @foreach($profils as $profil)
@@ -66,6 +66,18 @@
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Wisata</a>
+            @if(count($profils) > 0)
+      			<ul class="dropdown-menu">
+      				  @foreach($profils as $profil)
+                <li class="nav__item">
+      						<a href="{{route('public.profile', ['slug'=>$profil->slug])}}" class="nav__item-link">{{$profil->title}}</a>
+      					</li>
+                @endforeach
+            </ul><!-- /.dropdown-menu -->
+            @endif
+          </li><!-- /.nav-item -->
+          <li class="nav__item with-dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Pelayanan Publik</a>
             @if(count($profils) > 0)
       			<ul class="dropdown-menu">
       				  @foreach($profils as $profil)
