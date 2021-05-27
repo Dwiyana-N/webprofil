@@ -93,6 +93,101 @@ class SliderController extends Controller
       }
     }
 
+    public function edit($id){
+      try{
+        $data['slider'] = Slider::findOrFail($id);
+        return view('admin.slider.edit', $data);
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->route('admin.slider.list')->with(['error' => $error]);
+      }
+    }
+
+    public function update(Request $request){
+      try{
+        $id = $request->input('id');
+        $slider = Slider::where('id',$id)->first();
+        //cek jika image dan file kosong
+        if($request->file('img')=='' && $request->file('file')=='') {
+          //update tanpa image
+          $slider = Slider::findOrFail($id);
+          $data = $this->bindData($request);
+          $data['updated_by'] = Auth::user()->name;          
+          $slider->update($data);
+        } else if(!empty($request->file('img')) && $request->file('file')=='') { 
+          //hapus image lama
+          $basename = basename($slider->img);            
+          $images = Storage::disk('local')->delete('public/slider/images/'.$basename);
+          $thumb_path = public_path('thumbnails/'.$announce->thumbnail);
+          if(File::exists($thumb_path)) {
+              File::delete($thumb_path);
+          }
+          //upload image baru
+          $image = $request->file('img');
+          $extension = $image->getClientOriginalExtension();
+          $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $image->storeAs('public/slider/images', $img);
+          $thumbnailPath = 'thumbnails/';                       
+          $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
+          //update dengan image       
+          $data = $this->bindData($request);
+          $data['img'] = $img;
+          $data['thumbnail'] = $img;
+          $data['updated_by'] = Auth::user()->name;
+          $slider = Slider::findOrFail($id);
+          $slider->update($data);
+        } else if(!empty($request->file('file')) && $request->file('img')=='') {
+          //hapus file lama
+          $basenameFile = basename($announce->file);            
+          $file = Storage::disk('local')->delete('public/slider/images/'.$basenameFile);          
+          //upload file baru
+          $input = $request->file('file');
+          $extension = $input->getClientOriginalExtension();
+          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $input->storeAs('public/slider/files', $file);         
+          //update dengan file       
+          $data = $this->bindData($request);
+          $data['file'] = $file;          
+          $data['updated_by'] = Auth::user()->name;
+          $slider = Slider::findOrFail($id);
+          $slider->update($data);
+        } else {
+          //hapus data lama
+          $basenameFile = basename($announce->file);            
+          $file = Storage::disk('local')->delete('public/slider/images/'.$basenameFile);
+          $basename = basename($announce->img);            
+          $images = Storage::disk('local')->delete('public/slider/images/'.$basename);
+          $thumb_path = public_path('thumbnails/'.$announce->thumbnail);
+          if(File::exists($thumb_path)) {
+              File::delete($thumb_path);
+          }
+          //upload data baru
+          $image = $request->file('img');
+          $extension = $image->getClientOriginalExtension();
+          $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $image->storeAs('public/slider/images', $img);
+          $thumbnailPath = 'thumbnails/';                       
+          $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
+          $input = $request->file('file');
+          $extension = $input->getClientOriginalExtension();
+          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $input->storeAs('public/slider/files', $file);        
+          //update       
+          $data = $this->bindData($request);
+          $data['img'] = $img;
+          $data['thumbnail'] = $img;
+          $data['file'] = $file;          
+          $data['updated_by'] = Auth::user()->name;
+          $slider = Slider::findOrFail($id);
+          $slider->update($data);
+        }        
+        return redirect()->route('admin.slider.list')->with(['success' => 'Data Berhasil Disimpan!']);
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->route('admin.slider.list')->with(['error' => $error]);
+      }
+    }
+
     public function bindData($request){
       if(!empty($request->id)){
           $slider = Slider::find($request->id);

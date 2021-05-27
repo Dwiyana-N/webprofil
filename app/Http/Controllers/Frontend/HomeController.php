@@ -30,7 +30,7 @@ class HomeController extends Controller
         $agendas = Agenda::where('status', 'show')->latest()->limit(3)->get();
         $blog = Article::where('status', 'show')->latest()->limit(3)->get();
         $staff = Staff::where('status', 'show')->limit(4)->get();
-        $slider = Slider::where('status', 'show')->latest()->get();
+        $slider = Slider::where('status', 'show')->latest()->limit(2)->get();
         return view('public.index', compact('announcement','agendas','blog','slider','staff'));
       }catch(\Exception $e){
         $error = $e->getMessage();

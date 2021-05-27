@@ -57,6 +57,10 @@
                         <a href="{{route('admin.slider.show',['id' => $list->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
                           <i class="fas fa-info-circle"></i>
                         </a>
+                        <a href="#" class="btn btn-md btn-success btn-icon disable" title="Edit" tabindex="-1" aria-disabled="true" role="button" data-bs-toggle="button">
+                          <i class="fas fa-edit"></i>
+                          <!-- # = {{route('admin.slider.edit',['id' => $list->id])}} -->
+                        </a>
                         @if($list->status == 'hide')
                           <a href="{{route('admin.slider.active',['id' => $list->id])}}" class="btn btn-md btn-success btn-icon" title="Aktifkan">
                             <i class="fas fa-power-off"></i>

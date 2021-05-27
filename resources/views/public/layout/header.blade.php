@@ -29,7 +29,7 @@
         @if($logo)
         <img src="{{asset('storage/website/'.$logo)}}" width="auto" height="87px" class="logo-dark">
         @else
-        <img class="logo" src="{{asset('backend/img/tutwurihandayani.png')}}" height="80px">
+        <img class="logo" src="{{asset('backend/img/favicon.png')}}" height="80px">
         @endif
       </a>
       <button class="navbar-toggler" type="button">

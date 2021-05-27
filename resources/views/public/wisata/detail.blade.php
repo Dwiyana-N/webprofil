@@ -1,8 +1,8 @@
 @extends('public.layout.app', ['title' => $wisata->title])
 
 @section('meta')
-  <meta name="description" content="{!!$wisata->description!!}" />
-  <meta name="keywords" content="{{$wisata->title}}" />
+  <meta name="description" content="{{htmlspecialchars($wisata->description)}}" />
+  <meta name="keywords" content="{{htmlspecialchars($wisata->title)}}" />
   <meta property="og:title" content="{{$wisata->title}} "/>
   <meta property="og:type" content="{{$wisata->title}}"/>
   <meta property="og:image" content="{{($wisata->img)?asset('/storage/wisata/images/'.$wisata->img):asset('fontend/images/grid/1.jpg')}}"/>
@@ -44,7 +44,7 @@
             <div class="line-bottom"></div>
             <h4 class="blog__title">{{ $wisata->title }}</h4>
             <div class="blog__desc">
-              {!! $wisata->description !!}
+              {!!$wisata->description !!}
             </div><!-- /.blog-desc -->
           </div><!-- /.entry-content -->
         </div><!-- /.blog-item -->

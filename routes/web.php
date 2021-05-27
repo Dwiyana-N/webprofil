@@ -66,8 +66,8 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::get('/slider/detail/{id}', [SliderController::class, 'show'])->name('admin.slider.show');
         Route::get('/slider/add', [SliderController::class, 'create'])->name('admin.slider.create');
         Route::post('/slider/add', [SliderController::class, 'store'])->name('admin.slider.add');
-        // Route::get('/slider/edit', [SliderController::class, 'edit'])->name('admin.slider.edit');
-        // Route::post('/slider/edit', [SliderController::class, 'update'])->name('admin.slider.update');
+        Route::get('/slider/edit', [SliderController::class, 'edit'])->name('admin.slider.edit');
+        Route::post('/slider/edit', [SliderController::class, 'update'])->name('admin.slider.update');
         Route::post('/slider/delete', [SliderController::class, 'delete'])->name('admin.slider.delete');
         Route::get('/slider/active/{id}', [SliderController::class, 'active'])->name('admin.slider.active');
         Route::get('/slider/inactive/{id}', [SliderController::class, 'inactive'])->name('admin.slider.inactive');

@@ -42,7 +42,7 @@
               </span>
             </div><!-- /.blog-meta -->
             <div class="line-bottom"></div>
-            <h4 class="blog__title">{{ $profil->title }}</h4>
+              <h4 class="blog__title">{{ $profil->title }}</h4>
             <div class="blog__desc">
               {!!$profil->description !!}
             </div><!-- /.blog-desc -->
