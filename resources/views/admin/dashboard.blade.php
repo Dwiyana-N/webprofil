@@ -33,7 +33,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>{{$countartikel}}</h3>
-                <p>Konten Artikel</p>
+                <p>Konten Berita</p>
               </div>
               <div class="icon">
                 <i class="ion ion-document"></i>

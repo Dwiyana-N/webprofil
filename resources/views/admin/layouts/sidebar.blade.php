@@ -92,24 +92,35 @@
             <p class="text">Profil</p>
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href="{{route('admin.profile.list')}}" class="nav-link {{ Request::routeIs('admin.profile.*') ? 'active' : '' }}">
+            <i class="fas fa-home nav-icon"></i>
+            <p class="text">Desa</p>
+          </a>
+        </li>
+
         <li class="nav-item">
           <a href="{{route('admin.wisata.list')}}" class="nav-link {{ Request::routeIs('admin.wisata.*') ? 'active' : '' }}">
             <i class="fas fa-leaf nav-icon"></i>
             <p class="text">Wisata</p>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="{{route('admin.agenda.list')}}" class="nav-link {{ Request::routeIs('admin.agenda.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>Agenda</p>
           </a>
         </li>
+
         <li class="nav-item">
           <a href="{{route('admin.announcement.list')}}" class="nav-link {{ Request::routeIs('admin.announcement.*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-bullhorn"></i>
             <p>Pengumuman</p>
           </a>
         </li>
+
         <li class="nav-item">
           <li class="nav-item has-treeview {{ Request::routeIs('admin.category.*')||Request::routeIs('admin.tag.*')||Request::routeIs('admin.article.*')||Request::routeIs('admin.comment.*')||Request::routeIs('admin.trash.*') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link">
@@ -153,6 +164,7 @@
             </ul>
           </li>
         </li>
+
         <li class="nav-item">
           <li class="nav-item has-treeview {{ Request::routeIs('admin.album.*')||Request::routeIs('admin.photo.*')||Request::routeIs('admin.video.*')||Request::routeIs('admin.infographic.*') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link">
@@ -184,6 +196,33 @@
             </ul>
           </li>
         </li>
+
+        <li class="nav-item">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-folder nav-icon"></i>
+              <p>
+                Kepegawaian
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item pl-2">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-address-card"></i>
+                <p>Data Pegawai</p>
+                </a>
+              </li>
+              <li class="nav-item pl-2">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-sitemap"></i>
+                <p>Struktur Organisasi</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </li>
+        
         <li class="nav-item">
           <a href="{{route('admin.slider.list')}}" class="nav-link {{ Request::routeIs('admin.slider.*') ? 'active' : '' }}">
             <i class="fas fa-images nav-icon"></i>

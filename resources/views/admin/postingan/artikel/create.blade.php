@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Tambah Artikel')
+@section('title', 'Tambah Berita')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Articles</h1>
+          <h1>Berita</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Articles</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Berita</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Add</strong></small></li>
           </ol>
         </div>
@@ -32,7 +32,7 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Tambahkan Data Artikel</strong></h3>
+                  <h3 class="card-title"><strong>Tambahkan Data Berita</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -40,8 +40,8 @@
                   @csrf
                   <div class="card-body">
                     <div class="form-group">
-                      <label for="title">Judul Artikel</label>
-                      <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul Artikel">
+                      <label for="title">Judul Berita</label>
+                      <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul Berita">
                     </div>
                     <div class="form-group">
                       <label for="kategori_id">Kategori</label>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="form-group">
                       <label for="short_description">Selayang Pandang (Ringkasan)</label>
-                      <input type="text" name="short_description" class="form-control" id="short_description" placeholder="Masukkan Selayang Pandang Artikel">
+                      <input type="text" name="short_description" class="form-control" id="short_description" placeholder="Masukkan Selayang Pandang Berita">
                     </div>
                     <div class="form-group">
                       <label for="content">Konten</label>
@@ -141,19 +141,19 @@ $(document).ready(function () {
     },
     messages: {
       title: {
-        required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul artikel",
+        required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul berita",
       },
       category_id: {
-        required: "&nbsp;"+"Kolom tidak boleh kosong, pilih kategori artikel",
+        required: "&nbsp;"+"Kolom tidak boleh kosong, pilih kategori berita",
       },
       status: {
         required: "&nbsp;"+"Kolom tidak boleh kosong, pilih status penerbitan",
       },
       short_description: {
-        required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan selayang pandang (ringkasan) artikel",
+        required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan selayang pandang (ringkasan) berita",
       },
       content: {
-        required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan konten artikel",
+        required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan konten berita",
       }
     },
     errorElement: 'span',

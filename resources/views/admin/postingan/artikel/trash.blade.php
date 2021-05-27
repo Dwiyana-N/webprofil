@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Data Artikel')
+@section('title', 'Data Berita')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Articles</h1>
+          <h1>Berita</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Articles</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Berita</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Trash</strong></small></li>
           </ol>
         </div>
@@ -31,7 +31,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Tong Sampah Data Artikel</h3>
+                <h3 class="card-title">Tong Sampah Data Berita</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

@@ -1,10 +1,10 @@
 @extends('public.layout.app', ['title' => $slug->name])
 
 @section('meta')
-  <meta name="description" content="Artikel Terbaru" />
+  <meta name="description" content="Berita Terbaru" />
   <meta name="keywords" content="Diskominfo Subang" />
-  <meta property="og:title" content="Artikel Terbaru"/>
-  <meta property="og:type" content="Artikel"/>
+  <meta property="og:title" content="Berita Terbaru"/>
+  <meta property="og:type" content="Berita"/>
   <meta property="og:image" content="{{asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 

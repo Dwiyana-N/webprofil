@@ -172,7 +172,7 @@
           <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
               <div class="heading heading-3 text-center mb-60">
-                <h2 class="heading__title">Artikel Terbaru</h2>
+                <h2 class="heading__title">Berita Terbaru</h2>
                 <div class="divider__line"></div>
               </div><!-- /.heading -->
             </div><!-- /.col-lg-6 -->

@@ -39,7 +39,7 @@
                   <thead>
                   <tr>
                     <th>Nama</th>
-                    <th>Artikel</th>
+                    <th>Berita</th>
                     <th>Kategori</th>
                     <th>Status</th>
                     <th>Aksi</th>

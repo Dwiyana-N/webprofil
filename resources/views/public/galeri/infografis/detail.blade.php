@@ -54,7 +54,7 @@
       <div class="col-sm-12 col-md-12 col-lg-4">
         <aside class="sidebar sidebar-wide">
           <div class="widget widget-posts">
-            <h5 class="widget__title">Artikel Terbaru</h5>
+            <h5 class="widget__title">Berita Terbaru</h5>
             <div class="widget__content">
               <!-- post item -->
               @if(count($article) > 0)

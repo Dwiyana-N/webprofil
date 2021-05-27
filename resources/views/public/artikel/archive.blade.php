@@ -1,4 +1,4 @@
-@extends('public.layout.app', ['title' => 'Arsip Artikel'])
+@extends('public.layout.app', ['title' => 'Arsip Berita'])
 @php
                         if($date['month'] == '1'){
                         $bulan = 'Januari';
@@ -27,10 +27,10 @@
 @endphp
 
 @section('meta')
-  <meta name="description" content="Arsip Artikel Bulan {{$bulan}} Tahun {{$date['year']}}" />
+  <meta name="description" content="Arsip Berita Bulan {{$bulan}} Tahun {{$date['year']}}" />
   <meta name="keywords" content="Diskominfo Subang" />
-  <meta property="og:title" content="Arsip Artikel Bulan {{$bulan}} Tahun {{$date['year']}}"/>
-  <meta property="og:type" content="Artikel"/>
+  <meta property="og:title" content="Arsip Berita Bulan {{$bulan}} Tahun {{$date['year']}}"/>
+  <meta property="og:type" content="Berita"/>
   <meta property="og:image" content="{{asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 
@@ -41,7 +41,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <h1 class="pagetitle__heading">Arsip Artikel <br> <small>Bulan {{$bulan}} Tahun {{$date['year']}}</small></h1>
+          <h1 class="pagetitle__heading">Arsip Berita <br> <small>Bulan {{$bulan}} Tahun {{$date['year']}}</small></h1>
         </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->

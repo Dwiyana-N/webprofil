@@ -81,7 +81,7 @@
                 </div><!-- /.widget-content -->
               </div><!-- /.widget-posts -->
               <div class="widget widget-posts">
-                <h5 class="widget__title">Artikel Terbaru</h5>
+                <h5 class="widget__title">Berita Terbaru</h5>
                 <div class="widget__content">
                   <!-- post item -->
                   @if(count($article) > 0)

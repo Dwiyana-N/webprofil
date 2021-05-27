@@ -1,10 +1,10 @@
-@extends('public.layout.app', ['title' => 'Artikel Terbaru'])
+@extends('public.layout.app', ['title' => 'Berita Terbaru'])
 
 @section('meta')
-  <meta name="description" content="Artikel Terbaru" />
+  <meta name="description" content="Berita Terbaru" />
   <meta name="keywords" content="Diskominfo Subang" />
-  <meta property="og:title" content="Artikel Terbaru"/>
-  <meta property="og:type" content="Artikel"/>
+  <meta property="og:title" content="Berita Terbaru"/>
+  <meta property="og:type" content="Berita"/>
   <meta property="og:image" content="{{asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <h1 class="pagetitle__heading">Artikel</h1>
+          <h1 class="pagetitle__heading">Berita</h1>
         </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->
