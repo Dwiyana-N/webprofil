@@ -9,13 +9,16 @@ use Artisan;
 Route::namespace('Frontend')->group(static function () {
   Route::get('/', 'HomeController@index')->name('public.homepage');
   Route::post('/pencarian', 'HomeController@search')->name('public.search');
-  Route::get('/profil/{slug}', 'HomeController@profile')->name('public.profile');
-  Route::get('/wisata/{slug}', 'HomeController@wisata')->name('public.wisata');
   Route::get('/kepegawaian/unit-kerja', 'HomeController@field')->name('public.field');
   Route::get('/kepegawaian/{slug}/list', 'HomeController@staff')->name('public.staff');
   Route::get('/kontak-kami', 'HomeController@contactUs')->name('public.contact');
   Route::post('/kontak-kami', 'HomeController@sendMessage')->name('public.sendmessage');
-
+  //profil
+  Route::get('/profil/{slug}', 'HomeController@profile')->name('public.profile');
+  //desa
+  Route::get('/desa/{slug}', 'HomeController@desa')->name('public.desa');
+  //wisata
+  Route::get('/wisata/{slug}', 'HomeController@wisata')->name('public.wisata');
   //artikel
   Route::get('/artikel', 'ArticleController@index')->name('public.article.list');
   Route::get('/artikel/{slug}', 'ArticleController@show')->name('public.article.detail');
@@ -184,6 +187,14 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::get('/wisata/edit/{id}', [WisataController::class, 'edit'])->name('admin.wisata.edit');
         Route::post('/wisata/edit', [WisataController::class, 'update'])->name('admin.wisata.update');
         Route::post('/wisata/delete', [WisataController::class, 'delete'])->name('admin.wisata.delete');
+        // Desa
+        Route::get('/desa', [DesaController::class, 'index'])->name('admin.desa.list');
+        Route::get('/desa/show/{id}', [DesaController::class, 'show'])->name('admin.desa.show');
+        Route::get('/desa/add', [DesaController::class, 'create'])->name('admin.desa.create');
+        Route::post('/desa/add', [DesaController::class, 'store'])->name('admin.desa.add');
+        Route::get('/desa/edit/{id}', [DesaController::class, 'edit'])->name('admin.desa.edit');
+        Route::post('/desa/edit', [DesaController::class, 'update'])->name('admin.desa.update');
+        Route::post('/desa/delete', [DesaController::class, 'delete'])->name('admin.desa.delete');
         // User
         Route::group(['middleware' => ['role:admin|super-admin']], function() {
             Route::get('/user/add', [UserController::class, 'create'])->name('admin.user.create');
