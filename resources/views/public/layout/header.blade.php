@@ -53,12 +53,12 @@
 			      @endif
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Desa</a>
-            @if(count($profils) > 0)
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.desa') ? 'active' : '' }}">Desa</a>
+            @if(count($desa) > 0)
       			<ul class="dropdown-menu">
-      				  @foreach($profils as $profil)
+      				  @foreach($desa as $row)
                 <li class="nav__item">
-      						<a href="{{route('public.profile', ['slug'=>$profil->slug])}}" class="nav__item-link">{{$profil->title}}</a>
+      						<a href="{{route('public.desa', ['slug'=>$desa->slug])}}" class="nav__item-link">{{$desa->title}}</a>
       					</li>
                 @endforeach
             </ul><!-- /.dropdown-menu -->
@@ -66,7 +66,7 @@
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.wisata') ? 'active' : '' }}">Wisata</a>
-            @if(count($wisata_menu) > 0)
+            @if(count($) > 0)
       			<ul class="dropdown-menu">
       				  @foreach($wisata_menu as $row)
                 <li class="nav__item">
@@ -77,12 +77,12 @@
             @endif
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Pelayanan Publik</a>
-            @if(count($profils) > 0)
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.pelayanan') ? 'active' : '' }}">Pelayanan Publik</a>
+            @if(count($pelayanan) > 0)
       			<ul class="dropdown-menu">
-      				  @foreach($profils as $profil)
+      				  @foreach($pelayanan $row)
                 <li class="nav__item">
-      						<a href="{{route('public.profile', ['slug'=>$profil->slug])}}" class="nav__item-link">{{$profil->title}}</a>
+      						<a href="{{route('public.pelayanan', ['slug'=>$pelayanan->slug])}}" class="nav__item-link">{{$pelayanan->title}}</a>
       					</li>
                 @endforeach
             </ul><!-- /.dropdown-menu -->

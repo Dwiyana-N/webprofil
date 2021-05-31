@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Profile;
+use App\Models\Desa;
 use App\Models\Website;
 use Str;
 use Auth;
@@ -16,7 +16,7 @@ class DesaController extends Controller
 
     public function index(){
       try{
-        $data['list'] = Profile::orderBy('created_at', 'DESC')->get();
+        $data['list'] = Desa::orderBy('created_at', 'DESC')->get();
         return view('admin.desa.list', $data);
       }catch(\Exception $e){
         $error = $e->getMessage();
@@ -54,23 +54,16 @@ class DesaController extends Controller
         } else {
           $img = null;
         }
-        //upload file
-        if(!empty($request->file('file'))){
-          $berkas = $request->file('file');          
-          $extension = $berkas->getClientOriginalExtension();
-          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-          $berkas->storeAs('public/desa/files', $file);
-        } else {
-          $file = null;
-        }
+    
         $data = $this->bindData($request);
         $data['img'] = $img;
         $data['file'] = $file;
         $data['created_by'] = Auth::user()->name;
-        $store = desa::create($data);
+        $store = Desa::create($data);
         return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
       }catch(\Exception $e){
         $error = $e->getMessage();
+        //return $error;
         return redirect()->back()->with(['error'=>$error]);
       }
     }
@@ -91,8 +84,8 @@ class DesaController extends Controller
         $desa = Desa::where('id', $id)->first();
         //upload gambar
         if( $request->file('img') == '' ) {
-          if($profil->img){
-            $img = $profil->img;
+          if($desa->img){
+            $img = $desa->img;
           }else{
             $img = null;
           }
@@ -104,21 +97,7 @@ class DesaController extends Controller
           $imagepic = Storage::disk('local')->delete('public/desa/images/'.$baseimage);
           $image->storeAs('public/desa/images/', $img);
         }
-        //upload file
-        if( $request->file('file') == '' ) {
-          if($profil->file){
-            $file = $profil->file;
-          }else{
-            $file = null;
-          }
-        } else {
-          $berkas = $request->file('file');          
-          $extension = $berkas->getClientOriginalExtension();
-          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-          $basefile = basename($profil->file);
-          $doc = Storage::disk('local')->delete('public/desa/files/'.$basefile);
-          $berkas->storeAs('public/desa/files/', $file);
-        }
+        
         $data = $this->bindData($request);
         $data['img'] = $img;
         $data['file'] = $file;
@@ -151,7 +130,7 @@ class DesaController extends Controller
           'title'       => $request->input('title'),
           'slug'        => Str::slug($request->input('title')),          
           'description' => $request->input('description'),           
-          'status'      => $request->input('status'),
+           'status'      => $request->input('status'),
       ];
       return $data;
     }

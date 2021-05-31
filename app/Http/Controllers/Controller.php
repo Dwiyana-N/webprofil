@@ -25,7 +25,9 @@ class Controller extends BaseController
           View::share('getsitus', $this->getsitus());
           View::share('getsosmed', $this->getsosmed());
 		      View::share('profils', $this->getProfil());
-          View::share('wisata_menu', $this->getWisata());
+          View::share('', $this->getWisata());
+          View::share('desa', $this->getDesa());
+          View::share('pelayanan', $this->getPelayanan());
       }
 
       public function setUsers(){
@@ -113,6 +115,16 @@ class Controller extends BaseController
     public function getWisata(){
 			$wisata = \App\Models\Wisata::where('status','show')->get();
 			return $wisata;
+		}
+
+    public function getDesa(){
+			$desa = \App\Models\Desa::where('status','show')->get();
+			return $desa;
+		}
+
+    public function getPelayanan(){
+			$pelayanan = \App\Models\Pelayanan::where('status','show')->get();
+			return $pelayanan;
 		}
 
 }

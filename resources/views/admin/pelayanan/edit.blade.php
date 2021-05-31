@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Sunting Data Desa')
+@section('title', 'Sunting Pelayanan')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Desa</h1>
+          <h1>Pelayanan Publik</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Desa</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Pelayanan</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Edit</strong></small></li>
           </ol>
         </div>
@@ -32,11 +32,11 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Sunting Data Desa</strong></h3>
+                  <h3 class="card-title"><strong>Sunting Pelayanan Publik</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.desa.update')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.pelayanan.update')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="id" value="{{$fetch->id}}">
                   <div class="card-body">                    

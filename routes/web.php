@@ -19,6 +19,8 @@ Route::namespace('Frontend')->group(static function () {
   Route::get('/desa/{slug}', 'HomeController@desa')->name('public.desa');
   //wisata
   Route::get('/wisata/{slug}', 'HomeController@wisata')->name('public.wisata');
+   //pelayanan
+   Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
   //artikel
   Route::get('/artikel', 'ArticleController@index')->name('public.article.list');
   Route::get('/artikel/{slug}', 'ArticleController@show')->name('public.article.detail');
@@ -187,6 +189,14 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::get('/wisata/edit/{id}', [WisataController::class, 'edit'])->name('admin.wisata.edit');
         Route::post('/wisata/edit', [WisataController::class, 'update'])->name('admin.wisata.update');
         Route::post('/wisata/delete', [WisataController::class, 'delete'])->name('admin.wisata.delete');
+        // Pelayanan
+        Route::get('/pelayanan', [PelayananController::class, 'index'])->name('admin.pelayanan.list');
+        Route::get('/pelayanan/show/{id}', [PelayananController::class, 'show'])->name('admin.pelayanan.show');
+        Route::get('/pelayanan/add', [PelayananController::class, 'create'])->name('admin.pelayanan.create');
+        Route::post('/pelayanan/add', [PelayananController::class, 'store'])->name('admin.pelayanan.add');
+        Route::get('/pelayanan/edit/{id}', [PelayananController::class, 'edit'])->name('admin.pelayanan.edit');
+        Route::post('/pelayanan/edit', [PelayananController::class, 'update'])->name('admin.pelayanan.update');
+        Route::post('/pelayanan/delete', [PelayananController::class, 'delete'])->name('admin.pelayanan.delete');
         // Desa
         Route::get('/desa', [DesaController::class, 'index'])->name('admin.desa.list');
         Route::get('/desa/show/{id}', [DesaController::class, 'show'])->name('admin.desa.show');

@@ -94,7 +94,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="{{route('admin.profile.list')}}" class="nav-link {{ Request::routeIs('admin.profile.*') ? 'active' : '' }}">
+          <a href="{{route('admin.desa.list')}}" class="nav-link {{ Request::routeIs('admin.desa.*') ? 'active' : '' }}">
             <i class="fas fa-home nav-icon"></i>
             <p class="text">Desa</p>
           </a>
@@ -104,6 +104,13 @@
           <a href="{{route('admin.wisata.list')}}" class="nav-link {{ Request::routeIs('admin.wisata.*') ? 'active' : '' }}">
             <i class="fas fa-leaf nav-icon"></i>
             <p class="text">Wisata</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{route('admin.pelayanan.list')}}" class="nav-link {{ Request::routeIs('admin.pelayanan.*') ? 'active' : '' }}">
+            <i class="fas fa-leaf nav-icon"></i>
+            <p class="text">Pelayanan</p>
           </a>
         </li>
 

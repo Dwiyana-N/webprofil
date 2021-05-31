@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Data Desa')
+@section('title', 'Pelayanan Publik')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Desa</h1>
+          <h1>Pelayanan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Desa</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Pelayanan</strong></small></li>
             <li class="breadcrumb-item active"><small><strong>List</strong></small></li>
           </ol>
         </div>
@@ -31,8 +31,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Desa</h3>
-                <a href="{{route('admin.desa.create')}}" class="btn btn-success float-right">
+                <h3 class="card-title">Pelayanan Publik</h3>
+                <a href="{{route('admin.pelayanan.create')}}" class="btn btn-success float-right">
                   <i class="fas fa-plus-square"></i> Tambah Data
                 </a>
               </div>
@@ -55,10 +55,10 @@
                       <td>{{ $row->title }}</td>                                                              
                       <td style="text-align:center;">{{ $row->status }}</td>
                       <td style="text-align:center;">
-                        <a href="{{route('admin.desa.show',['id' => $row->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
+                        <a href="{{route('admin.pelayanan.show',['id' => $row->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
                           <i class="fas fa-info-circle"></i>
                         </a>
-                        <a href="{{route('admin.desa.edit',['id' => $row->id])}}" class="btn btn-md btn-primary btn-icon" title="Edit">
+                        <a href="{{route('admin.pelayanan.edit',['id' => $row->id])}}" class="btn btn-md btn-primary btn-icon" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
                         <a href="#" data-toggle="modal" data-target="#hapus{{$row->id}}" class="btn btn-md btn-danger btn-icon" title="Hapus">
