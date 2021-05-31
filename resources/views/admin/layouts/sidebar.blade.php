@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-success elevation-4">
   <!-- Brand Logo -->
-  <a href="#" class="brand-link">
+  <a href="{{route('admin.dashboard.index')}}" class="brand-link">
     <img src="{{asset('backend/img/logo.png')}}"
          alt="Logo"
          class="brand-image img-circle elevation-3"
@@ -86,11 +86,49 @@
 
         @can('manipulate-content')
         <li class="nav-header"><strong>MENU KONTEN</strong></li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="{{route('admin.profile.list')}}" class="nav-link {{ Request::routeIs('admin.profile.*') ? 'active' : '' }}">
             <i class="fas fa-home nav-icon"></i>
             <p class="text">Profil</p>
           </a>
+        </li> -->
+
+        <li class="nav-item">
+          <li class="nav-item has-treeview {{ Request::routeIs('admin.sejarah.*')||Request::routeIs('admin.peta.*')||Request::routeIs('admin.visi.*')||Request::routeIs('admin.topografi.*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-folder"></i>
+              <p>
+                Profil
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.sejarah.list')}}" class="nav-link {{ Request::routeIs('admin.sejarah.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-book-open"></i>
+                  <p>Sejarah</p>
+                </a>
+              </li>
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.peta.list')}}" class="nav-link {{ Request::routeIs('admin.peta.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-map-marked"></i>
+                  <p>Peta</p>
+                </a>
+              </li>
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.visi.list')}}" class="nav-link {{ Request::routeIs('admin.visi.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>Visi Misi</p>
+                </a>
+              </li>
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.topografi.list')}}" class="nav-link {{ Request::routeIs('admin.topografi.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-globe-asia"></i>
+                  <p>Topografi</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </li>
 
         <li class="nav-item">
@@ -102,7 +140,7 @@
 
         <li class="nav-item">
           <a href="{{route('admin.wisata.list')}}" class="nav-link {{ Request::routeIs('admin.wisata.*') ? 'active' : '' }}">
-            <i class="fas fa-leaf nav-icon"></i>
+            <i class="fas fa-map-signs nav-icon"></i>
             <p class="text">Wisata</p>
           </a>
         </li>

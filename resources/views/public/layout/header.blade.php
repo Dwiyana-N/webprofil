@@ -41,7 +41,7 @@
             <a href="{{route('public.homepage')}}" class="nav__item-link {{ Request::routeIs('public.homepage') ? 'active' : '' }}">Beranda</a>
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profil') ? 'active' : '' }}">Profil</a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profile') ? 'active' : '' }}">Profil</a>
             @if(count($profils) > 0)
       			<ul class="dropdown-menu">
       				  @foreach($profils as $profil)
@@ -80,7 +80,7 @@
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.pelayanan') ? 'active' : '' }}">Pelayanan Publik</a>
             @if(count($pelayanan) > 0)
       			<ul class="dropdown-menu">
-      				  @foreach($pelayanan $row)
+      				  @foreach($pelayanan as $row)
                 <li class="nav__item">
       						<a href="{{route('public.pelayanan', ['slug'=>$pelayanan->slug])}}" class="nav__item-link">{{$pelayanan->title}}</a>
       					</li>

@@ -93,7 +93,7 @@ class DesaController extends Controller
           $image = $request->file('img');
           $extension = $image->getClientOriginalExtension();
           $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-          $baseimage = basename($profil->img);
+          $baseimage = basename($desa->img);
           $imagepic = Storage::disk('local')->delete('public/desa/images/'.$baseimage);
           $image->storeAs('public/desa/images/', $img);
         }
@@ -102,7 +102,7 @@ class DesaController extends Controller
         $data['img'] = $img;
         $data['file'] = $file;
         $data['updated_by'] = Auth::user()->name;
-        $profil->update($data);
+        $desa->update($data);
         return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Disimpan!']);
       }catch(\Exception $e){
         $error = $e->getMessage();

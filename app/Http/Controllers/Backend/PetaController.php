@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pelayanan;
+use App\Models\Peta;
 use Illuminate\Http\Request;
 
-class PelayananController extends Controller
+class PetaController extends Controller
 {
     public function index(){
         try{
-          $data['list'] = Pelayanan::orderBy('created_at', 'DESC')->get();
-          return view('admin.pelayanan.list', $data);
+          $data['list'] = Peta::orderBy('created_at', 'DESC')->get();
+          return view('admin.peta.list', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -20,8 +20,8 @@ class PelayananController extends Controller
   
       public function show($id){
         try{
-          $data['fetch'] = Pelayanan::where('id', $id)->first();
-          return view('admin.pelayanan.detail', $data);
+          $data['fetch'] = Peta::where('id', $id)->first();
+          return view('admin.peta.detail', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -30,7 +30,7 @@ class PelayananController extends Controller
   
       public function create(){
         try{
-          return view('admin.pelayanan.create');
+          return view('admin.peta.create');
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -39,22 +39,10 @@ class PelayananController extends Controller
   
       public function store(Request $request){
         try{
-          //upload image
-          if(!empty($request->file('img'))){
-            $image = $request->file('img');          
-            $extension = $image->getClientOriginalExtension();
-            $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-            $image->storeAs('public/pelayanan/images', $img);
-          } else {
-            $img = null;
-          }
-      
           $data = $this->bindData($request);
-          $data['img'] = $img;
-          $data['file'] = $file;
           $data['created_by'] = Auth::user()->name;
-          $store = Desa::create($data);
-          return redirect()->route('admin.pelayanan.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
+          $store = Peta::create($data);
+          return redirect()->route('admin.peta.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           //return $error;
@@ -64,8 +52,8 @@ class PelayananController extends Controller
   
       public function edit($id){
         try{
-          $data['fetch'] = Pelayanan::where('id', $id)->first();
-          return view('admin.pelayanan.edit', $data);
+          $data['fetch'] = Peta::where('id', $id)->first();
+          return view('admin.peta.edit', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -75,29 +63,12 @@ class PelayananController extends Controller
       public function update(Request $request){
         try{
           $id = $request->input('id');   
-          $desa = Desa::where('id', $id)->first();
-          //upload gambar
-          if( $request->file('img') == '' ) {
-            if($desa->img){
-              $img = $desa->img;
-            }else{
-              $img = null;
-            }
-          } else {
-            $image = $request->file('img');
-            $extension = $image->getClientOriginalExtension();
-            $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-            $baseimage = basename($pelayanan->img);
-            $imagepic = Storage::disk('local')->delete('public/pelayanan/images/'.$baseimage);
-            $image->storeAs('public/pelayanan/images/', $img);
-          }
-          
+          $peta = Peta::where('id', $id)->first();
+
           $data = $this->bindData($request);
-          $data['img'] = $img;
-          $data['file'] = $file;
           $data['updated_by'] = Auth::user()->name;
-          $pelayanan->update($data);
-          return redirect()->route('admin.pelayanan.list')->with(['success' => 'Data Berhasil Disimpan!']);
+          $peta->update($data);
+          return redirect()->route('admin.peta.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -107,9 +78,9 @@ class PelayananController extends Controller
       public function delete(Request $request){
         try{
           $id = $request->input('id');
-          $catch = Profile::findOrFail($id);
+          $catch = Peta::findOrFail($id);
           $catch->delete();
-          return redirect()->route('admin.pelayanan.list')->with(['success' => 'Data Berhasil Dihapus!']);
+          return redirect()->route('admin.peta.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -118,7 +89,7 @@ class PelayananController extends Controller
   
       public function bindData($request){
         if(!empty($request->id)){
-          $get = Profile::find($request->id);
+          $get = Peta::find($request->id);
       }
         $data = [            
             'title'       => $request->input('title'),
