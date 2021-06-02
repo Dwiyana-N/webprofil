@@ -66,7 +66,7 @@
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.wisata') ? 'active' : '' }}">Wisata</a>
-            @if(count($) > 0)
+            @if(count($desa) > 0)
       			<ul class="dropdown-menu">
       				  @foreach($wisata_menu as $row)
                 <li class="nav__item">
