@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
-@section('title', 'Sejarah')
+
+@section('title', 'Data Sejarah')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -13,9 +14,9 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><small><strong>Profile</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
             <li class="breadcrumb-item"><small><strong>Sejarah</strong></small></li>
-            <li class="breadcrumb-item text-green"><small><strong>List</strong></small></li>
+            <li class="breadcrumb-item active"><small><strong>List</strong></small></li>
           </ol>
         </div>
       </div>
@@ -39,50 +40,51 @@
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                    <tr>
-                      <th>Judul</th>
-                      <th>Tanggal</th>
-                      <th>Status</th>
-                      <th>Aksi</th>
-                    </tr>
+                  <tr>
+                    <th width="5%" style="text-align:center;">No</th>
+                    <th width="35%" style="text-align:center;">Judul</th>                                                           
+                    <th width="25%" style="text-align:center;">Status</th>
+                    <th width="" style="text-align:center;">Aksi</th>
+                  </tr>
                   </thead>
                   <tbody>
-                    @foreach($sejarah as $list)
+                    @php $i=1 @endphp
+                    @foreach($list as $row)
                     <tr>
-                      <td>{{$list->title}}</td>
-                      <td>{{\Carbon\Carbon::parse($list->created_date)->translatedFormat('l, d F Y')}}</td>
-                      <td>{{$list->status}}</td>
-                      <td>
-                        <a href="{{route('admin.sejarah.show',['id' => $list->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
+                      <td style="text-align:center;">{{ $i }}</td>  
+                      <td>{{ $row->title }}</td>                                                              
+                      <td style="text-align:center;">{{ $row->status }}</td>
+                      <td style="text-align:center;">
+                        <a href="{{route('admin.sejarah.show',['id' => $row->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
                           <i class="fas fa-info-circle"></i>
                         </a>
-                        <a href="{{route('admin.sejarah.edit',['id' => $list->id])}}" class="btn btn-md btn-success btn-icon" title="Edit">
+                        <a href="{{route('admin.sejarah.edit',['id' => $row->id])}}" class="btn btn-md btn-primary btn-icon" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
-                        <a href="{{route('admin.sejarah.delete', ['id' => $list->id])}}" data-toggle="modal" data-target="#hapus{{$list->id}}" class="btn btn-md btn-danger btn-icon" title="Hapus">
+                        <a href="#" data-toggle="modal" data-target="#hapus{{$row->id}}" class="btn btn-md btn-danger btn-icon" title="Hapus">
                           <i class="fas fa-trash"></i>
                         </a>
                       </td>
                     </tr>
                     <!-- modal -->
-                    <div class="modal fade" id="hapus{{$list->id}}">
+                    <div class="modal fade" id="hapus{{$row->id}}">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title"><i class="fas fa-sign-out"></i>Hapus Data</h4>
+                            <h4 class="modal-title"><i class="fas fa-trash"></i>Hapus Data</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
                           <div class="modal-body">
                             <p>
-                              Apakah anda yakin untuk menghapus data "<strong>{{$list->title}}</strong>" ?
+                              Apakah anda yakin untuk menghapus data " {{$row->name}} " ?
                             </p>
                           </div>
                           <div class="modal-footer">
-                            <form id="hapus-data" action="{{ route('admin.sejarah.delete') }}" method="POST" class="d-none">
+                            <form id="hapus-data" action="{{ route('admin.profile.delete') }}" method="POST" class="d-none">
                               @csrf
-                              <input type="hidden" name="id" value="{{$list->id}}">
+                              <input type="hidden" name="id" value="{{$row->id}}">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                               <button type="submit" class="btn btn-danger">Iya</button>
                             </form>
@@ -92,8 +94,9 @@
                       </div>
                       <!-- /.modal-dialog -->
                     </div>
+                    @php $i++ @endphp
                     @endforeach
-                  </tbody>
+                    </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
@@ -107,7 +110,8 @@
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>
+
+</div>
 @endsection
 
 @section('top-resource')

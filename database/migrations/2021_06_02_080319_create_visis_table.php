@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePetasTable extends Migration
+class CreateVisisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('petas', function (Blueprint $table) {
+        Schema::create('visis', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug');
@@ -33,6 +33,6 @@ class CreatePetasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('petas');
+        Schema::dropIfExists('visis');
     }
 }
