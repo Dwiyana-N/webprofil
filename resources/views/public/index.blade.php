@@ -31,9 +31,7 @@
         </div><!-- /.carousel -->
       </section><!-- /.slider -->
 
-      <!-- === Berita === -->
-      
-      <!-- === Features layanan masyarakat === -->           
+      <!-- === Berita === -->           
 
       <!-- === Features === -->
       <section id="accordions1" class="accordions bg-gray">
@@ -258,6 +256,14 @@
           </div><!-- /.row -->
         </div><!-- /.container -->
       </section>
+
+       <!-- === sosmed === -->
+           <!-- === Instagram === -->
+       <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+        <div class="elfsight-app-0c744dc4-b2cb-4cdb-8a3b-f724d5895dec"></div>
+           <!-- === Youtube === -->
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+          <div class="elfsight-app-6c1d7a0d-debf-40eb-9db6-bb9e2c108534"></div>
 
       <!-- === Staff === -->
       <section id="team3" class="team team-2 team-3 text-center pt-100 pb-0">
