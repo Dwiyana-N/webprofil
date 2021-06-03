@@ -258,13 +258,26 @@
       </section>
 
        <!-- === sosmed === -->
-           <!-- === Instagram === -->
-       <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-        <div class="elfsight-app-0c744dc4-b2cb-4cdb-8a3b-f724d5895dec"></div>
            <!-- === Youtube === -->
-        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-          <div class="elfsight-app-6c1d7a0d-debf-40eb-9db6-bb9e2c108534"></div>
+           <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+              <div class="elfsight-app-6c1d7a0d-debf-40eb-9db6-bb9e2c108534"></div>
+           <!-- === Instagram === -->
+      <section id="testimonial4"
+        class="testimonial testimonial-1 testimonial-4 testimonial-white-text bg-overlay bg-overlay-3 bg-parallax text-center pt-100 pb-100">
+        <div class="bg-img"><img src="assets/images/backgrounds/3.jpg" alt="background"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
+              <div class="heading heading-4 text-center mb-60">
+                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                <div class="elfsight-app-0c744dc4-b2cb-4cdb-8a3b-f724d5895dec"></div>
+               </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
+            <!-- === Facebook === -->
       <!-- === Staff === -->
       <section id="team3" class="team team-2 team-3 text-center pt-100 pb-0">
         <div class="container-fluid col-padding-0">
