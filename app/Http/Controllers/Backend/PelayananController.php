@@ -5,6 +5,10 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\Pelayanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Str;
+use Auth;
 
 class PelayananController extends Controller
 {
@@ -48,12 +52,20 @@ class PelayananController extends Controller
           } else {
             $img = null;
           }
-      
+          //upload file
+          if(!empty($request->file('file'))){
+            $dok = $request->file('file');
+            $extension = $dok->getClientOriginalExtension();
+            $file = \Carbon\carbon::now()->translatedFormat('dmy').'-('.Str::camel($request->title).').'.$extension;
+            $dok->storeAs('public/pelayanan/files', $file);
+          } else {
+            $file = null;
+          }
           $data = $this->bindData($request);
           $data['img'] = $img;
           $data['file'] = $file;
           $data['created_by'] = Auth::user()->name;
-          $store = Desa::create($data);
+          $store = Pelayanan::create($data);
           return redirect()->route('admin.pelayanan.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
@@ -75,28 +87,83 @@ class PelayananController extends Controller
       public function update(Request $request){
         try{
           $id = $request->input('id');   
-          $desa = Desa::where('id', $id)->first();
-          //upload gambar
-          if( $request->file('img') == '' ) {
-            if($desa->img){
-              $img = $desa->img;
-            }else{
-              $img = null;
-            }
-          } else {
-            $image = $request->file('img');
-            $extension = $image->getClientOriginalExtension();
-            $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-            $baseimage = basename($pelayanan->img);
-            $imagepic = Storage::disk('local')->delete('public/pelayanan/images/'.$baseimage);
-            $image->storeAs('public/pelayanan/images/', $img);
+          $layanan = Pelayanan::where('id', $id)->first();
+
+          //cek jika image dan file kosong
+        if($request->file('img')=='' && $request->file('file')=='') {
+          //update tanpa image
+          $layanan = Pelayanan::findOrFail($id);
+          $data = $this->bindData($request);
+          $data['updated_by'] = Auth::user()->name;          
+          $layanan->update($data);
+        } else if(!empty($request->file('img')) && $request->file('file')=='') { 
+          //hapus image lama
+          $basename = basename($layanan->img);            
+          $images = Storage::disk('local')->delete('public/pelayanan/images/'.$basename);
+          $thumb_path = public_path('thumbnails/'.$layanan->thumbnail);
+          if(File::exists($thumb_path)) {
+              File::delete($thumb_path);
           }
-          
+          //upload image baru
+          $image = $request->file('img');
+          $extension = $image->getClientOriginalExtension();
+          $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $image->storeAs('public/pelayanan/images', $img);
+          $thumbnailPath = 'thumbnails/';                       
+          $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
+          //update dengan image       
           $data = $this->bindData($request);
           $data['img'] = $img;
-          $data['file'] = $file;
+          $data['thumbnail'] = $img;
           $data['updated_by'] = Auth::user()->name;
-          $pelayanan->update($data);
+          $layanan = Pelayanan::findOrFail($id);
+          $layanan->update($data);
+        } else if(!empty($request->file('file')) && $request->file('img')=='') {
+          //hapus file lama
+          $basenameFile = basename($layanan->file);            
+          $file = Storage::disk('local')->delete('public/pelayanan/images/'.$basenameFile);          
+          //upload file baru
+          $input = $request->file('file');
+          $extension = $input->getClientOriginalExtension();
+          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $input->storeAs('public/pelayanan/files', $file);         
+          //update dengan file       
+          $data = $this->bindData($request);
+          $data['file'] = $file;          
+          $data['updated_by'] = Auth::user()->name;
+          $layanan = Pelayanan::findOrFail($id);
+          $layanan->update($data);
+        } else {
+          //hapus data lama
+          $basenameFile = basename($layanan->file);            
+          $file = Storage::disk('local')->delete('public/pelayanan/images/'.$basenameFile);
+          $basename = basename($layanan->img);            
+          $images = Storage::disk('local')->delete('public/pelayanan/images/'.$basename);
+          $thumb_path = public_path('thumbnails/'.$layanan->thumbnail);
+          if(File::exists($thumb_path)) {
+              File::delete($thumb_path);
+          }
+          //upload data baru
+          $image = $request->file('img');
+          $extension = $image->getClientOriginalExtension();
+          $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $image->storeAs('public/pelayanan/images', $img);
+          $thumbnailPath = 'thumbnails/';                       
+          $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
+          $input = $request->file('file');
+          $extension = $input->getClientOriginalExtension();
+          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
+          $input->storeAs('public/pelayanan/files', $file);        
+          //update       
+          $data = $this->bindData($request);
+          $data['img'] = $img;
+          $data['thumbnail'] = $img;
+          $data['file'] = $file;          
+          $data['updated_by'] = Auth::user()->name;
+          $layanan = Pelayanan::findOrFail($id);
+          $layanan->update($data);
+        }        
+
           return redirect()->route('admin.pelayanan.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();

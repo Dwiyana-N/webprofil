@@ -258,26 +258,49 @@
       </section>
 
        <!-- === sosmed === -->
+            <!-- === facebook === -->
+            <section id="blog" class="blog blog-grid pt-100 pb-80">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
+                    <div class="heading heading-3 text-center mb-60">
+                       <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fserangpanjangmidang&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" 
+                         width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                      <div class="fb-page" data-href="https://www.facebook.com/serangpanjangmidang" 
+                        data-tabs="timeline" data-width="650" data-height="" data-small-header="false" 
+                          data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote 
+                        cite="https://www.facebook.com/serangpanjangmidang" class="fb-xfbml-parse-ignore"><a 
+                          href="https://www.facebook.com/serangpanjangmidang">Buka di Facebook</a>
+                        </blockquote>
+                         </div>
+                        </div>
+                      </div>
+                   </div>
+                </div>
+            </section>
            <!-- === Youtube === -->
-           <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-              <div class="elfsight-app-6c1d7a0d-debf-40eb-9db6-bb9e2c108534"></div>
-           <!-- === Instagram === -->
-      <section id="testimonial4"
-        class="testimonial testimonial-1 testimonial-4 testimonial-white-text bg-overlay bg-overlay-3 bg-parallax text-center pt-100 pb-100">
-        <div class="bg-img"><img src="assets/images/backgrounds/3.jpg" alt="background"></div>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8 offset-lg-2">
-              <div class="heading heading-4 text-center mb-60">
-                <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-                <div class="elfsight-app-0c744dc4-b2cb-4cdb-8a3b-f724d5895dec"></div>
-               </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                 <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+              <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                  <div class="elfsight-app-6c1d7a0d-debf-40eb-9db6-bb9e2c108534"></div>
+                  <a href="https://www.youtube.com/channel/UC44dNhn3peTNOXfFQ52n2jQ">Buka di Youtube</a>
+              </div>
 
-            <!-- === Facebook === -->
+           <!-- === Instagram === -->
+            <section id="testimonial4"
+              class="testimonial testimonial-1 testimonial-4 testimonial-white-text bg-overlay bg-overlay-3 bg-parallax text-center pt-100 pb-100">
+              <div class="bg-img"><img src="assets/images/backgrounds/3.jpg" alt="background"></div>
+                <div class="container">
+                  <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                     <div class="heading heading-4 text-center mb-60">
+                      <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+                        <div class="elfsight-app-a94ad496-66bf-4769-8a86-b4b72ff54f43"></div>
+                        <a href="https://www.instagram.com/kecamatanserangpanjang/">Buka di Instagram</a>
+                       </div>
+                      </div>
+                    </div>
+                 </div>
+              </section>
       <!-- === Staff === -->
       <section id="team3" class="team team-2 team-3 text-center pt-100 pb-0">
         <div class="container-fluid col-padding-0">
