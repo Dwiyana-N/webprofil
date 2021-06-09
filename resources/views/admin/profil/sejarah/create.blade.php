@@ -95,37 +95,19 @@
   $(document).ready(function () {
     $('#quickForm').validate({
       rules: {
-        name: {
+        title: {
           required: true,
         },
-        birthplace: {
-          required: true,
-        },
-        birthday: {
-          required: true,
-        },
-        phone: {
-          required: true,
-        },
-        address: {
+        description: {
           required: true,
         },
       },
       messages: {
-        name: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nama siswa",
+        title: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
         },
-        address: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan alamat siswa",
-        },
-        birthplace: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tempat lahir siswa",
-        },
-        birthday: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tanggal lahir siswa",
-        },
-        phone: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nomor telepon siswa",
+        description: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
         },
       },
       errorElement: 'span',

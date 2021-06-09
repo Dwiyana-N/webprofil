@@ -65,6 +65,7 @@
                       </div>
                     </div>
                   </div>
+                  
                   <!-- /.card-body -->
                   <div class="card-footer">
                     <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;Tambah</button>
