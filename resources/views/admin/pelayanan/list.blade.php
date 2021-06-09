@@ -82,7 +82,7 @@
                             </p>
                           </div>
                           <div class="modal-footer">
-                            <form id="hapus-data" action="{{ route('admin.profile.delete') }}" method="POST" class="d-none">
+                            <form id="hapus-data" action="{{ route('admin.pelayanan.delete') }}" method="POST" class="d-none">
                               @csrf
                               <input type="hidden" name="id" value="{{$row->id}}">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>

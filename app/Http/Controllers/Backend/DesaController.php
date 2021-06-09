@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\backend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Desa;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use App\Models\Desa;
+use App\Models\Profile;
+use App\Models\Website;
 use Str;
 use Auth;
 
@@ -52,24 +54,14 @@ class DesaController extends Controller
           } else {
             $img = null;
           }
-          //upload file
-          if(!empty($request->file('file'))){
-            $dok = $request->file('file');
-            $extension = $dok->getClientOriginalExtension();
-            $file = \Carbon\carbon::now()->translatedFormat('dmy').'-('.Str::camel($request->title).').'.$extension;
-            $dok->storeAs('public/desa/files', $file);
-          } else {
-            $file = null;
-          }
+
           $data = $this->bindData($request);
           $data['img'] = $img;
-          $data['file'] = $file;
           $data['created_by'] = Auth::user()->name;
           $store = Desa::create($data);
           return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
-          //return $error;
           return redirect()->back()->with(['error'=>$error]);
         }
       }
@@ -88,82 +80,26 @@ class DesaController extends Controller
         try{
           $id = $request->input('id');   
           $layanan = Desa::where('id', $id)->first();
-
-          //cek jika image dan file kosong
-        if($request->file('img')=='' && $request->file('file')=='') {
-          //update tanpa image
-          $layanan = Desa::findOrFail($id);
-          $data = $this->bindData($request);
-          $data['updated_by'] = Auth::user()->name;          
-          $layanan->update($data);
-        } else if(!empty($request->file('img')) && $request->file('file')=='') { 
-          //hapus image lama
-          $basename = basename($layanan->img);            
-          $images = Storage::disk('local')->delete('public/desa/images/'.$basename);
-          $thumb_path = public_path('thumbnails/'.$layanan->thumbnail);
-          if(File::exists($thumb_path)) {
-              File::delete($thumb_path);
+          //upload gambar
+          if( $request->file('img') == '' ) {
+            if($layanan->img){
+              $img = $layanan->img;
+            }else{
+              $img = null;
+            }
+          } else {
+            $image = $request->file('img');
+            $extension = $image->getClientOriginalExtension();
+            $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
+            $baseimage = basename($layanan->img);
+            $imagepic = Storage::disk('local')->delete('public/desa/images/'.$baseimage);
+            $image->storeAs('public/desa/images/', $img);
           }
-          //upload image baru
-          $image = $request->file('img');
-          $extension = $image->getClientOriginalExtension();
-          $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
-          $image->storeAs('public/desa/images', $img);
-          $thumbnailPath = 'thumbnails/';                       
-          $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
-          //update dengan image       
+          
           $data = $this->bindData($request);
           $data['img'] = $img;
-          $data['thumbnail'] = $img;
           $data['updated_by'] = Auth::user()->name;
-          $layanan = Desa::findOrFail($id);
           $layanan->update($data);
-        } else if(!empty($request->file('file')) && $request->file('img')=='') {
-          //hapus file lama
-          $basenameFile = basename($layanan->file);            
-          $file = Storage::disk('local')->delete('public/desa/images/'.$basenameFile);          
-          //upload file baru
-          $input = $request->file('file');
-          $extension = $input->getClientOriginalExtension();
-          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
-          $input->storeAs('public/desa/files', $file);         
-          //update dengan file       
-          $data = $this->bindData($request);
-          $data['file'] = $file;          
-          $data['updated_by'] = Auth::user()->name;
-          $layanan = Desa::findOrFail($id);
-          $layanan->update($data);
-        } else {
-          //hapus data lama
-          $basenameFile = basename($layanan->file);            
-          $file = Storage::disk('local')->delete('public/desa/images/'.$basenameFile);
-          $basename = basename($layanan->img);            
-          $images = Storage::disk('local')->delete('public/desa/images/'.$basename);
-          $thumb_path = public_path('thumbnails/'.$layanan->thumbnail);
-          if(File::exists($thumb_path)) {
-              File::delete($thumb_path);
-          }
-          //upload data baru
-          $image = $request->file('img');
-          $extension = $image->getClientOriginalExtension();
-          $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
-          $image->storeAs('public/desa/images', $img);
-          $thumbnailPath = 'thumbnails/';                       
-          $thumb = Image::make($request->file('img'))->resize(250, 250)->save($thumbnailPath.$img);
-          $input = $request->file('file');
-          $extension = $input->getClientOriginalExtension();
-          $file = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::camel($request->title).').'.$extension;
-          $input->storeAs('public/desa/files', $file);        
-          //update       
-          $data = $this->bindData($request);
-          $data['img'] = $img;
-          $data['thumbnail'] = $img;
-          $data['file'] = $file;          
-          $data['updated_by'] = Auth::user()->name;
-          $layanan = Desa::findOrFail($id);
-          $layanan->update($data);
-        }        
-
           return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
@@ -174,7 +110,7 @@ class DesaController extends Controller
       public function delete(Request $request){
         try{
           $id = $request->input('id');
-          $catch = Profile::findOrFail($id);
+          $catch = Desa::findOrFail($id);
           $catch->delete();
           return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){

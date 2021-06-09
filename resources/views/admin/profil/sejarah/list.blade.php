@@ -78,11 +78,11 @@
                           </div>
                           <div class="modal-body">
                             <p>
-                              Apakah anda yakin untuk menghapus data " {{$row->name}} " ?
+                              Apakah anda yakin untuk menghapus data " {{$row->title}} " ?
                             </p>
                           </div>
                           <div class="modal-footer">
-                            <form id="hapus-data" action="{{ route('admin.profile.delete') }}" method="POST" class="d-none">
+                            <form id="hapus-data" action="{{ route('admin.sejarah.delete') }}" method="POST" class="d-none">
                               @csrf
                               <input type="hidden" name="id" value="{{$row->id}}">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
