@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Sunting Data Topografi')
+@section('title', 'Sunting Data Wisata')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Topografi</h1>
+          <h1>Wisata</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Topografi</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Edit</strong></small></li>
           </ol>
         </div>
@@ -32,18 +32,29 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Sunting Data Topografi</strong></h3>
+                  <h3 class="card-title"><strong>Sunting Data</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.topografi.update')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.wisata.update')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="id" value="{{$fetch->id}}">
                   <div class="card-body">                    
                     <div class="form-group">
                       <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" value="{{($fetch->title)?$fetch->title:''}}" required>
-                    </div>       
+                    </div>                                                   
+                    <div class="form-group">
+                      <label for="img">Gambar</label>
+                      <div class="custom-file">
+                          <input type="file" class="custom-file-input" name="img" id="img">
+                          <label class="custom-file-label" for="img">Unggah Gambar</label>
+                      </div>
+                    </div>
+                    @if($fetch->img)
+                    <img src="{{asset('/storage/wisata/images/'.$fetch->img)}}" width="450px" height="auto">   
+                    @endif
+                             
                     <div class="form-group">
                       <label for="">Deskripsi</label>
                       <textarea name="description" id="description" class="form-control my-editor" required>{!! $fetch->description !!}</textarea>
@@ -96,37 +107,25 @@
   $(document).ready(function () {
     $('#quickForm').validate({
       rules: {
-        name: {
+        title: {
           required: true,
         },
-        birthplace: {
-          required: true,
+        img: {
+          required: false,
         },
-        birthday: {
-          required: true,
-        },
-        phone: {
-          required: true,
-        },
-        address: {
+        description: {
           required: true,
         },
       },
       messages: {
-        name: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nama siswa",
+        title: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
         },
-        address: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan alamat siswa",
+        img: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
-        birthplace: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tempat lahir siswa",
-        },
-        birthday: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tanggal lahir siswa",
-        },
-        phone: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nomor telepon siswa",
+        description: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
         },
       },
       errorElement: 'span',

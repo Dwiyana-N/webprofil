@@ -5,7 +5,7 @@
   <meta name="keywords" content="{{htmlspecialchars($desa->title)}}" />
   <meta property="og:title" content="{{$desa->title}} "/>
   <meta property="og:type" content="{{$desa->title}}"/>
-  <meta property="og:image" content="{{($desa->img)?asset('/storage/desae/images/'.$desa->img):asset('fontend/images/grid/1.jpg')}}"/>
+  <meta property="og:image" content="{{($desa->img)?asset('/storage/desa/images/'.$desa->img):asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <h1 class="pagetitle__heading">desa</h1>
+          <h1 class="pagetitle__heading">Desa</h1>
         </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->
@@ -29,7 +29,7 @@
         <div class="blog-item blog-single-item">
           <div class="blog__img">
             <a href="#">
-              <img src="{{($desa->img)? asset('/storage/desae/images/'.$desa->img) : asset('backend/img/default.png')}}" alt="blog image">
+              <img src="{{($desa->img)? asset('/storage/desa/images/'.$desa->img) : asset('backend/img/default.png')}}" alt="blog image">
             </a>
           </div><!-- /.entry-img -->
           <div class="blog__content">

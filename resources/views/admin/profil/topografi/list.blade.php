@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Data Topografi')
+@section('title', 'Topografi')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -31,7 +31,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Topografi</h3>
+                <h3 class="card-title">Topografi</h3>
                 <a href="{{route('admin.topografi.create')}}" class="btn btn-success float-right">
                   <i class="fas fa-plus-square"></i> Tambah Data
                 </a>
@@ -55,10 +55,10 @@
                       <td>{{ $row->title }}</td>                                                              
                       <td style="text-align:center;">{{ $row->status }}</td>
                       <td style="text-align:center;">
-                        <a href="{{route('admin.topografi.show',['id' => $row->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
+                        <a href="{{route('admin.wisata.show',['id' => $row->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
                           <i class="fas fa-info-circle"></i>
                         </a>
-                        <a href="{{route('admin.topografi.edit',['id' => $row->id])}}" class="btn btn-md btn-primary btn-icon" title="Edit">
+                        <a href="{{route('admin.wisata.edit',['id' => $row->id])}}" class="btn btn-md btn-primary btn-icon" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
                         <a href="#" data-toggle="modal" data-target="#hapus{{$row->id}}" class="btn btn-md btn-danger btn-icon" title="Hapus">
@@ -78,11 +78,11 @@
                           </div>
                           <div class="modal-body">
                             <p>
-                              Apakah anda yakin untuk menghapus data " {{$row->name}} " ?
+                              Apakah anda yakin untuk menghapus data " {{$row->title}} " ?
                             </p>
                           </div>
                           <div class="modal-footer">
-                            <form id="hapus-data" action="{{ route('admin.profile.delete') }}" method="POST" class="d-none">
+                            <form id="hapus-data" action="{{ route('admin.wisata.delete') }}" method="POST" class="d-none">
                               @csrf
                               <input type="hidden" name="id" value="{{$row->id}}">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>

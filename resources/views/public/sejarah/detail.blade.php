@@ -1,11 +1,11 @@
-@extends('public.layout.app', ['title' => $profil->title])
+@extends('public.layout.app', ['title' => $sejarah->title])
 
 @section('meta')
-  <meta name="description" content="{{htmlspecialchars($profil->description)}}" />
-  <meta name="keywords" content="{{htmlspecialchars($profil->title)}}" />
-  <meta property="og:title" content="{{$profil->title}} "/>
-  <meta property="og:type" content="{{$profil->title}}"/>
-  <meta property="og:image" content="{{($profil->img)?asset('/storage/profile/images/'.$profil->img):asset('fontend/images/grid/1.jpg')}}"/>
+  <meta name="description" content="{{htmlspecialchars($sejarah->description)}}" />
+  <meta name="keywords" content="{{htmlspecialchars($sejarah->title)}}" />
+  <meta property="og:title" content="{{$sejarah->title}} "/>
+  <meta property="og:type" content="{{$sejarah->title}}"/>
+  <meta property="og:image" content="{{($sejarah->img)?asset('/storage/desa/images/'.$sejarah->img):asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <h1 class="pagetitle__heading">Profil</h1>
+          <h1 class="pagetitle__heading">Sejarah</h1>
         </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->
@@ -29,7 +29,7 @@
         <div class="blog-item blog-single-item">
           <div class="blog__img">
             <a href="#">
-              <img src="{{($profil->img)? asset('/storage/profile/images/'.$profil->img) : asset('backend/img/default.png')}}" alt="blog image">
+              <img src="{{($sejarah->img)? asset('/storage/desa/images/'.$sejarah->img) : asset('backend/img/default.png')}}" alt="blog image">
             </a>
           </div><!-- /.entry-img -->
           <div class="blog__content">
@@ -37,14 +37,14 @@
               <div class="blog__meta-cat">
               </div><!-- /.blog-meta-cat --><br>
               <span class="blog__meta-date">
-                <i class="fa fa-user"></i> {{$profil->created_by}}<br>
-                <i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($profil->created_at)->translatedFormat('l, d F Y')}}
+                <i class="fa fa-user"></i> {{$sejarah->created_by}}<br>
+                <i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($sejarah->created_at)->translatedFormat('l, d F Y')}}
               </span>
             </div><!-- /.blog-meta -->
             <div class="line-bottom"></div>
-              <h4 class="blog__title">{{ $profil->title }}</h4>
+            <h4 class="blog__title">{{ $sejarah->title }}</h4>
             <div class="blog__desc">
-              {!!$profil->description !!}
+              {!!$sejarah->description !!}
             </div><!-- /.blog-desc -->
           </div><!-- /.entry-content -->
         </div><!-- /.blog-item -->

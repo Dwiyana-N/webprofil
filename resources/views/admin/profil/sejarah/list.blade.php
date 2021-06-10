@@ -32,7 +32,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Data Sejarah</h3>
-                <a href="{{route('admin.sejarah.create')}}" class="btn btn-success float-right">
+                <a href="{{route('admin.album.create')}}" class="btn btn-success float-right">
                   <i class="fas fa-plus-square"></i> Tambah Data
                 </a>
               </div>

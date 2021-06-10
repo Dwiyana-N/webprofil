@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Agendas</h1>
+          <h1>Agenda</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Agendas</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Agenda</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Add</strong></small></li>
           </ol>
         </div>

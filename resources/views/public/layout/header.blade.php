@@ -41,20 +41,18 @@
             <a href="{{route('public.homepage')}}" class="nav__item-link {{ Request::routeIs('public.homepage') ? 'active' : '' }}">Beranda</a>
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profile') ? 'active' : '' }}">Profil</a>
-            @if(count($profils) > 0)
-      			<ul class="dropdown-menu">
-      				  @foreach($profils as $profil)
-                <li class="nav__item">
-      						<a href="{{route('public.profile', ['slug'=>$profil->slug])}}" class="nav__item-link">{{$profil->title}}</a>
-      					</li>
-                @endforeach
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.sejarah.*')||Request::routeIs('public.peta.*')||Request::routeIs('public.topografi.*')||Request::routeIs('public.visi misi.*') ? 'active' : '' }}">Profil</a>
+            <ul class="dropdown-menu">
+              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Sejarah</a></li>
+              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Peta</a></li>
+              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Visi Misi</a></li>
+              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Topografi</a></li>
             </ul><!-- /.dropdown-menu -->
-			      @endif
+          </li><!-- /.nav-item -->
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.desa') ? 'active' : '' }}">Desa</a>
-            @if(count($errors) > 0)
+            @if(count($desa) > 0)
       			<ul class="dropdown-menu">
       				  @foreach($desa as $row)
                 <li class="nav__item">
@@ -66,7 +64,7 @@
           </li><!-- /.nav-item -->
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.wisata') ? 'active' : '' }}">Wisata</a>
-            @if(count($errors) > 0)
+            @if(count($wisata_menu) > 0)
       			<ul class="dropdown-menu">
       				  @foreach($wisata_menu as $row)
                 <li class="nav__item">
@@ -82,7 +80,7 @@
       			<ul class="dropdown-menu">
       				  @foreach($pelayanan as $row)
                 <li class="nav__item">
-      						<a href="{{route('public.pelayanan', ['slug'=>$pelayanan->slug])}}" class="nav__item-link">{{$pelayanan->title}}</a>
+      						<a href="{{route('public.pelayanan', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
       					</li>
                 @endforeach
             </ul><!-- /.dropdown-menu -->

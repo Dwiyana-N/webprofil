@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Pengaturan Website Profile')
+@section('title', 'Tambah Data Wisata')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,13 +10,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Website</h1>
+          <h1>Wisata</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><small><strong>Admin</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Setting</strong></small></li>
-            <li class="breadcrumb-item text-green"><small><strong>Website</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
+            <li class="breadcrumb-item text-green"><small><strong>Add</strong></small></li>
           </ol>
         </div>
       </div>
@@ -32,59 +32,42 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Pengaturan Situs</strong></h3>
+                  <h3 class="card-title"><strong>Tambahkan Data Wisata</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{route('admin.website.save')}}" id="quickForm" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.wisata.add')}}" method="post" enctype="multipart/form-data">
                   @csrf
-                  <div class="card-body">
+                  <div class="card-body">                    
                     <div class="form-group">
-                      <label for="title">Nama Dinas/Instansi</label>
-                      <input type="text" name="name" class="form-control" id="name" placeholder="">
-                    </div>
+                      <label for="">Judul</label>
+                      <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
+                    </div>                                                   
                     <div class="form-group">
-                      <label for="img">Gambar Logo</label>
+                      <label for="img">Gambar</label>
                       <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="logo" id="logo">
-                          <label class="custom-file-label" for="logo">Unggah Gambar</label>
+                          <input type="file" class="custom-file-input" name="img" id="img">
+                          <label class="custom-file-label" for="img">Unggah Gambar</label>
                       </div>
-                    </div>
+                    </div>   
+                                  
                     <div class="form-group">
-                      <label for="img">Icon Favicon</label>
-                      <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="favicon" id="favicon">
-                          <label class="custom-file-label" for="favicon">Unggah Gambar</label>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="title">Telepon</label>
-                      <input type="text" name="phone" class="form-control" id="phone" placeholder="">
-                    </div>
-                    <div class="form-group">
-                      <label for="title">Fax</label>
-                      <input type="text" name="fax" class="form-control" id="fax" placeholder="">
-                    </div>
-                    <div class="form-group">
-                      <label for="title">Email</label>
-                      <input type="text" name="email" class="form-control" id="email" placeholder="">
-                    </div>
-                    <div class="form-group">
-                      <label for="title">Motto / Tagline</label>
-                      <input type="text" name="tagline" class="form-control" id="tagline" placeholder="">
-                    </div>
-                    <div class="form-group">
-                      <label for="content">Deskripsi</label>
+                      <label for="">Deskripsi</label>
                       <textarea name="description" id="description" class="form-control" required></textarea>
-                    </div>
+                    </div>                    
                     <div class="form-group">
-                      <label for="content">Alamat</label>
-                      <textarea name="address" id="address" class="form-control" required></textarea>
+                      <label for="status">Tampilkan</label>
+                      <div class="select2-green">
+                        <select class="form-control select2bs4" name="status" style="width: 100%;">
+                          <option value="show">Ya</option>
+                          <option value="hide">Tidak</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
-                    <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-save"></i>&nbsp;&nbsp;Simpan</button>
+                    <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;Tambah</button>
                   </div>
                 </form>
               </div>
@@ -105,24 +88,12 @@
 @endsection
 
 @section('top-resource')
-<!-- summernote -->
-<link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.css')}}">
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 @endsection
 
 @section('bottom-resource')
-<!-- Summernote -->
-<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote({
-      height: 250
-    });
-  })
-</script>
 <!-- Select2 -->
 <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- jquery-validation -->
@@ -135,17 +106,23 @@
         title: {
           required: true,
         },
+        img: {
+          required: false,
+        },
         description: {
           required: true,
         },
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul pengumuman",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
+        },
+        img: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi pengumuman",
-        }
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
+        },
       },
       errorElement: 'span',
       errorPlacement: function (error, element) {
@@ -165,11 +142,38 @@
     });
   });
 </script>
+
+<!-- TinyMCE init -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+  selector: 'textarea',  // change this value according to the HTML    
+  height: 600,
+  plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+  ],  
+  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | print preview media fullpage | forecolor backcolor emoticons'
+});
+</script>
+
 <!-- Page script -->
 <script>
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
+</script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+  });
 </script>
 @endsection

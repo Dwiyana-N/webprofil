@@ -104,7 +104,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item pl-2">
-                <a href="{{route('admin.sejarah.list')}}" class="nav-link {{ Request::routeIs('admin.sejarah.*') ? 'active' : '' }}">
+                <a href="{{route('admin.sejarah.list')}}" class="nav-link {{ Request::routeIs('admi.sejarah.*') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-book-open"></i>
                   <p>Sejarah</p>
                 </a>
