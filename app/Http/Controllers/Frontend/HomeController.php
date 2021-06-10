@@ -19,6 +19,8 @@ use App\Models\InfoGraphic;
 use App\Models\Slider;
 use App\Models\Profile;
 use App\Models\Wisata;
+use App\Models\Desa;
+
 use DB;
 
 class HomeController extends Controller
@@ -90,7 +92,20 @@ class HomeController extends Controller
         return redirect()->back()->with(['error'=>$error]);
       }
     }
-
+   
+    public function desa($slug){
+      try{
+        $article = Article::where('status', 'show')->latest()->limit(5)->get();
+        $announcement = Announcement::where('status', 'show')->limit(5)->get();
+        $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
+        $desa = Desa::where('slug',$slug)->first();
+        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->back()->with(['error'=>$error]);
+      }
+    }
+    
     public function field(){
       try{
         $fetch = Field::where('status', 'show')->get();

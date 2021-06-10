@@ -25,7 +25,7 @@ class Controller extends BaseController
           View::share('getsitus', $this->getsitus());
           View::share('getsosmed', $this->getsosmed());
 		      View::share('profils', $this->getProfil());
-          View::share('', $this->getWisata());
+          View::share('wisata_menu', $this->getWisata());
           View::share('desa', $this->getDesa());
           View::share('pelayanan', $this->getPelayanan());
       }
