@@ -26,35 +26,26 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <div class="row">
-            <!-- left column -->
-            <div class="col-md-12">
-              <!-- jquery validation -->
+          <div class="row"><!-- left column -->
+            <div class="col-md-12"><!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Tambahkan Data Wisata</strong></h3>
-                </div>
-                <!-- /.card-header -->
+                  <h3 class="card-title"><strong>Tambahkan Data Desa</strong></h3>
+                </div><!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.wisata.add')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.desa.add')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="card-body">                    
                     <div class="form-group">
                       <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
                     </div>                                                   
-                    <div class="form-group">
-                      <label for="img">Gambar</label>
-                      <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="img" id="img">
-                          <label class="custom-file-label" for="img">Unggah Gambar</label>
-                      </div>
-                    </div>   
-                                  
+             
                     <div class="form-group">
                       <label for="">Deskripsi</label>
                       <textarea name="description" id="description" class="form-control" required></textarea>
-                    </div>                    
+                    </div>
+
                     <div class="form-group">
                       <label for="status">Tampilkan</label>
                       <div class="select2-green">
@@ -65,25 +56,21 @@
                       </div>
                     </div>
                   </div>
+                  
                   <!-- /.card-body -->
                   <div class="card-footer">
                     <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;Tambah</button>
                   </div>
                 </form>
-              </div>
-              <!-- /.card -->
-              </div>
-            <!--/.col (left) -->
+              </div><!-- /.card -->
+              </div><!--/.col (left) -->
             <!-- right column -->
             <div class="col-md-6">
 
-            </div>
-            <!--/.col (right) -->
-          </div>
-          <!-- /.row -->
+            </div><!--/.col (right) -->
+          </div><!-- /.row -->
         </div><!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
+      </section><!-- /.content -->
 </div>
 @endsection
 
@@ -106,9 +93,6 @@
         title: {
           required: true,
         },
-        img: {
-          required: false,
-        },
         description: {
           required: true,
         },
@@ -116,9 +100,6 @@
       messages: {
         title: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
-        },
-        img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
         description: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",

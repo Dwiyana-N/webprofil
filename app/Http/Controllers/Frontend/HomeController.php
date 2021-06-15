@@ -20,6 +20,7 @@ use App\Models\Slider;
 use App\Models\Profile;
 use App\Models\Wisata;
 use App\Models\Desa;
+use App\Models\Sejarah;
 
 use DB;
 

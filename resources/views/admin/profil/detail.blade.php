@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', $fetch->title)
+@section('title', 'Tambah Data Profil')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Sejarah</h1>
+          <h1>Profil</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Sejarah</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Profil</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Detail</strong></small></li>
           </ol>
         </div>
@@ -37,6 +37,7 @@
                 <!-- /.card-header -->
 
                   <div class="card-body">
+
                     <div class="row">
                       <div class="col-lg-3 col-md-3">
                         <label><strong>Judul</strong></label>
@@ -72,7 +73,7 @@
                         {{($fetch->updated_by) ? $fetch->updated_by : ' - '}}
                       </div>
                     </div>
-                    
+
                     <div class="row">
                       <div class="col-lg-3 col-md-3">
                         <label><strong>Deskripsi</strong></label>

@@ -32,29 +32,23 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Tambahkan Sejarah</strong></h3>
+                  <h3 class="card-title"><strong>Tambahkan Data Sejarah</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.wisata.add')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.sejarah.add')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="card-body">                    
                     <div class="form-group">
                       <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
-                    </div>                                                   
-                    <div class="form-group">
-                      <label for="img">Gambar</label>
-                      <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="img" id="img">
-                          <label class="custom-file-label" for="img">Unggah Gambar</label>
-                      </div>
-                    </div>   
+                    </div>                                                     
                                   
                     <div class="form-group">
                       <label for="">Deskripsi</label>
                       <textarea name="description" id="description" class="form-control" required></textarea>
-                    </div>                    
+                    </div>
+
                     <div class="form-group">
                       <label for="status">Tampilkan</label>
                       <div class="select2-green">
@@ -64,6 +58,7 @@
                         </select>
                       </div>
                     </div>
+
                   </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
@@ -106,9 +101,6 @@
         title: {
           required: true,
         },
-        img: {
-          required: false,
-        },
         description: {
           required: true,
         },
@@ -116,9 +108,6 @@
       messages: {
         title: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
-        },
-        img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
         description: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",

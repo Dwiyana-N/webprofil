@@ -1,6 +1,6 @@
-@extends('admin.layouts.app')
+-@extends('admin.layouts.app')
 
-@section('title', 'Data Sejarah')
+@section('title', 'Data Profil')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Sejarah</h1>
+          <h1>Profiles</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Sejarah</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Profiles</strong></small></li>
             <li class="breadcrumb-item active"><small><strong>List</strong></small></li>
           </ol>
         </div>
@@ -31,8 +31,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Sejarah</h3>
-                <a href="{{route('admin.sejarah.create')}}" class="btn btn-success float-right">
+                <h3 class="card-title">Data Profil</h3>
+                <a href="{{route('admin.profile.create')}}" class="btn btn-success float-right">
                   <i class="fas fa-plus-square"></i> Tambah Data
                 </a>
               </div>
@@ -55,10 +55,10 @@
                       <td>{{ $row->title }}</td>                                                              
                       <td style="text-align:center;">{{ $row->status }}</td>
                       <td style="text-align:center;">
-                        <a href="{{route('admin.sejarah.show',['id' => $row->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
+                        <a href="{{route('admin.profile.show',['id' => $row->id])}}" class="btn btn-md btn-secondary btn-icon" title="Detail">
                           <i class="fas fa-info-circle"></i>
                         </a>
-                        <a href="{{route('admin.sejarah.edit',['id' => $row->id])}}" class="btn btn-md btn-primary btn-icon" title="Edit">
+                        <a href="{{route('admin.profile.edit',['id' => $row->id])}}" class="btn btn-md btn-primary btn-icon" title="Edit">
                           <i class="fas fa-edit"></i>
                         </a>
                         <a href="#" data-toggle="modal" data-target="#hapus{{$row->id}}" class="btn btn-md btn-danger btn-icon" title="Hapus">
@@ -78,11 +78,11 @@
                           </div>
                           <div class="modal-body">
                             <p>
-                              Apakah anda yakin untuk menghapus data " {{$row->title}} " ?
+                              Apakah anda yakin untuk menghapus data " {{$row->name}} " ?
                             </p>
                           </div>
                           <div class="modal-footer">
-                            <form id="hapus-data" action="{{ route('admin.sejarah.delete') }}" method="POST" class="d-none">
+                            <form id="hapus-data" action="{{ route('admin.profile.delete') }}" method="POST" class="d-none">
                               @csrf
                               <input type="hidden" name="id" value="{{$row->id}}">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>

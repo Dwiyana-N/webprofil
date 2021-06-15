@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Tambah Data Desa')
+@section('title', 'Tambah Data Profil')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Desa</h1>
+          <h1>Profil</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Desa</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Profil</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Add</strong></small></li>
           </ol>
         </div>
@@ -32,23 +32,16 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Tambahkan Data Desa</strong></h3>
+                  <h3 class="card-title"><strong>Tambahkan Data Profil</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.desa.add')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.profile.add')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="card-body">                    
                     <div class="form-group">
                       <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
-                    </div>                                                   
-                    <div class="form-group">
-                      <label for="img">Gambar</label>
-                      <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="img" id="img">
-                          <label class="custom-file-label" for="img">Unggah Gambar</label>
-                      </div>
                     </div>
              
                     <div class="form-group">
@@ -108,9 +101,6 @@
         title: {
           required: true,
         },
-        img: {
-          required: false,
-        },
         description: {
           required: true,
         },
@@ -118,9 +108,6 @@
       messages: {
         title: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
-        },
-        img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
         description: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",

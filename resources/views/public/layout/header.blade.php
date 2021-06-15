@@ -37,19 +37,24 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNavigation">
         <ul class="navbar-nav mr-30 ml-30 mr-auto">
+
           <li class="nav__item">
             <a href="{{route('public.homepage')}}" class="nav__item-link {{ Request::routeIs('public.homepage') ? 'active' : '' }}">Beranda</a>
           </li><!-- /.nav-item -->
+
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.sejarah.*')||Request::routeIs('public.peta.*')||Request::routeIs('public.topografi.*')||Request::routeIs('public.visi misi.*') ? 'active' : '' }}">Profil</a>
-            <ul class="dropdown-menu">
-              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Sejarah</a></li>
-              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Peta</a></li>
-              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Visi Misi</a></li>
-              <li class="nav__item"><a href="{{route('public.album.list')}}" class="nav__item-link {{ Request::routeIs('public.album.*') ? 'active' : '' }}">Topografi</a></li>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.profile') ? 'active' : '' }}">Profil</a>
+            @if(count($profils) > 0)
+      			<ul class="dropdown-menu">
+      				  @foreach($profils as $row)
+                <li class="nav__item">
+      						<a href="{{route('public.profile', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
+      					</li>
+                @endforeach
             </ul><!-- /.dropdown-menu -->
+			      @endif
           </li><!-- /.nav-item -->
-          </li><!-- /.nav-item -->
+          
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.desa') ? 'active' : '' }}">Desa</a>
             @if(count($desa) > 0)
@@ -62,6 +67,7 @@
             </ul><!-- /.dropdown-menu -->
 			      @endif
           </li><!-- /.nav-item -->
+
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.wisata') ? 'active' : '' }}">Wisata</a>
             @if(count($wisata_menu) > 0)
@@ -74,6 +80,7 @@
             </ul><!-- /.dropdown-menu -->
             @endif
           </li><!-- /.nav-item -->
+
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.pelayanan') ? 'active' : '' }}">Pelayanan Publik</a>
             @if(count($pelayanan) > 0)
@@ -86,6 +93,7 @@
             </ul><!-- /.dropdown-menu -->
 			      @endif
           </li><!-- /.nav-item -->
+
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.agenda.*')||Request::routeIs('public.announcement.*')||Request::routeIs('public.article.*')||Request::routeIs('public.album.*')||Request::routeIs('public.video.*')||Request::routeIs('public.infographic.*') ? 'active' : '' }}">Informasi Publik</a>
             <ul class="dropdown-menu">
@@ -102,6 +110,7 @@
                   </li><!-- /.nav-item -->
             </ul><!-- /.dropdown-menu -->
           </li><!-- /.nav-item -->
+
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.field')||Request::routeIs('public.staff') ? 'active' : '' }}">Kepegawaian</a>
             <ul class="dropdown-menu">
@@ -109,9 +118,11 @@
               <!-- /.nav-item -->
             </ul><!-- /.dropdown-menu -->
           </li><!-- /.nav-item -->
+
           <li class="nav__item">
             <a href="{{route('public.contact')}}" class="nav__item-link {{ Request::routeIs('public.contact') ? 'active' : '' }}">Pengaduan</a>
           </li><!-- /.nav-item -->
+
         </ul><!-- /.navbar-nav -->
       </div><!-- /.navbar-collapse -->
       <div class="navbar-modules">

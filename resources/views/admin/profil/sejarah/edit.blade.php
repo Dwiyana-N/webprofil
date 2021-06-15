@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Sunting Data Wisata')
+@section('title', 'Sunting Data Sejarah')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Wisata</h1>
+          <h1>Sejarah</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Sejarah</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Edit</strong></small></li>
           </ol>
         </div>
@@ -36,29 +36,20 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.wisata.update')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.sejarah.update')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="id" value="{{$fetch->id}}">
                   <div class="card-body">                    
                     <div class="form-group">
                       <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" value="{{($fetch->title)?$fetch->title:''}}" required>
-                    </div>                                                   
-                    <div class="form-group">
-                      <label for="img">Gambar</label>
-                      <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="img" id="img">
-                          <label class="custom-file-label" for="img">Unggah Gambar</label>
-                      </div>
                     </div>
-                    @if($fetch->img)
-                    <img src="{{asset('/storage/wisata/images/'.$fetch->img)}}" width="450px" height="auto">   
-                    @endif
                              
                     <div class="form-group">
                       <label for="">Deskripsi</label>
                       <textarea name="description" id="description" class="form-control my-editor" required>{!! $fetch->description !!}</textarea>
-                    </div>                    
+                    </div>
+
                     <div class="form-group">
                       <label for="status">Tampilkan</label>
                       <div class="select2-green">
@@ -68,16 +59,14 @@
                         </select>
                       </div>
                     </div>
-                  </div>
-                  <!-- /.card-body -->
+
+                  </div><!-- /.card-body -->
                   <div class="card-footer">
                     <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-save"></i>&nbsp;&nbsp;Simpan</button>
                   </div>
                 </form>
-              </div>
-              <!-- /.card -->
-              </div>
-            <!--/.col (left) -->
+              </div><!-- /.card -->
+              </div><!--/.col (left) -->
             <!-- right column -->
             <div class="col-md-6">
 

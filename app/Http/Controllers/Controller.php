@@ -28,7 +28,7 @@ class Controller extends BaseController
           View::share('wisata_menu', $this->getWisata());
           View::share('desa', $this->getDesa());
           View::share('pelayanan', $this->getPelayanan());
-      }
+        }
 
       public function setUsers(){
            $date = \Carbon\Carbon::now()->format('Y-m-d');

@@ -15,14 +15,6 @@ Route::namespace('Frontend')->group(static function () {
   Route::post('/kontak-kami', 'HomeController@sendMessage')->name('public.sendmessage');
   //profil
   Route::get('/profil/{slug}', 'HomeController@profile')->name('public.profile');
-    // sejarah
-    Route::get('/profil/sejarah/{slug}', 'HomeController@sejarah')->name('public.profil.sejarah');
-    // peta
-    Route::get('/profil/peta/{slug}', 'HomeController@peta')->name('public.profil.peta');
-    // visi misi
-    Route::get('/profil/visi-misi/{slug}', 'HomeController@visi')->name('public.profil.visi');
-    // topografi
-    Route::get('/profil/topografi/{slug}', 'HomeController@topografi')->name('public.profil.topografi');
   //desa
   Route::get('/desa/{slug}', 'HomeController@desa')->name('public.desa');
   //wisata
@@ -189,34 +181,6 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::get('/profile/edit/{id}', [ProfileController::class, 'edit'])->name('admin.profile.edit');
         Route::post('/profile/edit', [ProfileController::class, 'update'])->name('admin.profile.update');
         Route::post('/profile/delete', [ProfileController::class, 'delete'])->name('admin.profile.delete');
-            // Sejarah
-            Route::get('/profile/sejarah', [SejarahController::class, 'index'])->name('admin.sejarah.list');
-            Route::get('/profile/show/{id}', [SejarahController::class, 'show'])->name('admin.sejarah.show');
-            Route::get('/profile/add', [SejarahController::class, 'create'])->name('admin.sejarah.create');
-            Route::post('/profile/add', [SejarahController::class, 'store'])->name('admin.sejarah.add');
-            Route::get('/profile/edit/{id}', [SejarahController::class, 'edit'])->name('admin.sejarah.edit');
-            Route::post('/profile/edit', [SejarahController::class, 'update'])->name('admin.sejarah.update');
-            // Peta
-            Route::get('/profile/peta', [PetaController::class, 'index'])->name('admin.peta.list');
-            Route::get('/profile/show/{id}', [PetaController::class, 'show'])->name('admin.peta.show');
-            Route::get('/profile/add', [PetaController::class, 'create'])->name('admin.peta.create');
-            Route::post('/profile/add', [PetaController::class, 'store'])->name('admin.peta.add');
-            Route::get('/profile/edit/{id}', [PetaController::class, 'edit'])->name('admin.peta.edit');
-            Route::post('/profile/edit', [PetaController::class, 'update'])->name('admin.peta.update');
-            // Visi Misi
-            Route::get('/profile/visi', [VisiController::class, 'index'])->name('admin.visi.list');
-            Route::get('/profile/show/{id}', [VisiController::class, 'show'])->name('admin.visi.show');
-            Route::get('/profile/add', [VisiController::class, 'create'])->name('admin.visi.create');
-            Route::post('/profile/add', [VisiController::class, 'store'])->name('admin.visi.add');
-            Route::get('/profile/edit/{id}', [VisiController::class, 'edit'])->name('admin.visi.edit');
-            Route::post('/profile/edit', [VisiController::class, 'update'])->name('admin.visi.update');
-            // Topografi
-            Route::get('/profile/topografi', [TopografiController::class, 'index'])->name('admin.topografi.list');
-            Route::get('/profile/show/{id}', [TopografiController::class, 'show'])->name('admin.topografi.show');
-            Route::get('/profile/add', [TopografiController::class, 'create'])->name('admin.topografi.create');
-            Route::post('/profile/add', [TopografiController::class, 'store'])->name('admin.topografi.add');
-            Route::get('/profile/edit/{id}', [TopografiController::class, 'edit'])->name('admin.topografi.edit');
-            Route::post('/profile/edit', [TopografiController::class, 'update'])->name('admin.topografi.update');
         // Wisata
         Route::get('/wisata', [WisataController::class, 'index'])->name('admin.wisata.list');
         Route::get('/wisata/show/{id}',     [WisataController::class, 'show'])->name('admin.wisata.show');
