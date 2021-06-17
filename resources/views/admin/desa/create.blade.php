@@ -42,7 +42,8 @@
                     <div class="form-group">
                       <label for="">Nama Desa</label>
                       <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
-                    </div>                                                   
+                    </div>
+                    
                     <div class="form-group">
                       <label for="img">Gambar</label>
                       <div class="custom-file">

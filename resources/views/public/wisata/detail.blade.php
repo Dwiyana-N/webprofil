@@ -26,23 +26,24 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-8">
+        
         <div class="blog-item blog-single-item">
-        <li class="list-group-item list-group-item-action">
-          <div class="blog__img">
-            <a href="#">
-              <img src="{{($wisata->img)? asset('/storage/wisata/images/'.$wisata->img) : asset('backend/img/default.png')}}" alt="blog image">
-            </a>
-          </div><!-- /.entry-img -->
-          <div class="blog__content">
-            <div class="line-bottom"></div>
-            <h4 class="blog__title">{{ $wisata->title }}</h4>
-            <div class="blog__desc">
-              {!!$wisata->description !!}
-            </div><!-- /.blog-desc -->
-          </div><!-- /.entry-content -->
-        </li>
-
+          <li class="list-group-item list-group-item-action">
+            <div class="blog__img">
+              <a href="#">
+                <img src="{{($wisata->img)? asset('/storage/wisata/images/'.$wisata->img) : asset('backend/img/default.png')}}" alt="blog image">
+              </a>
+            </div><!-- /.entry-img -->
+            <div class="blog__content">
+              <div class="line-bottom"></div>
+              <h4 class="blog__title">{{ $wisata->title }}</h4>
+              <div class="blog__desc">
+                {!!$wisata->description !!}
+              </div><!-- /.blog-desc -->
+            </div><!-- /.entry-content -->
+          </li><!-- /.list-group -->
         </div><!-- /.blog-item -->
+
         <div class="blog-share">
           <h5 class="blog__share-title">Share This Content :</h5>
           <!-- <div class="social__icons"> -->

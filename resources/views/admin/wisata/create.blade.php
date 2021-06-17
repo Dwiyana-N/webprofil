@@ -40,9 +40,10 @@
                   @csrf
                   <div class="card-body">                    
                     <div class="form-group">
-                      <label for="">Nama Wisata</label>
+                      <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
-                    </div>                                                   
+                    </div>
+                    
                     <div class="form-group">
                       <label for="img">Gambar</label>
                       <div class="custom-file">
@@ -120,16 +121,22 @@
         title: {
           required: true,
         },
+        img: {
+          required: false,
+        },
         description: {
           required: true,
         },
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul pengumuman",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul",
+        },
+        img: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi pengumuman",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi",
         }
       },
       errorElement: 'span',

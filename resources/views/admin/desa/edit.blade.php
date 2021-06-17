@@ -43,7 +43,8 @@
                     <div class="form-group">
                       <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" value="{{($fetch->title)?$fetch->title:''}}" required>
-                    </div>                                                   
+                    </div>
+
                     <div class="form-group">
                       <label for="img">Gambar</label>
                       <div class="custom-file">
@@ -52,7 +53,7 @@
                       </div>
                     </div>
                     @if($fetch->img)
-                    <img src="{{asset('/storage/profile/images/'.$fetch->img)}}" width="450px" height="auto">   
+                    <img src="{{asset('/storage/desa/images/'.$fetch->img)}}" width="450px" height="auto">   
                     @endif
 
                     <div class="form-group">
@@ -120,13 +121,13 @@
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul desa",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar desa",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi desa",
         },
       },
       errorElement: 'span',

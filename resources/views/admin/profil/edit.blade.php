@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Sunting Data Profil')
+@section('title', 'Sunting Profil')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -36,38 +36,28 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.profil.update')}}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{route('admin.profile.update')}}" id="quickForm" method="post" enctype="multipart/form-data">
                   @csrf
-                  <input type="hidden" name="id" value="{{$fetch->id}}">
-                  <div class="card-body">                    
+                  <div class="card-body">
+                    <input type="hidden" name="id" class="form-control" id="id" value="{{$fetch->id}}">
                     <div class="form-group">
-                      <label for="">Judul</label>
-                      <input type="text" name="title" class="form-control" id="title" value="{{($fetch->title)?$fetch->title:''}}" required>
-                    </div>                                                   
-                    <div class="form-group">
-                      <label for="img">Gambar</label>
-                      <div class="custom-file">
-                          <input type="file" class="custom-file-input" name="img" id="img">
-                          <label class="custom-file-label" for="img">Unggah Gambar</label>
-                      </div>
+                      <label for="title">Judul</label>
+                      <input type="text" name="title" class="form-control" id="title" value="{{$fetch->title}}">
                     </div>
-                    @if($fetch->img)
-                    <img src="{{asset('/storage/profile/images/'.$fetch->img)}}" width="450px" height="auto">   
-                    @endif
-
+                    
                     <div class="form-group">
-                      <label for="">Deskripsi</label>
-                      <textarea name="description" id="description" class="form-control my-editor" required>{!! $fetch->description !!}</textarea>
-                    </div>           
-                             
-                    <div class="form-group">
-                      <label for="status">Tampilkan</label>
+                      <label for="status">Terbitkan</label>
                       <div class="select2-green">
                         <select class="form-control select2bs4" name="status" style="width: 100%;">
-                          <option value="show" @if($fetch->status == "show") selected @else "" @endif>Ya</option>
-                          <option value="hide" @if($fetch->status == "hide") selected @else "" @endif>Tidak</option>
+                          <option value="show" @if($fetch->status == "show") selected @else "" @endif >Ya</option>
+                          <option value="hide" @if($fetch->status == "hide") selected @else "" @endif >Tidak</option>
                         </select>
                       </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="description">Deskripsi</label>
+                      <textarea name="description" id="description" class="textarea" required>{{$fetch->description}}</textarea>
                     </div>
                   </div>
                   <!-- /.card-body -->
@@ -93,12 +83,24 @@
 @endsection
 
 @section('top-resource')
+<!-- summernote -->
+<link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.css')}}">
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 @endsection
 
 @section('bottom-resource')
+<!-- Summernote -->
+<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote({
+      height: 250
+    });
+  })
+</script>
 <!-- Select2 -->
 <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- jquery-validation -->
@@ -111,22 +113,16 @@
         title: {
           required: true,
         },
-        img: {
-          required: false,
-        },
         description: {
           required: true,
         },
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
-        },
-        img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi kolom judul",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi kolom deskripsi",
         },
       },
       errorElement: 'span',
@@ -147,38 +143,11 @@
     });
   });
 </script>
-
-<!-- TinyMCE init -->
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-tinymce.init({
-  selector: 'textarea',  // change this value according to the HTML    
-  height: 600,
-  plugins: [
-      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
-      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-      'table emoticons template paste help'
-  ],  
-  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | print preview media fullpage | forecolor backcolor emoticons'
-});
-</script>
-
 <!-- Page script -->
 <script>
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-</script>
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-  });
 </script>
 @endsection

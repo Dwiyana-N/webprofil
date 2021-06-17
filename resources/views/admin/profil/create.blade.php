@@ -48,7 +48,7 @@
                       <label for="content">Deskripsi</label>
                       <textarea name="description" id="description" class="textarea" required></textarea>
                     </div>
-
+                    
                     <div class="form-group">
                       <label for="status">Tampilkan</label>
                       <div class="select2-green">
@@ -119,10 +119,10 @@
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul pengumuman",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi pengumuman",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi",
         }
       },
       errorElement: 'span',
