@@ -90,24 +90,12 @@
 @endsection
 
 @section('top-resource')
-<!-- summernote -->
-<link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.css')}}">
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 @endsection
 
 @section('bottom-resource')
-<!-- Summernote -->
-<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote({
-      height: 250
-    });
-  })
-</script>
 <!-- Select2 -->
 <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- jquery-validation -->
@@ -120,17 +108,23 @@
         title: {
           required: true,
         },
+        img: {
+          required: false,
+        },
         description: {
           required: true,
         },
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul pengumuman",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
+        },
+        img: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi pengumuman",
-        }
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
+        },
       },
       errorElement: 'span',
       errorPlacement: function (error, element) {
@@ -150,11 +144,38 @@
     });
   });
 </script>
+
+<!-- TinyMCE init -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+  selector: 'textarea',  // change this value according to the HTML    
+  height: 600,
+  plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+  ],  
+  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | print preview media fullpage | forecolor backcolor emoticons'
+});
+</script>
+
 <!-- Page script -->
 <script>
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
+</script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+  });
 </script>
 @endsection

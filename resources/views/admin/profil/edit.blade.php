@@ -1,4 +1,4 @@
--@extends('admin.layouts.app')
+@extends('admin.layouts.app')
 
 @section('title', 'Sunting Data Profil')
 
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Profiles</h1>
+          <h1>Profil</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Profiles</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Profil</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Edit</strong></small></li>
           </ol>
         </div>
@@ -36,7 +36,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.profile.update')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.profil.update')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="id" value="{{$fetch->id}}">
                   <div class="card-body">                    
@@ -54,20 +54,12 @@
                     @if($fetch->img)
                     <img src="{{asset('/storage/profile/images/'.$fetch->img)}}" width="450px" height="auto">   
                     @endif
-                    <div class="form-group">
-                        <label for="img">File</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="file" id="file">
-                            <label class="custom-file-label" for="file">Unggah File</label>
-                        </div>
-                    </div>  
-                    @if($fetch->file)
-                    <iframe src="{{asset('/storage/profile/files/'.$fetch->file)}}" frameborder="0" width="100%" height="600px"></iframe>  
-                    @endif              
+
                     <div class="form-group">
                       <label for="">Deskripsi</label>
                       <textarea name="description" id="description" class="form-control my-editor" required>{!! $fetch->description !!}</textarea>
-                    </div>                    
+                    </div>           
+                             
                     <div class="form-group">
                       <label for="status">Tampilkan</label>
                       <div class="select2-green">
@@ -116,37 +108,25 @@
   $(document).ready(function () {
     $('#quickForm').validate({
       rules: {
-        name: {
+        title: {
           required: true,
         },
-        birthplace: {
-          required: true,
+        img: {
+          required: false,
         },
-        birthday: {
-          required: true,
-        },
-        phone: {
-          required: true,
-        },
-        address: {
+        description: {
           required: true,
         },
       },
       messages: {
-        name: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nama siswa",
+        title: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
         },
-        address: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan alamat siswa",
+        img: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
-        birthplace: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tempat lahir siswa",
-        },
-        birthday: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tanggal lahir siswa",
-        },
-        phone: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nomor telepon siswa",
+        description: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
         },
       },
       errorElement: 'span',
@@ -171,43 +151,16 @@
 <!-- TinyMCE init -->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
-  var editor_config = {
-    path_absolute : "http://localhost/disdik/public/",
-    selector: 'textarea.my-editor',
-    relative_urls: false,
-    plugins: [
-      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-      "searchreplace wordcount visualblocks visualchars code fullscreen",
-      "insertdatetime media nonbreaking save table directionality",
-      "emoticons template paste textpattern"
-    ],
-    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
-    file_picker_callback : function(callback, value, meta) {
-      var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
-      var y = window.innerHeight|| document.documentElement.clientHeight|| document.getElementsByTagName('body')[0].clientHeight;
-
-      var cmsURL = editor_config.path_absolute + 'filemanager?editor=' + meta.fieldname;
-      if (meta.filetype == 'image') {
-        cmsURL = cmsURL + "&type=Images";
-      } else {
-        cmsURL = cmsURL + "&type=Files";
-      }
-
-      tinyMCE.activeEditor.windowManager.openUrl({
-        url : cmsURL,
-        title : 'Filemanager',
-        width : x * 0.8,
-        height : y * 0.8,
-        resizable : "yes",
-        close_previous : "no",
-        onMessage: (api, message) => {
-          callback(message.content);
-        }
-      });
-    }
-  };
-
-  tinymce.init(editor_config);
+tinymce.init({
+  selector: 'textarea',  // change this value according to the HTML    
+  height: 600,
+  plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+  ],  
+  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | print preview media fullpage | forecolor backcolor emoticons'
+});
 </script>
 
 <!-- Page script -->

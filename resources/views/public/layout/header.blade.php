@@ -57,9 +57,9 @@
           
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.desa') ? 'active' : '' }}">Desa</a>
-            @if(count($desa) > 0)
+            @if(count($desa_menu) > 0)
       			<ul class="dropdown-menu">
-      				  @foreach($desa as $row)
+      				  @foreach($desa_menu as $row)
                 <li class="nav__item">
       						<a href="{{route('public.desa', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
       					</li>
