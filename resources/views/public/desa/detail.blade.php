@@ -41,22 +41,22 @@
         </li>
       </div>
         
-      <div class="blog-item blog-single-item">
+      <!-- <div class="blog-item blog-single-item">
         <li class="list-group-item list-group-item-action">
           <div class="blog__img">
             <a href="#">
               <img src="{{($desa->img)? asset('/storage/desa/images/'.$desa->img) : asset('backend/img/default.png')}}" alt="blog image">
             </a>
-          </div><!-- /.entry-img -->
+          </div>
           <div class="blog__content">
             <h4 class="blog__title">{{ $desa->title }}</h4>
             <div class="line-bottom"></div>
             <div class="blog__desc">
               {!!$desa->description !!}
-            </div><!-- /.blog-desc -->
-          </div><!-- /.entry-content -->
-        </li><!-- /.list-group -->
-      </div><!-- /.blog-item -->
+            </div>
+          </div>
+        </li>
+      </div> -->
         
         <div class="blog-share">
           <h5 class="blog__share-title">Share This Content :</h5>
