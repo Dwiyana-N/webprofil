@@ -81,18 +81,18 @@ class HomeController extends Controller
       }
     }
 
-    public function wisata($slug){
-      try{
-        $article = Article::where('status', 'show')->latest()->limit(5)->get();
-        $announcement = Announcement::where('status', 'show')->limit(5)->get();
-        $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
-        $wisata = Wisata::where('slug',$slug)->first();
-        return view('public.wisata.detail', compact('wisata','article','announcement','agenda'));
-      }catch(\Exception $e){
-        $error = $e->getMessage();
-        return redirect()->back()->with(['error'=>$error]);
-      }
-    }
+    // public function wisata($slug){
+    //   try{
+    //     $article = Article::where('status', 'show')->latest()->limit(5)->get();
+    //     $announcement = Announcement::where('status', 'show')->limit(5)->get();
+    //     $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
+    //     $wisata = Wisata::where('slug',$slug)->first();
+    //     return view('public.wisata.detail', compact('wisata','article','announcement','agenda'));
+    //   }catch(\Exception $e){
+    //     $error = $e->getMessage();
+    //     return redirect()->back()->with(['error'=>$error]);
+    //   }
+    // }
    
     public function desa($slug){
       try{

@@ -57,31 +57,7 @@
 
         @can('manipulate-master-datas')
         <li class="nav-header"><strong>DATA MASTER</strong></li>
-        <li class="nav-item">
-          <li class="nav-item has-treeview {{ Request::routeIs('admin.field.*')||Request::routeIs('admin.staff.*') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Unit Kerja
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item pl-2">
-                <a href="{{route('admin.field.list')}}" class="nav-link {{ Request::routeIs('admin.field.*') ? 'active' : '' }}">
-                  <i class="fas fa-briefcase nav-icon"></i>
-                  <p>Bidang</p>
-                </a>
-              </li>
-              <li class="nav-item pl-2">
-                <a href="{{route('admin.staff.list')}}" class="nav-link {{ Request::routeIs('admin.staff.*') ? 'active' : '' }}">
-                  <i class="fas fa-user-friends nav-icon"></i>
-                  <p>Staff/Pegawai</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </li>
+        
         @endcan
 
         @can('manipulate-content')
@@ -100,6 +76,44 @@
             <p class="text">Desa</p>
           </a>
         </li>
+
+        <!-- <li class="nav-item">
+          <li class="nav-item has-treeview {{ Request::routeIs('admin.category.*')||Request::routeIs('admin.tag.*')||Request::routeIs('admin.article.*')||Request::routeIs('admin.comment.*')||Request::routeIs('admin.trash.*') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-folder"></i>
+              <p>
+                Wisata
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.category.list')}}" class="nav-link {{ Request::routeIs('admin.category.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file"></i>
+                  <p>Kesenian dan Budaya</p>
+                </a>
+              </li>
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.tag.list')}}" class="nav-link {{ Request::routeIs('admin.tag.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-tags"></i>
+                  <p>Objek Wisata</p>
+                </a>
+              </li>
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.article.list')}}" class="nav-link {{ Request::routeIs('admin.article.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>Hotel</p>
+                </a>
+              </li>
+              <li class="nav-item pl-2">
+                <a href="{{route('admin.comment.list')}}" class="nav-link {{ Request::routeIs('admin.comment.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-comments"></i>
+                  <p>Rumah Makan</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </li> -->
 
         <li class="nav-item">
           <a href="{{route('admin.wisata.list')}}" class="nav-link {{ Request::routeIs('admin.wisata.*') ? 'active' : '' }}">
@@ -205,7 +219,7 @@
           </li>
         </li>
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="fas fa-folder nav-icon"></i>
@@ -229,7 +243,7 @@
               </li>
             </ul>
           </li>
-        </li>
+        </li> -->
         
         <li class="nav-item">
           <a href="{{route('admin.slider.list')}}" class="nav-link {{ Request::routeIs('admin.slider.*') ? 'active' : '' }}">

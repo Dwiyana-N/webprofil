@@ -18,7 +18,8 @@ Route::namespace('Frontend')->group(static function () {
   //desa
   Route::get('/desa/{slug}', 'HomeController@desa')->name('public.desa');
   //wisata
-  Route::get('/wisata/{slug}', 'HomeController@wisata')->name('public.wisata');
+  Route::get('/wisata', 'WisataController@index')->name('public.wisata.list');
+  Route::get('/wisata/{slug}', 'WisataController@wisata')->name('public.wisata');
    //pelayanan
    Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
   //artikel
@@ -183,7 +184,7 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::post('/profile/delete', [ProfileController::class, 'delete'])->name('admin.profile.delete');
         // Wisata
         Route::get('/wisata', [WisataController::class, 'index'])->name('admin.wisata.list');
-        Route::get('/wisata/show/{id}',     [WisataController::class, 'show'])->name('admin.wisata.show');
+        Route::get('/wisata/show/{id}', [WisataController::class, 'show'])->name('admin.wisata.show');
         Route::get('/wisata/add', [WisataController::class, 'create'])->name('admin.wisata.create');
         Route::post('/wisata/add', [WisataController::class, 'store'])->name('admin.wisata.add');
         Route::get('/wisata/edit/{id}', [WisataController::class, 'edit'])->name('admin.wisata.edit');

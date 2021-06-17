@@ -27,26 +27,21 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-8">
         <div class="blog-item blog-single-item">
+        <li class="list-group-item list-group-item-action">
           <div class="blog__img">
             <a href="#">
               <img src="{{($wisata->img)? asset('/storage/wisata/images/'.$wisata->img) : asset('backend/img/default.png')}}" alt="blog image">
             </a>
           </div><!-- /.entry-img -->
           <div class="blog__content">
-            <div class="blog__meta">
-              <div class="blog__meta-cat">
-              </div><!-- /.blog-meta-cat --><br>
-              <span class="blog__meta-date">
-                <i class="fa fa-user"></i> {{$wisata->created_by}}<br>
-                <i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($wisata->created_at)->translatedFormat('l, d F Y')}}
-              </span>
-            </div><!-- /.blog-meta -->
             <div class="line-bottom"></div>
             <h4 class="blog__title">{{ $wisata->title }}</h4>
             <div class="blog__desc">
               {!!$wisata->description !!}
             </div><!-- /.blog-desc -->
           </div><!-- /.entry-content -->
+        </li>
+
         </div><!-- /.blog-item -->
         <div class="blog-share">
           <h5 class="blog__share-title">Share This Content :</h5>
@@ -126,7 +121,7 @@
         </aside><!-- /.sidebar -->
       </div><!-- /.col-lg-4 -->
 
-</div><!-- /.row -->
+    </div><!-- /.row -->
   </div><!-- /.container -->
 </section><!-- /.blog Single -->
 @endsection
