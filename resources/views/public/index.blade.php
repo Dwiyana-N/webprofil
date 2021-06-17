@@ -179,7 +179,7 @@
             <!-- Blog Item -->
             @if(count($blog) > 0)
             @foreach($blog as $article)
-            <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="col-sm-12 col-md-12 col-lg-3 offset-lg-1">
               <div class="blog-item">
                 <div class="blog__img">
                   <a href="{{route('public.article.detail',['slug'=>$article->slug])}}">
