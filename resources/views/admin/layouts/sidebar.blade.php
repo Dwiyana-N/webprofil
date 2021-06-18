@@ -102,7 +102,7 @@
               <li class="nav-item pl-2">
                 <a href="{{route('admin.article.list')}}" class="nav-link {{ Request::routeIs('admin.article.*') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-hotel"></i>
-                  <p>Hotel</p>
+                  <p>Hotel Wisata</p>
                 </a>
               </li>
               <li class="nav-item pl-2">
