@@ -64,9 +64,9 @@
       						<a href="{{route('public.desa', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
       					</li>
                 @endforeach
-            </ul><!-- /.dropdown-menu -->
+            </ul>
 			      @endif
-          </li><!-- /.nav-item -->
+          </li>
           
           <!-- <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.agenda.*')||Request::routeIs('public.announcement.*')||Request::routeIs('public.article.*')||Request::routeIs('public.album.*')||Request::routeIs('public.video.*')||Request::routeIs('public.infographic.*') ? 'active' : '' }}">Wisata</a>
@@ -92,12 +92,12 @@
           </li> -->
 
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.agenda.*')||Request::routeIs('public.announcement.*')||Request::routeIs('public.article.*')||Request::routeIs('public.album.*')||Request::routeIs('public.video.*')||Request::routeIs('public.infographic.*') ? 'active' : '' }}">Wisata</a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.seni.*')||Request::routeIs('public.objek.*')||Request::routeIs('public.hotel.*')||Request::routeIs('public.rm.*') ? 'active' : '' }}">Wisata</a>
             <ul class="dropdown-menu">
-              <li class="nav__item"><a href="{{route('public.agenda.list')}}" class="nav__item-link {{ Request::routeIs('public.agenda.*') ? 'active' : '' }}">Kesenia budaya</a></li>
-              <li class="nav__item"><a href="{{route('public.announcement.list')}}" class="nav__item-link {{ Request::routeIs('public.announcement.*') ? 'active' : '' }}">Objek Wisata</a></li>
-              <li class="nav__item"><a href="{{route('public.article.list')}}" class="nav__item-link {{ Request::routeIs('public.article.*') ? 'active' : '' }}">Hotel</a></li>
-              <li class="nav__item"><a href="{{route('public.article.list')}}" class="nav__item-link {{ Request::routeIs('public.article.*') ? 'active' : '' }}">Rumah Makan</a></li>
+              <li class="nav__item"><a href="{{route('public.seni.list')}}" class="nav__item-link {{ Request::routeIs('public.seni.*') ? 'active' : '' }}">Kesenia budaya</a></li>
+              <li class="nav__item"><a href="{{route('public.objek.list')}}" class="nav__item-link {{ Request::routeIs('public.objek.*') ? 'active' : '' }}">Objek Wisata</a></li>
+              <li class="nav__item"><a href="{{route('public.hotel.list')}}" class="nav__item-link {{ Request::routeIs('public.hotel.*') ? 'active' : '' }}">Hotel</a></li>
+              <li class="nav__item"><a href="{{route('public.rm.list')}}" class="nav__item-link {{ Request::routeIs('public.rm.*') ? 'active' : '' }}">Rumah Makan</a></li>
             </ul><!-- /.dropdown-menu -->
           </li><!-- /.nav-item -->
           

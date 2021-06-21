@@ -10,7 +10,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Pelayanan Publik</h1>
+          <h1>Pelayanan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -32,35 +32,40 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Pelayanan Publik</strong></h3>
+                  <h3 class="card-title"><strong>Tambahkan Data Pelayanan</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form id="quickForm" action="{{route('admin.pelayanan.add')}}" method="post" enctype="multipart/form-data">
                   @csrf
+
                   <div class="card-body">                    
                     <div class="form-group">
                       <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
-                    </div>                                                   
+                    </div>
+
                     <div class="form-group">
                       <label for="img">Gambar</label>
                       <div class="custom-file">
                           <input type="file" class="custom-file-input" name="img" id="img">
                           <label class="custom-file-label" for="img">Unggah Gambar</label>
                       </div>
-                    </div>   
+                    </div>
+                    
                     <div class="form-group">
                         <label for="img">File</label>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" name="file" id="file">
                             <label class="custom-file-label" for="file">Unggah File</label>
                         </div>
-                      </div>                  
+                      </div>
+
                     <div class="form-group">
                       <label for="">Deskripsi</label>
                       <textarea name="description" id="description" class="form-control" required></textarea>
-                    </div>                    
+                    </div>
+
                     <div class="form-group">
                       <label for="status">Tampilkan</label>
                       <div class="select2-green">
@@ -70,8 +75,10 @@
                         </select>
                       </div>
                     </div>
+
                   </div>
                   <!-- /.card-body -->
+                  
                   <div class="card-footer">
                     <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-plus-square"></i>&nbsp;&nbsp;Tambah</button>
                   </div>
@@ -109,37 +116,31 @@
   $(document).ready(function () {
     $('#quickForm').validate({
       rules: {
-        name: {
+        title: {
           required: true,
         },
-        birthplace: {
-          required: true,
+        img: {
+          required: false,
         },
-        birthday: {
-          required: true,
+        file: {
+          required: false,
         },
-        phone: {
-          required: true,
-        },
-        address: {
+        description: {
           required: true,
         },
       },
       messages: {
-        name: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nama siswa",
+        title: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul",
         },
-        address: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan alamat siswa",
+        img: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar",
         },
-        birthplace: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tempat lahir siswa",
+        file: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi file",
         },
-        birthday: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan tanggal lahir siswa",
-        },
-        phone: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan nomor telepon siswa",
+        description: {
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi",
         },
       },
       errorElement: 'span',

@@ -28,6 +28,10 @@ class Controller extends BaseController
           View::share('wisata_menu', $this->getWisata());
           View::share('desa_menu', $this->getDesa());
           View::share('pelayanan', $this->getPelayanan());
+          View::share('seni_budaya', $this->getSeni());
+          View::share('objek_wisata', $this->getObjekWisata());
+          View::share('hotel_menu', $this->getHotel());
+          View::share('rumah_makan', $this->getRumahMakan());
         }
 
       public function setUsers(){

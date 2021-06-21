@@ -38,6 +38,7 @@
                 <!-- form start -->
                 <form role="form" action="{{route('admin.profile.update')}}" id="quickForm" method="post" enctype="multipart/form-data">
                   @csrf
+
                   <div class="card-body">
                     <input type="hidden" name="id" class="form-control" id="id" value="{{$fetch->id}}">
                     <div class="form-group">
@@ -46,7 +47,12 @@
                     </div>
                     
                     <div class="form-group">
-                      <label for="status">Terbitkan</label>
+                      <label for="description">Deskripsi</label>
+                      <textarea name="description" id="description" class="textarea" required>{{$fetch->description}}</textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="status">Tampilkan</label>
                       <div class="select2-green">
                         <select class="form-control select2bs4" name="status" style="width: 100%;">
                           <option value="show" @if($fetch->status == "show") selected @else "" @endif >Ya</option>
@@ -54,13 +60,9 @@
                         </select>
                       </div>
                     </div>
-
-                    <div class="form-group">
-                      <label for="description">Deskripsi</label>
-                      <textarea name="description" id="description" class="textarea" required>{{$fetch->description}}</textarea>
-                    </div>
-                  </div>
                   <!-- /.card-body -->
+                  </div>
+
                   <div class="card-footer">
                     <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-save"></i>&nbsp;&nbsp;Simpan</button>
                   </div>

@@ -1,11 +1,11 @@
-@extends('public.layout.app', ['title' => $pelayanan->title])
+@extends('public.layout.app', ['title' => $wisata->title])
 
 @section('meta')
-  <meta name="description" content="{{htmlspecialchars($pelayanan->description)}}" />
-  <meta name="keywords" content="{{htmlspecialchars($pelayanan->title)}}" />
-  <meta property="og:title" content="{{$pelayanan->title}} "/>
-  <meta property="og:type" content="{{$pelayanan->title}}"/>
-  <meta property="og:image" content="{{($pelayanan->img)?asset('/storage/pelayanane/images/'.$pelayanan->img):asset('fontend/images/grid/1.jpg')}}"/>
+  <meta name="description" content="{{htmlspecialchars($wisata->description)}}" />
+  <meta name="keywords" content="{{htmlspecialchars($wisata->title)}}" />
+  <meta property="og:title" content="{{$wisata->title}} "/>
+  <meta property="og:type" content="{{$wisata->title}}"/>
+  <meta property="og:image" content="{{($wisata->img)?asset('/storage/wisata/images/'.$wisata->img):asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <h1 class="pagetitle__heading">Pelayanan</h1>
+          <h1 class="pagetitle__heading">Wisata</h1>
         </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->
@@ -26,28 +26,24 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-8">
+        
         <div class="blog-item blog-single-item">
-          <div class="blog__img">
-            <a href="#">
-              <img src="{{($pelayanan->img)? asset('/storage/pelayanane/images/'.$pelayanan->img) : asset('backend/img/default.png')}}" alt="blog image">
-            </a>
-          </div><!-- /.entry-img -->
-          <div class="blog__content">
-            <div class="blog__meta">
-              <div class="blog__meta-cat">
-              </div><!-- /.blog-meta-cat --><br>
-              <span class="blog__meta-date">
-                <i class="fa fa-user"></i> {{$pelayanan->created_by}}<br>
-                <i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($pelayanan->created_at)->translatedFormat('l, d F Y')}}
-              </span>
-            </div><!-- /.blog-meta -->
-            <div class="line-bottom"></div>
-            <h4 class="blog__title">{{ $pelayanan->title }}</h4>
-            <div class="blog__desc">
-              {!!$pelayanan->description !!}
-            </div><!-- /.blog-desc -->
-          </div><!-- /.entry-content -->
+          <li class="list-group-item list-group-item-action">
+            <div class="blog__img">
+              <a href="#">
+                <img src="{{($wisata->img)? asset('/storage/wisata/images/'.$wisata->img) : asset('backend/img/default.png')}}" alt="blog image">
+              </a>
+            </div><!-- /.entry-img -->
+            <div class="blog__content">
+              <div class="line-bottom"></div>
+              <h4 class="blog__title">{{ $wisata->title }}</h4>
+              <div class="blog__desc">
+                {!!$wisata->description !!}
+              </div><!-- /.blog-desc -->
+            </div><!-- /.entry-content -->
+          </li><!-- /.list-group -->
         </div><!-- /.blog-item -->
+
         <div class="blog-share">
           <h5 class="blog__share-title">Share This Content :</h5>
           <!-- <div class="social__icons"> -->
@@ -103,7 +99,7 @@
             </div><!-- /.widget-content -->
           </div><!-- /.widget-posts -->
           <div class="widget widget-posts">
-            <h5 class="widget__title">Berita Terbaru</h5>
+            <h5 class="widget__title">Artikel Terbaru</h5>
             <div class="widget__content">
               <!-- post item -->
               @if(count($article) > 0)
@@ -126,7 +122,7 @@
         </aside><!-- /.sidebar -->
       </div><!-- /.col-lg-4 -->
 
-</div><!-- /.row -->
+    </div><!-- /.row -->
   </div><!-- /.container -->
 </section><!-- /.blog Single -->
 @endsection

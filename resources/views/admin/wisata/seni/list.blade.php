@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Peta')
+@section('title', 'Data Wisata')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Peta</h1>
+          <h1>Wisata</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Peta</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
             <li class="breadcrumb-item active"><small><strong>List</strong></small></li>
           </ol>
         </div>
@@ -31,8 +31,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Peta</h3>
-                <a href="{{route('admin.album.create')}}" class="btn btn-success float-right">
+                <h3 class="card-title">Data Wisata</h3>
+                <a href="{{route('admin.wisata.create')}}" class="btn btn-success float-right">
                   <i class="fas fa-plus-square"></i> Tambah Data
                 </a>
               </div>
@@ -82,7 +82,7 @@
                             </p>
                           </div>
                           <div class="modal-footer">
-                            <form id="hapus-data" action="{{ route('admin.peta.delete') }}" method="POST" class="d-none">
+                            <form id="hapus-data" action="{{ route('admin.wisata.delete') }}" method="POST" class="d-none">
                               @csrf
                               <input type="hidden" name="id" value="{{$row->id}}">
                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>

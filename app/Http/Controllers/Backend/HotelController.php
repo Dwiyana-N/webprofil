@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Desa;
+use App\Models\Hotel;
 use App\Models\Profile;
 use App\Models\Website;
 use Str;
 use Auth;
 
-class DesaController extends Controller
+class HotelController extends Controller
 {
     public function index(){
         try{
-          $data['list'] = Desa::orderBy('created_at', 'DESC')->get();
-          return view('admin.desa.list', $data);
+          $data['list'] = Hotel::orderBy('created_at', 'DESC')->get();
+          return view('admin.hotel.list', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -26,8 +26,8 @@ class DesaController extends Controller
   
       public function show($id){
         try{
-          $data['fetch'] = Desa::where('id', $id)->first();
-          return view('admin.desa.detail', $data);
+          $data['fetch'] = Hotel::where('id', $id)->first();
+          return view('admin.hotel.detail', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -36,7 +36,7 @@ class DesaController extends Controller
   
       public function create(){
         try{
-          return view('admin.desa.create');
+          return view('admin.hotel.create');
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -50,7 +50,7 @@ class DesaController extends Controller
             $image = $request->file('img');          
             $extension = $image->getClientOriginalExtension();
             $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-            $image->storeAs('public/desa/images', $img);
+            $image->storeAs('public/hotel/images', $img);
           } else {
             $img = null;
           }
@@ -58,8 +58,8 @@ class DesaController extends Controller
           $data = $this->bindData($request);
           $data['img'] = $img;
           $data['created_by'] = Auth::user()->name;
-          $store = Desa::create($data);
-          return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
+          $store = Hotel::create($data);
+          return redirect()->route('admin.hotel.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -68,8 +68,8 @@ class DesaController extends Controller
   
       public function edit($id){
         try{
-          $data['fetch'] = Desa::where('id', $id)->first();
-          return view('admin.desa.edit', $data);
+          $data['fetch'] = Hotel::where('id', $id)->first();
+          return view('admin.hotel.edit', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -79,7 +79,7 @@ class DesaController extends Controller
       public function update(Request $request){
         try{
           $id = $request->input('id');   
-          $layanan = Desa::where('id', $id)->first();
+          $layanan = Hotel::where('id', $id)->first();
           
           //upload gambar
           if( $request->file('img') == '' ) {
@@ -93,15 +93,15 @@ class DesaController extends Controller
             $extension = $image->getClientOriginalExtension();
             $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
             $baseimage = basename($layanan->img);
-            $imagepic = Storage::disk('local')->delete('public/desa/images/'.$baseimage);
-            $image->storeAs('public/desa/images/', $img);
+            $imagepic = Storage::disk('local')->delete('public/hotel/images/'.$baseimage);
+            $image->storeAs('public/hotel/images/', $img);
           }
           
           $data = $this->bindData($request);
           $data['img'] = $img;
           $data['updated_by'] = Auth::user()->name;
           $layanan->update($data);
-          return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Disimpan!']);
+          return redirect()->route('admin.hotel.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -111,9 +111,9 @@ class DesaController extends Controller
       public function delete(Request $request){
         try{
           $id = $request->input('id');
-          $catch = Desa::findOrFail($id);
+          $catch = Hotel::findOrFail($id);
           $catch->delete();
-          return redirect()->route('admin.desa.list')->with(['success' => 'Data Berhasil Dihapus!']);
+          return redirect()->route('admin.hotel.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -132,6 +132,4 @@ class DesaController extends Controller
         ];
         return $data;
       }
-      
-  }
-  
+}

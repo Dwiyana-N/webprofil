@@ -3,24 +3,26 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pelayanan;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use App\Models\Pelayanan;
+use App\Models\Profile;
+use App\Models\Website;
 use Str;
 use Auth;
 
 class PelayananController extends Controller
 {
     public function index(){
-        try{
-          $data['list'] = Pelayanan::orderBy('created_at', 'DESC')->get();
-          return view('admin.pelayanan.list', $data);
-        }catch(\Exception $e){
-          $error = $e->getMessage();
-          return redirect()->back()->with(['error'=>$error]);
-        }
+      try{
+        $data['list'] = Pelayanan::orderBy('created_at', 'DESC')->get();
+        return view('admin.pelayanan.list', $data);
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->back()->with(['error'=>$error]);
       }
+    }
   
       public function show($id){
         try{
@@ -61,6 +63,7 @@ class PelayananController extends Controller
           } else {
             $file = null;
           }
+
           $data = $this->bindData($request);
           $data['img'] = $img;
           $data['file'] = $file;
@@ -69,7 +72,6 @@ class PelayananController extends Controller
           return redirect()->route('admin.pelayanan.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
-          //return $error;
           return redirect()->back()->with(['error'=>$error]);
         }
       }
