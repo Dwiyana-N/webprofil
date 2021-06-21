@@ -15,6 +15,13 @@ class CreateRumahMakansTable extends Migration
     {
         Schema::create('rumah_makans', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->string('img')->nullable();
+            $table->text('description');
+            $table->string('created_by');
+            $table->string('updated_by')->nullable();
+            $table->enum('status',['show','hide'])->default('show');
             $table->timestamps();
         });
     }
