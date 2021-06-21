@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
-use App\Models\ObjekWisata;
+use App\Models\RumahMakan;
 use App\Models\Profile;
 use App\Models\Website;
 use Str;

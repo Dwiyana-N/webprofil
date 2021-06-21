@@ -18,9 +18,13 @@ use App\Models\Video;
 use App\Models\InfoGraphic;
 use App\Models\Slider;
 use App\Models\Profile;
-use App\Models\Wisata;
+use App\Models\Pelayanan;
+// use App\Models\Wisata;
 use App\Models\Desa;
-use App\Models\Sejarah;
+use App\Models\SeniBudaya;
+use App\Models\ObjekWisata;
+use App\Models\Hotel;
+use App\Models\RumahMakan;
 
 use DB;
 
