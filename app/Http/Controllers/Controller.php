@@ -132,22 +132,22 @@ class Controller extends BaseController
 		}
     
     public function getSeniBudaya(){
-			$SeniBudaya = \App\Models\SeniBudaya::where('status','show')->get();
-			return $SeniBudaya;
+			$seni = \App\Models\SeniBudaya::where('status','show')->get();
+			return $seni;
 		}
     
     public function getObjekWisata(){
-			$ObjekWisata = \App\Models\ObjekWisata::where('status','show')->get();
-			return $ObjekWisata;
+			$objek = \App\Models\ObjekWisata::where('status','show')->get();
+			return $objek;
 		}
     
     public function getHotel(){
-			$Hotel = \App\Models\Hotel::where('status','show')->get();
-			return $Hotel;
+			$hotel = \App\Models\Hotel::where('status','show')->get();
+			return $hotel;
 		}
     
     public function getRumahMakan(){
-			$RumahMakan = \App\Models\RumahMakan::where('status','show')->get();
-			return $RumahMakan;
+			$rm = \App\Models\RumahMakan::where('status','show')->get();
+			return $rm;
 		}
 }

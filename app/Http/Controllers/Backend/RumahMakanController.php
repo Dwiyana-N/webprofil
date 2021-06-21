@@ -17,7 +17,7 @@ class RumahMakanController extends Controller
     public function index(){
         try{
           $data['list'] = RumahMakan::orderBy('created_at', 'DESC')->get();
-          return view('admin.rm.list', $data);
+          return view('admin.wisata.rm.list', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -27,7 +27,7 @@ class RumahMakanController extends Controller
       public function show($id){
         try{
           $data['fetch'] = RumahMakan::where('id', $id)->first();
-          return view('admin.rm.detail', $data);
+          return view('admin.wisata.rm.detail', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -36,7 +36,7 @@ class RumahMakanController extends Controller
   
       public function create(){
         try{
-          return view('admin.rm.create');
+          return view('admin.wisata.rm.create');
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -59,7 +59,7 @@ class RumahMakanController extends Controller
           $data['img'] = $img;
           $data['created_by'] = Auth::user()->name;
           $store = RumahMakan::create($data);
-          return redirect()->route('admin.rm.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
+          return redirect()->route('admin.wisata.rm.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -69,7 +69,7 @@ class RumahMakanController extends Controller
       public function edit($id){
         try{
           $data['fetch'] = RumahMakan::where('id', $id)->first();
-          return view('admin.rm.edit', $data);
+          return view('admin.wisata.rm.edit', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -101,7 +101,7 @@ class RumahMakanController extends Controller
           $data['img'] = $img;
           $data['updated_by'] = Auth::user()->name;
           $layanan->update($data);
-          return redirect()->route('admin.rm.list')->with(['success' => 'Data Berhasil Disimpan!']);
+          return redirect()->route('admin.wisata.rm.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -113,7 +113,7 @@ class RumahMakanController extends Controller
           $id = $request->input('id');
           $catch = RumahMakan::findOrFail($id);
           $catch->delete();
-          return redirect()->route('admin.rm.list')->with(['success' => 'Data Berhasil Dihapus!']);
+          return redirect()->route('admin.wisata.rm.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);

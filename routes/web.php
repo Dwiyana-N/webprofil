@@ -20,8 +20,16 @@ Route::namespace('Frontend')->group(static function () {
   //wisata
   Route::get('/wisata', 'WisataController@index')->name('public.wisata.list');
   Route::get('/wisata/{slug}', 'WisataController@wisata')->name('public.wisata');
-   //pelayanan
-   Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
+  // Seni Budaya
+  Route::get('/seni-budaya/{slug}', 'HomeController@seni')->name('public.seni');
+  // Objek Wisata
+  Route::get('/objek-wisata/{slug}', 'HomeController@objek')->name('public.objek');
+  // Hotel
+  Route::get('/hotel/{slug}', 'HomeController@hotel')->name('public.hotel');
+  // Rumah Makan
+  Route::get('/rumah-makan/{slug}', 'HomeController@rm')->name('public.rm');
+  //pelayanan
+  Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
   //artikel
   Route::get('/artikel', 'ArticleController@index')->name('public.article.list');
   Route::get('/artikel/{slug}', 'ArticleController@show')->name('public.article.detail');
