@@ -92,20 +92,20 @@
           </li> -->
 
           <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.agenda.*')||Request::routeIs('public.announcement.*')||Request::routeIs('public.article.*')||Request::routeIs('public.album.*')||Request::routeIs('public.video.*')||Request::routeIs('public.infographic.*') ? 'active' : '' }}">Wisata</a>
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.agenda.*')||Request::routeIs('public.wisata.*')||Request::routeIs('public.video.*')||Request::routeIs('public.announcement.*') ? 'active' : '' }}">Wisata</a>
             <ul class="dropdown-menu">
-              <li class="nav__item"><a href="{{route('public.agenda.list')}}" class="nav__item-link {{ Request::routeIs('public.agenda.*') ? 'active' : '' }}">Kesenia budaya</a></li>
-              <li class="nav__item"><a href="{{route('public.announcement.list')}}" class="nav__item-link {{ Request::routeIs('public.announcement.*') ? 'active' : '' }}">Objek Wisata</a></li>
-              <li class="nav__item"><a href="{{route('public.article.list')}}" class="nav__item-link {{ Request::routeIs('public.article.*') ? 'active' : '' }}">Hotel</a></li>
-              <li class="nav__item"><a href="{{route('public.article.list')}}" class="nav__item-link {{ Request::routeIs('public.article.*') ? 'active' : '' }}">Rumah Makan</a></li>
+              <li class="nav__item"><a href="{{route('public.agenda.list')}}" class="nav__item-link {{ Request::routeIs('public.agenda.*') ? 'active' : '' }}">Kesenian dan Budaya</a></li>
+              <li class="nav__item"><a href="{{route('public.wisata.list')}}" class="nav__item-link {{ Request::routeIs('public.wisata.*') ? 'active' : '' }}">Objek Wisata</a></li>
+              <li class="nav__item"><a href="{{route('public.video.list')}}" class="nav__item-link {{ Request::routeIs('public.video.*') ? 'active' : '' }}">Hotel</a></li>
+              <li class="nav__item"><a href="{{route('public.announcement.list')}}" class="nav__item-link {{ Request::routeIs('public.announcement.*') ? 'active' : '' }}">Rumah Makan</a></li>
             </ul><!-- /.dropdown-menu -->
           </li><!-- /.nav-item -->
           
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.pelayanan') ? 'active' : '' }}">Pelayanan Publik</a>
-            @if(count($pelayanan) > 0)
+            @if(count($pelayanan_menu) > 0)
       			<ul class="dropdown-menu">
-      				  @foreach($pelayanan as $row)
+      				  @foreach($pelayanan_menu as $row)
                 <li class="nav__item">
       						<a href="{{route('public.pelayanan', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
       					</li>

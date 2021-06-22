@@ -78,9 +78,9 @@
         </li>
 
         <li class="nav-item">
-          <li class="nav-item has-treeview {{ Request::routeIs('admin.category.*')||Request::routeIs('admin.tag.*')||Request::routeIs('admin.article.*')||Request::routeIs('admin.comment.*')||Request::routeIs('admin.trash.*') ? 'menu-open' : '' }}">
+          <li class="nav-item has-treeview {{ Request::routeIs('admin.agenda.*')||Request::routeIs('admin.wisata.*')||Request::routeIs('admin.pelayanan.*')||Request::routeIs('admin.announcement.*') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-folder"></i>
+              <i class="nav-icon fas fa-plane-departure"></i>
               <p>
                 Wisata
                 <i class="fas fa-angle-left right"></i>
@@ -88,26 +88,26 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item pl-2">
-                <a href="{{route('admin.category.list')}}" class="nav-link {{ Request::routeIs('admin.category.*') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-file"></i>
+                <a href="{{route('admin.agenda.list')}}" class="nav-link {{ Request::routeIs('admin.agenda.*') ? 'active' : '' }}">
+                  <i class="nav-icon fab fa-artstation"></i>
                   <p>Kesenian dan Budaya</p>
                 </a>
               </li>
               <li class="nav-item pl-2">
-                <a href="{{route('admin.tag.list')}}" class="nav-link {{ Request::routeIs('admin.tag.*') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-mountain"></i>
+                <a href="{{route('admin.wisata.list')}}" class="nav-link {{ Request::routeIs('admin.wisata.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-map-signs"></i>
                   <p>Objek Wisata</p>
                 </a>
               </li>
               <li class="nav-item pl-2">
-                <a href="{{route('admin.article.list')}}" class="nav-link {{ Request::routeIs('admin.article.*') ? 'active' : '' }}">
+                <a href="{{route('admin.pelayanan.list')}}" class="nav-link {{ Request::routeIs('admin.pelayanan.*') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-hotel"></i>
-                  <p>Hotel Wisata</p>
+                  <p>Hotel</p>
                 </a>
               </li>
               <li class="nav-item pl-2">
-                <a href="{{route('admin.comment.list')}}" class="nav-link {{ Request::routeIs('admin.comment.*') ? 'active' : '' }}">
-                  <i class="nav-icon fas fa-home"></i>
+                <a href="{{route('admin.announcement.list')}}" class="nav-link {{ Request::routeIs('admin.announcement.*') ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-utensils"></i>
                   <p>Rumah Makan</p>
                 </a>
               </li>

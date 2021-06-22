@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Sunting Wisata')
+@section('title', 'Sunting Data Rumah Makan')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Wisata</h1>
+          <h1>Rumah Makan</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Rumah Makan</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Edit</strong></small></li>
           </ol>
         </div>
@@ -32,19 +32,19 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Sunting Data Wisata</strong></h3>
+                  <h3 class="card-title"><strong>Sunting Data Rumah Makan</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{route('admin.wisata.update')}}" id="quickForm" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.makan.update')}}" method="post" enctype="multipart/form-data">
                   @csrf
-                  <div class="card-body">
-                    <input type="hidden" name="id" class="form-control" id="id" value="{{$fetch->id}}">
+                  <input type="hidden" name="id" value="{{$fetch->id}}">
+                  <div class="card-body">                    
                     <div class="form-group">
-                      <label for="title">Judul</label>
-                      <input type="text" name="title" class="form-control" id="title" value="{{$fetch->title}}">
+                      <label for="">Judul</label>
+                      <input type="text" name="title" class="form-control" id="title" value="{{($fetch->title)?$fetch->title:''}}" required>
                     </div>
-                    
+
                     <div class="form-group">
                       <label for="img">Gambar</label>
                       <div class="custom-file">
@@ -53,24 +53,24 @@
                       </div>
                     </div>
                     @if($fetch->img)
-                    <img src="{{asset('/storage/wisata/images/'.$fetch->img)}}" width="450px" height="auto">   
+                    <img src="{{asset('/storage/makan/images/'.$fetch->img)}}" width="450px" height="auto">   
                     @endif
 
                     <div class="form-group">
-                      <label for="description">Deskripsi</label>
-                      <textarea name="description" id="description" class="textarea" required>{{$fetch->description}}</textarea>
-                    </div>
-                  </div>
-
+                      <label for="">Deskripsi</label>
+                      <textarea name="description" id="description" class="form-control my-editor" required>{!! $fetch->description !!}</textarea>
+                    </div>           
+                             
                     <div class="form-group">
-                      <label for="status">Terbitkan</label>
+                      <label for="status">Tampilkan</label>
                       <div class="select2-green">
                         <select class="form-control select2bs4" name="status" style="width: 100%;">
-                          <option value="show" @if($fetch->status == "show") selected @else "" @endif >Ya</option>
-                          <option value="hide" @if($fetch->status == "hide") selected @else "" @endif >Tidak</option>
+                          <option value="show" @if($fetch->status == "show") selected @else "" @endif>Ya</option>
+                          <option value="hide" @if($fetch->status == "hide") selected @else "" @endif>Tidak</option>
                         </select>
                       </div>
                     </div>
+                  </div>
                   <!-- /.card-body -->
                   <div class="card-footer">
                     <button type="submit" id="submit" class="btn btn-success float-right"><i class="fas fa-save"></i>&nbsp;&nbsp;Simpan</button>
@@ -94,24 +94,12 @@
 @endsection
 
 @section('top-resource')
-<!-- summernote -->
-<link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.css')}}">
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 @endsection
 
 @section('bottom-resource')
-<!-- Summernote -->
-<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote({
-      height: 250
-    });
-  })
-</script>
 <!-- Select2 -->
 <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- jquery-validation -->
@@ -133,13 +121,13 @@
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul rumah makan",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar rumah makan",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi rumah makan",
         },
       },
       errorElement: 'span',
@@ -160,11 +148,38 @@
     });
   });
 </script>
+
+<!-- TinyMCE init -->
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+tinymce.init({
+  selector: 'textarea',  // change this value according to the HTML    
+  height: 600,
+  plugins: [
+      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+      'table emoticons template paste help'
+  ],  
+  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | print preview media fullpage | forecolor backcolor emoticons'
+});
+</script>
+
 <!-- Page script -->
 <script>
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
+</script>
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+  });
 </script>
 @endsection

@@ -27,7 +27,7 @@ class Controller extends BaseController
 		      View::share('profils', $this->getProfil());
           View::share('wisata_menu', $this->getWisata());
           View::share('desa_menu', $this->getDesa());
-          View::share('pelayanan', $this->getPelayanan());
+          View::share('pelayanan_menu', $this->getPelayanan());
         }
 
       public function setUsers(){

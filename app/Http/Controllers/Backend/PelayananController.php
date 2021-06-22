@@ -174,7 +174,7 @@ class PelayananController extends Controller
       public function delete(Request $request){
         try{
           $id = $request->input('id');
-          $catch = Profile::findOrFail($id);
+          $catch = Pelayanan::findOrFail($id);
           $catch->delete();
           return redirect()->route('admin.pelayanan.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){
@@ -185,7 +185,7 @@ class PelayananController extends Controller
   
       public function bindData($request){
         if(!empty($request->id)){
-          $get = Profile::find($request->id);
+          $get = Pelayanan::find($request->id);
       }
         $data = [            
             'title'       => $request->input('title'),

@@ -32,8 +32,8 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Data Wisata</h3>
-                <a href="{{route('admin.wisata.create')}}" class="btn btn-success float-right">
-                  <i class="fas fa-plus-square"></i> Tambah Data
+                  <a href="{{route('admin.wisata.create')}}" class="btn btn-success float-right">
+                    <i class="fas fa-plus-square"></i> Tambah Data
                 </a>
               </div>
               <!-- /.card-header -->
