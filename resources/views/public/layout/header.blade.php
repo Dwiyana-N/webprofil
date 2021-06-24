@@ -113,7 +113,6 @@
             </ul><!-- /.dropdown-menu -->
 			      @endif
           </li><!-- /.nav-item -->
-
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.agenda.*')||Request::routeIs('public.announcement.*')||Request::routeIs('public.article.*')||Request::routeIs('public.album.*')||Request::routeIs('public.video.*')||Request::routeIs('public.infographic.*') ? 'active' : '' }}">Informasi Publik</a>
             <ul class="dropdown-menu">

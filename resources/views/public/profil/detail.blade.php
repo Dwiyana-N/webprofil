@@ -38,6 +38,17 @@
               </div>
             </div>
 
+          <div class="blog-share">
+            <h5 class="blog__share-title">Share This Content :</h5>
+            <!-- <div class="social__icons"> -->
+              <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
+              <!-- <a href="#"><i class="fa fa-twitter"></i></a> -->
+              <!-- <a href="#"><i class="fa fa-google-plus"></i></a> -->
+              <!-- <a href="#"><i class="fa fa-linkedin"></i></a> -->
+               <!-- </div> -->
+            <div class="sharethis-inline-share-buttons" style="z-index:10"></div>
+               </div><!-- /.blog-share -->
+
           </div><!-- /.entry-content -->
         </div><!-- /.blog-item -->
       </div><!-- /.col-lg-9 -->
