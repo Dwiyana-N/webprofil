@@ -118,14 +118,14 @@
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
-        },
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi",
+        }
       },
       errorElement: 'span',
       errorPlacement: function (error, element) {
@@ -145,38 +145,11 @@
     });
   });
 </script>
-
-<!-- TinyMCE init -->
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-tinymce.init({
-  selector: 'textarea',  // change this value according to the HTML    
-  height: 600,
-  plugins: [
-      'advlist autolink link image lists charmap print preview hr anchor pagebreak',
-      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-      'table emoticons template paste help'
-  ],  
-  toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | print preview media fullpage | forecolor backcolor emoticons'
-});
-</script>
-
 <!-- Page script -->
 <script>
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-</script>
-<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
-
-    //Initialize Select2 Elements
-    $('.select2bs4').select2({
-      theme: 'bootstrap4'
-    })
-  });
 </script>
 @endsection

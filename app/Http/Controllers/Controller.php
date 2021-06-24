@@ -28,6 +28,10 @@ class Controller extends BaseController
           View::share('wisata_menu', $this->getWisata());
           View::share('desa_menu', $this->getDesa());
           View::share('pelayanan_menu', $this->getPelayanan());
+          View::share('seni_budaya', $this->getSeniBudaya());
+          View::share('objek_wisata', $this->getObjekWisata());
+          View::share('hotel_menu', $this->getHotel());
+          View::share('rumah_makan', $this->getRumahMakan());
         }
 
       public function setUsers(){
@@ -126,5 +130,24 @@ class Controller extends BaseController
 			$pelayanan = \App\Models\Pelayanan::where('status','show')->get();
 			return $pelayanan;
 		}
-
+    
+    public function getSeniBudaya(){
+			$seni = \App\Models\SeniBudaya::where('status','show')->get();
+			return $seni;
+		}
+    
+    public function getObjekWisata(){
+			$objek = \App\Models\ObjekWisata::where('status','show')->get();
+			return $objek;
+		}
+    
+    public function getHotel(){
+			$hotel = \App\Models\Hotel::where('status','show')->get();
+			return $hotel;
+		}
+    
+    public function getRumahMakan(){
+			$rm = \App\Models\RumahMakan::where('status','show')->get();
+			return $rm;
+		}
 }

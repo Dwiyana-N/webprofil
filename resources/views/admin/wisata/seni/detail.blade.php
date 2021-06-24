@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Sejarah</h1>
+          <h1>Wisata</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Sejarah</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Detail</strong></small></li>
           </ol>
         </div>
@@ -45,7 +45,6 @@
                         {{$fetch->title}}
                       </div>
                     </div>
-
                     <div class="row">
                       <div class="col-lg-3 col-md-3">
                         <label><strong>Tanggal</strong></label>
@@ -54,7 +53,6 @@
                         {{\Carbon\Carbon::parse($fetch->created_at)->translatedFormat('d F Y')}}
                       </div>
                     </div>
-
                     <div class="row">
                       <div class="col-lg-3 col-md-3">
                         <label><strong>Dibuat Oleh</strong></label>
@@ -63,7 +61,6 @@
                         {{$fetch->created_by}}
                       </div>
                     </div>
-
                     <div class="row">
                       <div class="col-lg-3 col-md-3">
                         <label><strong>Disunting Oleh</strong></label>
@@ -72,13 +69,24 @@
                         {{($fetch->updated_by) ? $fetch->updated_by : ' - '}}
                       </div>
                     </div>
-                    
                     <div class="row">
                       <div class="col-lg-3 col-md-3">
                         <label><strong>Deskripsi</strong></label>
                       </div>
                       <div class="col-lg-9 col-md-9">
                         {!! $fetch->description !!}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-3 col-md-3">
+                        <label><strong>Gambar</strong></label>
+                      </div>
+                      <div class="col-lg-9 col-md-9">
+                        @if(!empty($fetch->img))
+                        <img style="width:450px;height:auto" src="{{asset('/storage/wisata/images/'.$fetch->img)}}">
+                        @else
+                            <p> - </p>
+                        @endif
                       </div>
                     </div>
 

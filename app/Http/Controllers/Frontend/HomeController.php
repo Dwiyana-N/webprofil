@@ -18,10 +18,13 @@ use App\Models\Video;
 use App\Models\InfoGraphic;
 use App\Models\Slider;
 use App\Models\Profile;
-use App\Models\Wisata;
-use App\Models\Desa;
-use App\Models\Sejarah;
 use App\Models\Pelayanan;
+// use App\Models\Wisata;
+use App\Models\Desa;
+use App\Models\SeniBudaya;
+use App\Models\ObjekWisata;
+use App\Models\Hotel;
+use App\Models\RumahMakan;
 
 use DB;
 
@@ -121,6 +124,58 @@ class HomeController extends Controller
       }
     }
     
+    public function seni($slug){
+      try{
+        $article = Article::where('status', 'show')->latest()->limit(5)->get();
+        $announcement = Announcement::where('status', 'show')->limit(5)->get();
+        $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
+        $seni = Seni::where('slug',$slug)->first();
+        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->back()->with(['error'=>$error]);
+      }
+    }
+    
+    public function objek($slug){
+      try{
+        $article = Article::where('status', 'show')->latest()->limit(5)->get();
+        $announcement = Announcement::where('status', 'show')->limit(5)->get();
+        $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
+        $objek = ObjekWisata::where('slug',$slug)->first();
+        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->back()->with(['error'=>$error]);
+      }
+    }
+    
+    public function hotel($slug){
+      try{
+        $article = Article::where('status', 'show')->latest()->limit(5)->get();
+        $announcement = Announcement::where('status', 'show')->limit(5)->get();
+        $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
+        $hotel = Hotel::where('slug',$slug)->first();
+        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->back()->with(['error'=>$error]);
+      }
+    }
+    
+    public function rm($slug){
+      try{
+        $article = Article::where('status', 'show')->latest()->limit(5)->get();
+        $announcement = Announcement::where('status', 'show')->limit(5)->get();
+        $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
+        $rm = RumahMakan::where('slug',$slug)->first();
+        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+      }catch(\Exception $e){
+        $error = $e->getMessage();
+        return redirect()->back()->with(['error'=>$error]);
+      }
+    }
+
     public function field(){
       try{
         $fetch = Field::where('status', 'show')->get();

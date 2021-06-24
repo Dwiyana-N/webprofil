@@ -17,7 +17,7 @@ class HotelController extends Controller
     public function index(){
         try{
           $data['list'] = Hotel::orderBy('created_at', 'DESC')->get();
-          return view('admin.hotel.list', $data);
+          return view('admin.wisata.hotel.list', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -27,7 +27,7 @@ class HotelController extends Controller
       public function show($id){
         try{
           $data['fetch'] = Hotel::where('id', $id)->first();
-          return view('admin.hotel.detail', $data);
+          return view('admin.wisata.hotel.detail', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -36,7 +36,7 @@ class HotelController extends Controller
   
       public function create(){
         try{
-          return view('admin.hotel.create');
+          return view('admin.wisata.hotel.create');
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -54,12 +54,11 @@ class HotelController extends Controller
           } else {
             $img = null;
           }
-          
           $data = $this->bindData($request);
           $data['img'] = $img;
           $data['created_by'] = Auth::user()->name;
           $store = Hotel::create($data);
-          return redirect()->route('admin.hotel.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
+          return redirect()->route('admin.wisata.hotel.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -69,7 +68,7 @@ class HotelController extends Controller
       public function edit($id){
         try{
           $data['fetch'] = Hotel::where('id', $id)->first();
-          return view('admin.hotel.edit', $data);
+          return view('admin.wisata.hotel.edit', $data);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -79,11 +78,12 @@ class HotelController extends Controller
       public function update(Request $request){
         try{
           $id = $request->input('id');   
-          $profil = Hotel::where('id', $id)->first();
+          $layanan = Hotel::where('id', $id)->first();
+          
           //upload gambar
           if( $request->file('img') == '' ) {
-            if($profil->img){
-              $img = $profil->img;
+            if($layanan->img){
+              $img = $layanan->img;
             }else{
               $img = null;
             }
@@ -91,7 +91,7 @@ class HotelController extends Controller
             $image = $request->file('img');
             $extension = $image->getClientOriginalExtension();
             $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-            $baseimage = basename($profil->img);
+            $baseimage = basename($layanan->img);
             $imagepic = Storage::disk('local')->delete('public/hotel/images/'.$baseimage);
             $image->storeAs('public/hotel/images/', $img);
           }
@@ -99,8 +99,8 @@ class HotelController extends Controller
           $data = $this->bindData($request);
           $data['img'] = $img;
           $data['updated_by'] = Auth::user()->name;
-          $profil->update($data);
-          return redirect()->route('admin.hotel.list')->with(['success' => 'Data Berhasil Disimpan!']);
+          $layanan->update($data);
+          return redirect()->route('admin.wisata.hotel.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -112,7 +112,7 @@ class HotelController extends Controller
           $id = $request->input('id');
           $catch = Hotel::findOrFail($id);
           $catch->delete();
-          return redirect()->route('admin.hotel.list')->with(['success' => 'Data Berhasil Dihapus!']);
+          return redirect()->route('admin.wisata.hotel.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -121,7 +121,7 @@ class HotelController extends Controller
   
       public function bindData($request){
         if(!empty($request->id)){
-          $get = Hotel::find($request->id);
+          $get = Profile::find($request->id);
       }
         $data = [            
             'title'       => $request->input('title'),

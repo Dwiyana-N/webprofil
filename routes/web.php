@@ -20,8 +20,16 @@ Route::namespace('Frontend')->group(static function () {
   //wisata
   Route::get('/wisata', 'WisataController@index')->name('public.wisata.list');
   Route::get('/wisata/{slug}', 'WisataController@wisata')->name('public.wisata');
-   //pelayanan
-   Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
+  // Seni Budaya
+  Route::get('/seni-budaya/{slug}', 'HomeController@seni')->name('public.seni');
+  // Objek Wisata
+  Route::get('/objek-wisata/{slug}', 'HomeController@objek')->name('public.objek');
+  // Hotel
+  Route::get('/hotel/{slug}', 'HomeController@hotel')->name('public.hotel');
+  // Rumah Makan
+  Route::get('/rumah-makan/{slug}', 'HomeController@rm')->name('public.rm');
+  //pelayanan
+  Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
   //artikel
   Route::get('/artikel', 'ArticleController@index')->name('public.article.list');
   Route::get('/artikel/{slug}', 'ArticleController@show')->name('public.article.detail');
@@ -206,6 +214,39 @@ Route::prefix('admin')->namespace('Backend')->group(function () {
         Route::get('/desa/edit/{id}', [DesaController::class, 'edit'])->name('admin.desa.edit');
         Route::post('/desa/edit', [DesaController::class, 'update'])->name('admin.desa.update');
         Route::post('/desa/delete', [DesaController::class, 'delete'])->name('admin.desa.delete');
+        // == WISATA ==
+        // Kesenian dan Budaya
+        Route::get('/kesenian-budaya', [SeniBudayaController::class, 'index'])->name('admin.seni.list');
+        Route::get('/kesenian-budaya/show/{id}', [SeniBudayaController::class, 'show'])->name('admin.seni.show');
+        Route::get('/kesenian-budaya/add', [SeniBudayaController::class, 'create'])->name('admin.seni.create');
+        Route::post('/kesenian-budaya/add', [SeniBudayaController::class, 'store'])->name('admin.seni.add');
+        Route::get('/kesenian-budaya/edit/{id}', [SeniBudayaController::class, 'edit'])->name('admin.seni.edit');
+        Route::post('/kesenian-budaya/edit', [SeniBudayaController::class, 'update'])->name('admin.seni.update');
+        Route::post('/kesenian-budaya/delete', [SeniBudayaController::class, 'delete'])->name('admin.seni.delete');
+        // Objek Wisata
+        Route::get('/objek-wisata', [ObjekWisataController::class, 'index'])->name('admin.objek.list');
+        Route::get('/objek-wisata/show/{id}', [ObjekWisataController::class, 'show'])->name('admin.objek.show');
+        Route::get('/objek-wisata/add', [ObjekWisataController::class, 'create'])->name('admin.objek.create');
+        Route::post('/objek-wisata/add', [ObjekWisataController::class, 'store'])->name('admin.objek.add');
+        Route::get('/objek-wisata/edit/{id}', [ObjekWisataController::class, 'edit'])->name('admin.objek.edit');
+        Route::post('/objek-wisata/edit', [ObjekWisataController::class, 'update'])->name('admin.objek.update');
+        Route::post('/objek-wisata/delete', [ObjekWisataController::class, 'delete'])->name('admin.objek.delete');
+        // Hotel
+        Route::get('/hotel', [HotelController::class, 'index'])->name('admin.hotel.list');
+        Route::get('/hotel/show/{id}', [HotelController::class, 'show'])->name('admin.hotel.show');
+        Route::get('/hotel/add', [HotelController::class, 'create'])->name('admin.hotel.create');
+        Route::post('/hotel/add', [HotelController::class, 'store'])->name('admin.hotel.add');
+        Route::get('/hotel/edit/{id}', [HotelController::class, 'edit'])->name('admin.hotel.edit');
+        Route::post('/hotel/edit', [HotelController::class, 'update'])->name('admin.hotel.update');
+        Route::post('/hotel/delete', [HotelController::class, 'delete'])->name('admin.hotel.delete');
+        // Rumah Makan
+        Route::get('/rumah-makan', [RumahMakanController::class, 'index'])->name('admin.rm.list');
+        Route::get('/rumah-makan/show/{id}', [RumahMakanController::class, 'show'])->name('admin.rm.show');
+        Route::get('/rumah-makan/add', [RumahMakanController::class, 'create'])->name('admin.rm.create');
+        Route::post('/rumah-makan/add', [RumahMakanController::class, 'store'])->name('admin.rm.add');
+        Route::get('/rumah-makan/edit/{id}', [RumahMakanController::class, 'edit'])->name('admin.rm.edit');
+        Route::post('/rumah-makan/edit', [RumahMakanController::class, 'update'])->name('admin.rm.update');
+        Route::post('/rumah-makan/delete', [RumahMakanController::class, 'delete'])->name('admin.rm.delete');
         // User
         Route::group(['middleware' => ['role:admin|super-admin']], function() {
             Route::get('/user/add', [UserController::class, 'create'])->name('admin.user.create');

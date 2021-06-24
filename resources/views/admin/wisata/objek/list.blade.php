@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Visi Misi')
+@section('title', 'Data Wisata')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Visi Misi</h1>
+          <h1>Wisata</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Visi Misi</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
             <li class="breadcrumb-item active"><small><strong>List</strong></small></li>
           </ol>
         </div>
@@ -31,7 +31,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Visi Misi</h3>
+                <h3 class="card-title">Data Wisata</h3>
                 <a href="{{route('admin.wisata.create')}}" class="btn btn-success float-right">
                   <i class="fas fa-plus-square"></i> Tambah Data
                 </a>

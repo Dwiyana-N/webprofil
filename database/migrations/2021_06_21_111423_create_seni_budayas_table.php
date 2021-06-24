@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTopografisTable extends Migration
+class CreateSeniBudayasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTopografisTable extends Migration
      */
     public function up()
     {
-        Schema::create('topografis', function (Blueprint $table) {
+        Schema::create('seni_budayas', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug');
@@ -33,6 +33,6 @@ class CreateTopografisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('topografis');
+        Schema::dropIfExists('seni_budayas');
     }
 }
