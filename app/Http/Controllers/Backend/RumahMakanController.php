@@ -50,7 +50,7 @@ class RumahMakanController extends Controller
             $image = $request->file('img');          
             $extension = $image->getClientOriginalExtension();
             $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
-            $image->storeAs('public/rm/images', $img);
+            $image->storeAs('public/rumah-makan/images', $img);
           } else {
             $img = null;
           }
@@ -62,7 +62,8 @@ class RumahMakanController extends Controller
           return redirect()->route('admin.wisata.rm.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
-          return redirect()->back()->with(['error'=>$error]);
+          // return redirect()->back()->with(['error'=>$error]);
+          return $error;
         }
       }
   
@@ -91,10 +92,10 @@ class RumahMakanController extends Controller
           } else {
             $image = $request->file('img');
             $extension = $image->getClientOriginalExtension();
-            $img = \Carbon\carbon::now()->translatedFormat('dmY').'-('.Str::slug($request->title).').'.$extension;
+            $img = \Carbon\carbon::now()->translatedFowisata.rmat('dmY').'-('.Str::slug($request->title).').'.$extension;
             $baseimage = basename($layanan->img);
-            $imagepic = Storage::disk('local')->delete('public/rm/images/'.$baseimage);
-            $image->storeAs('public/rm/images/', $img);
+            $imagepic = Storage::disk('local')->delete('public/rumah-makan/images/'.$baseimage);
+            $image->storeAs('public/rumah-makan/images/', $img);
           }
           
           $data = $this->bindData($request);
@@ -132,4 +133,6 @@ class RumahMakanController extends Controller
         ];
         return $data;
       }
-}
+      
+  }
+  
