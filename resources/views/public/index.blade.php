@@ -308,59 +308,12 @@
                         <script src="https://apps.elfsight.com/p/platform.js" defer></script>
                           <div class="elfsight-app-bf4ff874-c93a-49e8-9134-b74651cb958a"></div>
                         <a href="https://www.youtube.com/channel/UC44dNhn3peTNOXfFQ52n2jQ">Buka di Youtube</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </section>
-      <!-- === Staff === -->
-      <section id="team3" class="team team-2 team-3 text-center pt-100 pb-0">
-        <div class="container-fluid col-padding-0">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6 offset-lg-3">
-              <div class="heading heading-3 mb-60">
-                <h2 class="heading__title">Pegawai / Staff</h2>
-                <div class="divider__line"></div>
-              </div><!-- /.heading -->
-            </div><!-- /.col-lg-6 -->
-          </div><!-- /.row -->
-          @if(count($staff) > 0)
-          <div class="row">
-            <!-- Member -->
-            @foreach($staff as $pegawai)
-            <div class="col-sm-6 col-md-3 col-lg-3">
-              <div class="card mx-4 my-2 shadow">
-                <div class="member">
-                  <div class="member__img">
-                    <img src="{{asset('/storage/staff/images/'.$pegawai->photo)}}" height="340px" width="180px" alt="{{$pegawai->name}}">
-                  </div><!-- /.member-img -->
-                  <div class="member__hover ">
-                    <div class="member__content shadow-sm">
-                      <div class="member__content-inner">
-                        <div class="member__info">
-                          <h5 class="member__name">{{$pegawai->name}}</h5>
-                          <p class="member__desc">{{$pegawai->position}}</p><hr>
-                          <p class="member__desc"><strong>{{($pegawai->field_id)?$pegawai->field->name:''}}</strong></p>
-                        </div><!-- /.member-info -->
-                      </div><!-- /.member-content-inner -->
-                    </div><!-- /.member-content -->
-                  </div><!-- /.member-hover -->
-                </div><!-- /.member -->
-              </div>
-            </div><!-- /.col-lg-3 -->
-            @endforeach
-          </div><!-- /.row -->
-          <div class="pt-4">
-              <span style="font-weight:bold;"><a class="btn btn-secondary shadow" href="{{route('public.field')}}">- More -</a></span>
-          </div>
-          @else
-          <div class="row">
-            <div class="col">
-                <span style="font-weight:bold;text-align:center"><h4>- Belum ada data -</h4></span>
-            </div>
-          </div>
-          @endif
-        </div><!-- /.container -->
-      </section>
 
       <section id="cta1" class="cta cta-1 pt-60 pb-60 text-center-xs-sm">
         <div class="container">
