@@ -54,6 +54,7 @@ class HotelController extends Controller
           } else {
             $img = null;
           }
+          
           $data = $this->bindData($request);
           $data['img'] = $img;
           $data['created_by'] = Auth::user()->name;
@@ -61,7 +62,8 @@ class HotelController extends Controller
           return redirect()->route('admin.wisata.hotel.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
-          return redirect()->back()->with(['error'=>$error]);
+          // return redirect()->back()->with(['error'=>$error]);
+          return $error;
         }
       }
   

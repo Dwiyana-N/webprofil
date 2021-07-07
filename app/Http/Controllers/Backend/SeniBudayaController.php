@@ -62,7 +62,8 @@ class SeniBudayaController extends Controller
           return redirect()->route('admin.wisata.seni.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
-          return redirect()->back()->with(['error'=>$error]);
+          // return redirect()->back()->with(['error'=>$error]);
+          return $error;
         }
       }
   
