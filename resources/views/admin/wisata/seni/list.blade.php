@@ -31,7 +31,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Data Kesenian dan Budaya</h3>
+                <h3 class="card-title">Data Rumah Makan</h3>
                 <a href="{{route('admin.seni.create')}}" class="btn btn-success float-right">
                   <i class="fas fa-plus-square"></i> Tambah Data
                 </a>

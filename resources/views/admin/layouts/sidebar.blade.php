@@ -55,10 +55,10 @@
           </a>
         </li>
 
-        @can('manipulate-master-datas')
+        <!-- @can('manipulate-master-datas')
         <li class="nav-header"><strong>DATA MASTER</strong></li>
         
-        @endcan
+        @endcan -->
 
         @can('manipulate-content')
         <li class="nav-header"><strong>MENU KONTEN</strong></li>
@@ -106,7 +106,7 @@
                 </a>
               </li>
               <li class="nav-item pl-2">
-                <a href="{{route('admin.rm.list')}}" class="nav-link {{ Request::routeIs('admin.comment.*') ? 'active' : '' }}">
+                <a href="{{route('admin.rm.list')}}" class="nav-link {{ Request::routeIs('admin.rm.*') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-utensils"></i>
                   <p>Rumah Makan</p>
                 </a>
