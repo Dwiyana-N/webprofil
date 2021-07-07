@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Models\Hotel;
+use App\Models\Agenda;
+use App\Models\Announcement;
+use App\Models\Article;
 
 class HotelController extends Controller
 {

@@ -130,7 +130,7 @@ class HomeController extends Controller
         $announcement = Announcement::where('status', 'show')->limit(5)->get();
         $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
         $seni = Seni::where('slug',$slug)->first();
-        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+        return view('public.seni.detail', compact('seni','article','announcement','agenda'));
       }catch(\Exception $e){
         $error = $e->getMessage();
         return redirect()->back()->with(['error'=>$error]);
@@ -143,7 +143,7 @@ class HomeController extends Controller
         $announcement = Announcement::where('status', 'show')->limit(5)->get();
         $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
         $objek = ObjekWisata::where('slug',$slug)->first();
-        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+        return view('public.objek.detail', compact('objek','article','announcement','agenda'));
       }catch(\Exception $e){
         $error = $e->getMessage();
         return redirect()->back()->with(['error'=>$error]);
@@ -156,7 +156,7 @@ class HomeController extends Controller
         $announcement = Announcement::where('status', 'show')->limit(5)->get();
         $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
         $hotel = Hotel::where('slug',$slug)->first();
-        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+        return view('public.hotel.detail', compact('hotel','article','announcement','agenda'));
       }catch(\Exception $e){
         $error = $e->getMessage();
         return redirect()->back()->with(['error'=>$error]);
@@ -169,7 +169,7 @@ class HomeController extends Controller
         $announcement = Announcement::where('status', 'show')->limit(5)->get();
         $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
         $rm = RumahMakan::where('slug',$slug)->first();
-        return view('public.desa.detail', compact('desa','article','announcement','agenda'));
+        return view('public.rm.detail', compact('rm','article','announcement','agenda'));
       }catch(\Exception $e){
         $error = $e->getMessage();
         return redirect()->back()->with(['error'=>$error]);

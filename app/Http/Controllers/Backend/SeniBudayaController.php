@@ -14,15 +14,15 @@ use Auth;
 
 class SeniBudayaController extends Controller
 {
-    public function index(){
-        try{
-          $data['list'] = SeniBudaya::orderBy('created_at', 'DESC')->get();
-          return view('admin.wisata.seni.list', $data);
-        }catch(\Exception $e){
-          $error = $e->getMessage();
+  public function index(){
+    try{
+      $data['seni'] = SeniBudaya::latest()->get();
+      return view('admin.wisata.seni.list', $data);
+    }catch(\Exception $e){
+      $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
-        }
-      }
+    }
+  }
   
       public function show($id){
         try{

@@ -40,7 +40,7 @@
                   @csrf
                   <div class="card-body">                    
                     <div class="form-group">
-                      <label for="">Nama Hotel</label>
+                      <label for="">Judul</label>
                       <input type="text" name="title" class="form-control" id="title" placeholder="Masukkan Judul" required>
                     </div>
                     
@@ -91,12 +91,24 @@
 @endsection
 
 @section('top-resource')
+<!-- summernote -->
+<link rel="stylesheet" href="{{asset('backend/plugins/summernote/summernote-bs4.css')}}">
 <!-- Select2 -->
 <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css')}}">
 <link rel="stylesheet" href="{{asset('backend/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
 @endsection
 
 @section('bottom-resource')
+<!-- Summernote -->
+<script src="{{asset('backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+<script>
+  $(function () {
+    // Summernote
+    $('.textarea').summernote({
+      height: 250
+    });
+  })
+</script>
 <!-- Select2 -->
 <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- jquery-validation -->
@@ -121,7 +133,7 @@
           required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
         },
         description: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi",

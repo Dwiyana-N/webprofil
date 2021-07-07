@@ -18,16 +18,17 @@ Route::namespace('Frontend')->group(static function () {
   //desa
   Route::get('/desa/{slug}', 'HomeController@desa')->name('public.desa');
   //wisata
+  Route::get('/seni-budaya', 'SeniController@index')->name('public.seni.list');
+  Route::get('/seni-budaya/{slug}', 'SeniController@seni')->name('public.seni.detail');
+  Route::get('/objek-wisata', 'ObjekWisataController@index')->name('public.objek.list');
+  Route::get('/objek-wisata/{slug}', 'ObjekWisataController@objek')->name('public.objek.detail');
+  Route::get('/hotel', 'HotelController@index')->name('public.hotel.list');
+  Route::get('/hotel/{slug}', 'HotelController@hotel')->name('public.hotel.detail');
+  Route::get('/rumah-makan', 'RumahMakanController@index')->name('public.rm.list');
+  Route::get('/rumah-makan/{slug}', 'RumahMakanController@rm')->name('public.rm.detail');
+
   Route::get('/wisata', 'WisataController@index')->name('public.wisata.list');
   Route::get('/wisata/{slug}', 'WisataController@wisata')->name('public.wisata');
-  // Seni Budaya
-  Route::get('/seni-budaya/{slug}', 'HomeController@seni')->name('public.seni');
-  // Objek Wisata
-  Route::get('/objek-wisata/{slug}', 'HomeController@objek')->name('public.objek');
-  // Hotel
-  Route::get('/hotel/{slug}', 'HomeController@hotel')->name('public.hotel');
-  // Rumah Makan
-  Route::get('/rumah-makan/{slug}', 'HomeController@rm')->name('public.rm');
   //pelayanan
   Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
   //artikel

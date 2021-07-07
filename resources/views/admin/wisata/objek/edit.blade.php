@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Sunting Wisata')
+@section('title', 'Sunting Objek Wisata')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Wisata</h1>
+          <h1>Objek Wisata</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Objek Wisata</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Edit</strong></small></li>
           </ol>
         </div>
@@ -32,11 +32,11 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Sunting Data Wisata</strong></h3>
+                  <h3 class="card-title"><strong>Sunting Data Objek Wisata</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form role="form" action="{{route('admin.wisata.update')}}" id="quickForm" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{route('admin.objek.update')}}" id="quickForm" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="card-body">
                     <input type="hidden" name="id" class="form-control" id="id" value="{{$fetch->id}}">
@@ -53,7 +53,7 @@
                       </div>
                     </div>
                     @if($fetch->img)
-                    <img src="{{asset('/storage/wisata/images/'.$fetch->img)}}" width="450px" height="auto">   
+                    <img src="{{asset('/storage/objek-wisata/images/'.$fetch->img)}}" width="450px" height="auto">   
                     @endif
 
                     <div class="form-group">

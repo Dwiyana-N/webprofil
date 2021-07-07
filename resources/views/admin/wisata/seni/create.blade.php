@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Tambah Data Wisata')
+@section('title', 'Tambah Data Kesenian dan Budaya')
 
 @section('content')
 <!-- Content Wrapper. Contains page content -->
@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Wisata</h1>
+          <h1>Kesenian dan Budaya</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Kesenian dan Budaya</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Add</strong></small></li>
           </ol>
         </div>
@@ -32,11 +32,11 @@
               <!-- jquery validation -->
               <div class="card card-success">
                 <div class="card-header">
-                  <h3 class="card-title"><strong>Tambahkan Data Wisata</strong></h3>
+                  <h3 class="card-title"><strong>Tambahkan Data Kesenian dan Budaya</strong></h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form id="quickForm" action="{{route('admin.wisata.add')}}" method="post" enctype="multipart/form-data">
+                <form id="quickForm" action="{{route('admin.seni.add')}}" method="post" enctype="multipart/form-data">
                   @csrf
                   <div class="card-body">                    
                     <div class="form-group">

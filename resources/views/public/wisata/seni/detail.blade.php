@@ -1,11 +1,11 @@
-@extends('public.layout.app', ['title' => $wisata->title])
+@extends('public.layout.app', ['title' => $seni->title])
 
 @section('meta')
-  <meta name="description" content="{{htmlspecialchars($wisata->description)}}" />
-  <meta name="keywords" content="{{htmlspecialchars($wisata->title)}}" />
-  <meta property="og:title" content="{{$wisata->title}} "/>
-  <meta property="og:type" content="{{$wisata->title}}"/>
-  <meta property="og:image" content="{{($wisata->img)?asset('/storage/wisata/images/'.$wisata->img):asset('fontend/images/grid/1.jpg')}}"/>
+  <meta name="description" content="{{htmlspecialchars($seni->description)}}" />
+  <meta name="keywords" content="{{htmlspecialchars($seni->title)}}" />
+  <meta property="og:title" content="{{$seni->title}} "/>
+  <meta property="og:type" content="{{$seni->title}}"/>
+  <meta property="og:image" content="{{($seni->img)?asset('/storage/seni/images/'.$seni->img):asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <h1 class="pagetitle__heading">Wisata</h1>
+          <h1 class="pagetitle__heading">Kesenian dan Budaya</h1>
         </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->
@@ -31,14 +31,14 @@
           <li class="list-group-item list-group-item-action">
             <div class="blog__img">
               <a href="#">
-                <img src="{{($wisata->img)? asset('/storage/wisata/images/'.$wisata->img) : asset('backend/img/default.png')}}" alt="blog image">
+                <img src="{{($seni->img)? asset('/storage/seni/images/'.$seni->img) : asset('backend/img/default.png')}}" alt="blog image">
               </a>
             </div><!-- /.entry-img -->
             <div class="blog__content">
               <div class="line-bottom"></div>
-              <h4 class="blog__title">{{ $wisata->title }}</h4>
+              <h4 class="blog__title">{{ $seni->title }}</h4>
               <div class="blog__desc">
-                {!!$wisata->description !!}
+                {!!$seni->description !!}
               </div><!-- /.blog-desc -->
             </div><!-- /.entry-content -->
           </li><!-- /.list-group -->

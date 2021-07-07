@@ -1,9 +1,9 @@
 @extends('public.layout.app', ['title' => 'Hotel'])
 
 @section('meta')
-  <meta name="description" content="Hotel Terbaru" />
+  <meta name="description" content="Hotel" />
   <meta name="keywords" content="Diskominfo Subang" />
-  <meta property="og:title" content="Hotel Terbaru"/>
+  <meta property="og:title" content="Hotel"/>
   <meta property="og:type" content="Hotel"/>
   <meta property="og:image" content="{{asset('fontend/images/grid/1.jpg')}}"/>
 @endsection

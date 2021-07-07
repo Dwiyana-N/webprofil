@@ -10,12 +10,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Wisata</h1>
+          <h1>Objek Wisata</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><small><strong>Content</strong></small></li>
-            <li class="breadcrumb-item"><small><strong>Wisata</strong></small></li>
+            <li class="breadcrumb-item"><small><strong>Objek Wisata</strong></small></li>
             <li class="breadcrumb-item text-green"><small><strong>Detail</strong></small></li>
           </ol>
         </div>
@@ -83,7 +83,7 @@
                       </div>
                       <div class="col-lg-9 col-md-9">
                         @if(!empty($fetch->img))
-                        <img style="width:450px;height:auto" src="{{asset('/storage/wisata/images/'.$fetch->img)}}">
+                        <img style="width:450px;height:auto" src="{{asset('/storage/objek-wisata/images/'.$fetch->img)}}">
                         @else
                             <p> - </p>
                         @endif
