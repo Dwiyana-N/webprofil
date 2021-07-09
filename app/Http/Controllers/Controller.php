@@ -26,7 +26,6 @@ class Controller extends BaseController
           View::share('getsosmed', $this->getsosmed());
 		      View::share('profils', $this->getProfil());
           View::share('wisata_menu', $this->getWisata());
-          View::share('desa_menu', $this->getDesa());
           View::share('pelayanan_menu', $this->getPelayanan());
           View::share('seni_budaya', $this->getSeniBudaya());
           View::share('objek_wisata', $this->getObjekWisata());
@@ -119,11 +118,6 @@ class Controller extends BaseController
     public function getWisata(){
 			$wisata = \App\Models\Wisata::where('status','show')->get();
 			return $wisata;
-		}
-
-    public function getDesa(){
-			$desa = \App\Models\Desa::where('status','show')->get();
-			return $desa;
 		}
 
     public function getPelayanan(){

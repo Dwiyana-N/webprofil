@@ -16,7 +16,8 @@ Route::namespace('Frontend')->group(static function () {
   //profil
   Route::get('/profil/{slug}', 'HomeController@profile')->name('public.profile');
   //desa
-  Route::get('/desa/{slug}', 'HomeController@desa')->name('public.desa');
+  Route::get('/desa', 'DesaController@index')->name('public.desa.list');
+  Route::get('/desa/{slug}', 'DesaController@desa')->name('public.desa.detail');
   //wisata
   Route::get('/seni-budaya', 'SeniController@index')->name('public.seni.list');
   Route::get('/seni-budaya/{slug}', 'SeniController@seni')->name('public.seni.detail');

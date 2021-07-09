@@ -110,7 +110,7 @@ class HomeController extends Controller
         return redirect()->back()->with(['error'=>$error]);
       }
     }
-   
+
     public function desa($slug){
       try{
         $article = Article::where('status', 'show')->latest()->limit(5)->get();

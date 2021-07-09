@@ -59,11 +59,11 @@ class ObjekWisataController extends Controller
           $data['img'] = $img;
           $data['created_by'] = Auth::user()->name;
           $store = ObjekWisata::create($data);
-          return redirect()->route('admin.wisata.objek.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
+          return redirect()->route('admin.objek.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
-          // return redirect()->back()->with(['error'=>$error]);
-          return $error;
+          return redirect()->back()->with(['error'=>$error]);
+          // return $error;
         }
       }
   
@@ -102,7 +102,7 @@ class ObjekWisataController extends Controller
           $data['img'] = $img;
           $data['updated_by'] = Auth::user()->name;
           $layanan->update($data);
-          return redirect()->route('admin.wisata.objek.list')->with(['success' => 'Data Berhasil Disimpan!']);
+          return redirect()->route('admin.objek.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -114,7 +114,7 @@ class ObjekWisataController extends Controller
           $id = $request->input('id');
           $catch = ObjekWisata::findOrFail($id);
           $catch->delete();
-          return redirect()->route('admin.wisata.objek.list')->with(['success' => 'Data Berhasil Dihapus!']);
+          return redirect()->route('admin.objek.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);

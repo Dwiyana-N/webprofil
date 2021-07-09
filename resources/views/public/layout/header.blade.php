@@ -54,43 +54,11 @@
             </ul><!-- /.dropdown-menu -->
 			      @endif
           </li><!-- /.nav-item -->
-          
-          <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.desa') ? 'active' : '' }}">Desa</a>
-            @if(count($desa_menu) > 0)
-      			<ul class="dropdown-menu">
-      				  @foreach($desa_menu as $row)
-                <li class="nav__item">
-      						<a href="{{route('public.desa', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
-      					</li>
-                @endforeach
-            </ul>
-			      @endif
-          </li>
-          
-          <!-- <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.agenda.*')||Request::routeIs('public.announcement.*')||Request::routeIs('public.article.*')||Request::routeIs('public.album.*')||Request::routeIs('public.video.*')||Request::routeIs('public.infographic.*') ? 'active' : '' }}">Wisata</a>
-            <ul class="dropdown-menu">
-              <li class="nav__item"><a href="{{route('public.agenda.list')}}" class="nav__item-link {{ Request::routeIs('public.agenda.*') ? 'active' : '' }}">Kesenian dan Budaya</a></li>
-              <li class="nav__item"><a href="{{route('public.announcement.list')}}" class="nav__item-link {{ Request::routeIs('public.announcement.*') ? 'active' : '' }}">Objek Wisata</a></li>
-              <li class="nav__item"><a href="{{route('public.article.list')}}" class="nav__item-link {{ Request::routeIs('public.article.*') ? 'active' : '' }}">Hotel</a></li>
-              <li class="nav__item"><a href="{{route('public.article.list')}}" class="nav__item-link {{ Request::routeIs('public.article.*') ? 'active' : '' }}">Rumah Makan</a></li>
-            </ul>
-          </li> -->
 
-          <!-- <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.wisata') ? 'active' : '' }}">Wisata</a>
-            @if(count($wisata_menu) > 0)
-      			<ul class="dropdown-menu">
-      				  @foreach($wisata_menu as $row)
-                <li class="nav__item">
-      						<a href="{{route('public.wisata', ['slug'=>$row->slug])}}" class="nav__item-link">{{$row->title}}</a>
-      					</li>
-                @endforeach
-            </ul>
-            @endif
-          </li> -->
-
+          <li class="nav__item">
+            <a href="{{route('public.desa.list')}}" class="nav__item-link {{ Request::routeIs('public.desa.*') ? 'active' : '' }}">Desa</a>
+          </li><!-- /.nav-item -->
+          
           <li class="nav__item with-dropdown">
             <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.seni.*')||Request::routeIs('public.objek.*')||Request::routeIs('public.hotel.*')||Request::routeIs('public.rm.*') ? 'active' : '' }}">Wisata</a>
             <ul class="dropdown-menu">
@@ -129,13 +97,6 @@
                   </li><!-- /.nav-item -->
             </ul><!-- /.dropdown-menu -->
           </li><!-- /.nav-item -->
-
-          <!-- <li class="nav__item with-dropdown">
-            <a href="#" data-toggle="dropdown" class="dropdown-toggle nav__item-link {{ Request::routeIs('public.field')||Request::routeIs('public.staff') ? 'active' : '' }}">Kepegawaian</a>
-            <ul class="dropdown-menu">
-              <li class="nav__item"><a href="{{route('public.field')}}" class="nav__item-link {{ Request::routeIs('public.field')||Request::routeIs('public.staff') ? 'active' : '' }}">Data Pegawai</a></li>
-            </ul>
-          </li> -->
 
           <li class="nav__item">
             <a href="{{route('public.contact')}}" class="nav__item-link {{ Request::routeIs('public.contact') ? 'active' : '' }}">Pengaduan</a>

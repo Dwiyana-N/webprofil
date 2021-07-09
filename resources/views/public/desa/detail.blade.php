@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
-          <h1 class="pagetitle__heading">Desa </h1>
+          <h1 class="pagetitle__heading">Desa</h1>
         </div><!-- /.col-lg-12 -->
       </div><!-- /.row -->
     </div><!-- /.container -->
@@ -26,46 +26,68 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-8">
-
-      <div class="blog-item blog-single-item">
-        <li class="list-group-item list-group-item-action">
-          <div class="row py-2 my-2 mr-2">
-            <div class="list-content col-md-4 col-sm-4">
-              <img src="{{($desa->img)? asset('/storage/desa/images/'.$desa->img) : asset('backend/img/default.png')}}" class="img-fluid">
-            </div>
-            <div class="col-md-8 col-sm-4">
-              <h5><a href="#" style="text-decoration:none;color:black;"></a>{{ $desa->title }}</h5>
-              <small><i class="fa fa-clock">{!!$desa->description !!}</i></small>
-            </div>
-          </div>
-        </li>
-      </div>
-        
-      <!-- <div class="blog-item blog-single-item">
-        <li class="list-group-item list-group-item-action">
+        <div class="blog-item blog-single-item">
           <div class="blog__img">
             <a href="#">
               <img src="{{($desa->img)? asset('/storage/desa/images/'.$desa->img) : asset('backend/img/default.png')}}" alt="blog image">
             </a>
-          </div>
+          </div><!-- /.entry-img -->
           <div class="blog__content">
-            <h4 class="blog__title">{{ $desa->title }}</h4>
+            <div class="blog__meta">
+              <div class="blog__meta-cat">
+              </div><!-- /.blog-meta-cat --><br>
+              <span class="blog__meta-date">
+                <i class="fa fa-user"></i> {{$desa->created_by}} |
+                <i class="fa fa-clock-o"></i> {{\Carbon\Carbon::parse($desa->created_at)->translatedFormat('l, d F Y')}} |
+                <i class="fa fa-eye"></i> {{$desa->hit}}
+              </span>
+            </div><!-- /.blog-meta -->
             <div class="line-bottom"></div>
+            <h4 class="blog__title">{{$desa->title}}</h4>
             <div class="blog__desc">
-              {!!$desa->description !!}
-            </div>
-          </div>
-        </li>
-      </div> -->
-        
+              <p>
+                <table>
+                  <tr>
+                    <td style="padding-left:5px;padding-right:5px;"><i class="fa fa-map-marker"></i></td>
+                    <td style="padding-left:5px;padding-right:5px;">Lokasi</td>
+                    <td style="padding-left:5px;padding-right:5px;"> : </td>
+                    <td style="padding-left:5px;padding-right:5px;">{{$desa->location}}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding-left:5px;padding-right:5px;"><i class="fa fa-clock-o"></i></td>
+                    <td style="padding-left:5px;padding-right:5px;">Jam</td>
+                    <td style="padding-left:5px;padding-right:5px;"> : </td>
+                    <td style="padding-left:5px;padding-right:5px;">{{\Carbon\Carbon::parse($desa->start_date)->translatedFormat('H:i')}} - {{\Carbon\Carbon::parse($desa->end_date)->translatedFormat('H:i')}} WIB</td>
+                  </tr>
+                  <tr>
+                    <td style="padding-left:5px;padding-right:5px;"><i class="fa fa-calendar"></i></td>
+                    <td style="padding-left:5px;padding-right:5px;">Tanggal</td>
+                    <td style="padding-left:5px;padding-right:5px;"> : </td>
+                    <td style="padding-left:5px;padding-right:5px;">
+                      @php
+                        $tgl_mulai = \Carbon\Carbon::parse($desa->start_date)->translatedFormat('d F Y');
+                        $tgl_selesai = \Carbon\Carbon::parse($desa->end_date)->translatedFormat('d F Y');
+                      @endphp
+                      @if($tgl_mulai == $tgl_selesai)
+                        {{\Carbon\Carbon::parse($desa->start_date)->translatedFormat('d F Y')}}
+                      @else
+                        {{\Carbon\Carbon::parse($desa->start_date)->translatedFormat('d F Y')}} - {{\Carbon\Carbon::parse($desa->end_date)->translatedFormat('d F Y')}}
+                      @endif
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding-left:5px;padding-right:5px;vertical-align:top;"><i class="fa fa-file"></i></td>
+                    <td style="padding-left:5px;padding-right:5px;vertical-align:top;">Deskripsi</td>
+                    <td style="padding-left:5px;padding-right:5px;vertical-align:top;"> : </td>
+                    <td style="padding-left:5px;padding-right:5px;">{!!$desa->description !!}</td>
+                  </tr>
+                </table>
+              </p>
+            </div><!-- /.blog-desc -->
+          </div><!-- /.entry-content -->
+        </div><!-- /.blog-item -->
         <div class="blog-share">
           <h5 class="blog__share-title">Share This Content :</h5>
-          <!-- <div class="social__icons"> -->
-            <!-- <a href="#"><i class="fa fa-facebook"></i></a> -->
-            <!-- <a href="#"><i class="fa fa-twitter"></i></a> -->
-            <!-- <a href="#"><i class="fa fa-google-plus"></i></a> -->
-            <!-- <a href="#"><i class="fa fa-linkedin"></i></a> -->
-          <!-- </div> -->
           <div class="sharethis-inline-share-buttons" style="z-index:10"></div>
         </div><!-- /.blog-share -->
 

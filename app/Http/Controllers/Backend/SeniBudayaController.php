@@ -20,7 +20,7 @@ class SeniBudayaController extends Controller
         return view('admin.wisata.seni.list', $data);
       }catch(\Exception $e){
         $error = $e->getMessage();
-            return redirect()->back()->with(['error'=>$error]);
+        return redirect()->back()->with(['error'=>$error]);
       }
     }
   
@@ -59,11 +59,11 @@ class SeniBudayaController extends Controller
           $data['img'] = $img;
           $data['created_by'] = Auth::user()->name;
           $store = SeniBudaya::create($data);
-          return redirect()->route('admin.wisata.seni.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
+          return redirect()->route('admin.seni.list')->with(['success' => 'Data Berhasil Ditambahkan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
-          // return redirect()->back()->with(['error'=>$error]);
-          return $error;
+          return redirect()->back()->with(['error'=>$error]);
+          // return $error;
         }
       }
   
@@ -102,7 +102,7 @@ class SeniBudayaController extends Controller
           $data['img'] = $img;
           $data['updated_by'] = Auth::user()->name;
           $layanan->update($data);
-          return redirect()->route('admin.wisata.seni.list')->with(['success' => 'Data Berhasil Disimpan!']);
+          return redirect()->route('admin.seni.list')->with(['success' => 'Data Berhasil Disimpan!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);
@@ -114,7 +114,7 @@ class SeniBudayaController extends Controller
           $id = $request->input('id');
           $catch = SeniBudaya::findOrFail($id);
           $catch->delete();
-          return redirect()->route('admin.wisata.seni.list')->with(['success' => 'Data Berhasil Dihapus!']);
+          return redirect()->route('admin.seni.list')->with(['success' => 'Data Berhasil Dihapus!']);
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);

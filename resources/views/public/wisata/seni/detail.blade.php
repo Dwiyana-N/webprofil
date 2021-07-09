@@ -27,6 +27,32 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-8">
         
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th width="5%" style="text-align:center;">No</th>
+                <th width="10%" style="text-align:center;">Judul</th>                                                           
+                <th width="20%" style="text-align:center;">Foto</th>
+                <th width="35%" style="text-align:center;">Deskripsi</th>
+              </tr>
+            </thead>
+            <tbody>
+              @php $i=1 @endphp
+              @foreach($list as $row)
+              <tr>
+                <td style="text-align:center;">{{ $i }}</td>
+                <td>{{ $row->title }}</td>
+                <td>{{ $row->img }}</td>
+                <td>{{ $row->desccription }}</td>
+              </tr>
+              @php $i++ @endphp
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+              
         <div class="blog-item blog-single-item">
           <li class="list-group-item list-group-item-action">
             <div class="blog__img">
