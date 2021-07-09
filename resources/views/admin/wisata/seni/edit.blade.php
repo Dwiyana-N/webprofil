@@ -136,7 +136,7 @@
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan gambar",
         },
         description: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi",

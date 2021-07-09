@@ -110,7 +110,7 @@
           required: true,
         },
         img: {
-          required: false,
+          required: true,
         },
         description: {
           required: true,
@@ -118,13 +118,13 @@
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi Nama",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan gambar",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi",
         },
       },
       errorElement: 'span',

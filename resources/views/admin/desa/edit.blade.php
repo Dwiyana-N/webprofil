@@ -41,7 +41,7 @@
                   <input type="hidden" name="id" value="{{$fetch->id}}">
                   <div class="card-body">                    
                     <div class="form-group">
-                      <label for="">Judul</label>
+                      <label for="">Nama Desa</label>
                       <input type="text" name="title" class="form-control" id="title" value="{{($fetch->title)?$fetch->title:''}}" required>
                     </div>
 
@@ -113,7 +113,7 @@
           required: true,
         },
         img: {
-          required: false,
+          required: true,
         },
         description: {
           required: true,
@@ -121,13 +121,13 @@
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul desa",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi Nama desa",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar desa",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan gambar",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi desa",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi",
         },
       },
       errorElement: 'span',

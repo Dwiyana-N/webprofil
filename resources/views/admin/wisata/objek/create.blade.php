@@ -130,13 +130,13 @@
       },
       messages: {
         title: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan judul",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi judul",
         },
         img: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, isi gambar konten",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan gambar",
         },
         description: {
-          required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi",
+          required: "&nbsp;"+"Kolom tidak boleh kosong, isi deskripsi",
         }
       },
       errorElement: 'span',
