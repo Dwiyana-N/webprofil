@@ -27,9 +27,6 @@ Route::namespace('Frontend')->group(static function () {
   Route::get('/hotel/{slug}', 'HotelController@hotel')->name('public.hotel.detail');
   Route::get('/rumah-makan', 'RumahMakanController@index')->name('public.rm.list');
   Route::get('/rumah-makan/{slug}', 'RumahMakanController@rm')->name('public.rm.detail');
-
-  Route::get('/wisata', 'WisataController@index')->name('public.wisata.list');
-  Route::get('/wisata/{slug}', 'WisataController@wisata')->name('public.wisata');
   //pelayanan
   Route::get('/pelayanan/{slug}', 'HomeController@pelayanan')->name('public.pelayanan');
   //artikel

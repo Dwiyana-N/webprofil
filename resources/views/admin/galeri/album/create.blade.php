@@ -125,7 +125,7 @@
         description: {
           required: true,
         },
-        img: {
+        thumbnail: {
           required: true,
           filesize : 10, // here we are working with MB
           extension: "jpg|jpeg|png|gif"
@@ -138,7 +138,7 @@
         description: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan deskripsi album",
         },
-        img: {
+        thumbnail: {
           required: "&nbsp;"+"Kolom tidak boleh kosong, masukkan gambar album",
           filesize: "&nbsp;"+"File gambar tidak boleh lebih dari 10 MB",
           extension: "&nbsp;"+"Format gambar tidak dikenali, pastikan format gambar *.jpg|*.jpeg|*.png|*.gif",

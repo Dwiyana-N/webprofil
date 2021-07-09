@@ -48,34 +48,6 @@
               <p>
                 <table>
                   <tr>
-                    <td style="padding-left:5px;padding-right:5px;"><i class="fa fa-map-marker"></i></td>
-                    <td style="padding-left:5px;padding-right:5px;">Lokasi</td>
-                    <td style="padding-left:5px;padding-right:5px;"> : </td>
-                    <td style="padding-left:5px;padding-right:5px;">{{$desa->location}}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding-left:5px;padding-right:5px;"><i class="fa fa-clock-o"></i></td>
-                    <td style="padding-left:5px;padding-right:5px;">Jam</td>
-                    <td style="padding-left:5px;padding-right:5px;"> : </td>
-                    <td style="padding-left:5px;padding-right:5px;">{{\Carbon\Carbon::parse($desa->start_date)->translatedFormat('H:i')}} - {{\Carbon\Carbon::parse($desa->end_date)->translatedFormat('H:i')}} WIB</td>
-                  </tr>
-                  <tr>
-                    <td style="padding-left:5px;padding-right:5px;"><i class="fa fa-calendar"></i></td>
-                    <td style="padding-left:5px;padding-right:5px;">Tanggal</td>
-                    <td style="padding-left:5px;padding-right:5px;"> : </td>
-                    <td style="padding-left:5px;padding-right:5px;">
-                      @php
-                        $tgl_mulai = \Carbon\Carbon::parse($desa->start_date)->translatedFormat('d F Y');
-                        $tgl_selesai = \Carbon\Carbon::parse($desa->end_date)->translatedFormat('d F Y');
-                      @endphp
-                      @if($tgl_mulai == $tgl_selesai)
-                        {{\Carbon\Carbon::parse($desa->start_date)->translatedFormat('d F Y')}}
-                      @else
-                        {{\Carbon\Carbon::parse($desa->start_date)->translatedFormat('d F Y')}} - {{\Carbon\Carbon::parse($desa->end_date)->translatedFormat('d F Y')}}
-                      @endif
-                    </td>
-                  </tr>
-                  <tr>
                     <td style="padding-left:5px;padding-right:5px;vertical-align:top;"><i class="fa fa-file"></i></td>
                     <td style="padding-left:5px;padding-right:5px;vertical-align:top;">Deskripsi</td>
                     <td style="padding-left:5px;padding-right:5px;vertical-align:top;"> : </td>
