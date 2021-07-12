@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
+use App\Models\Penginapan;
 use App\Models\Agenda;
 use App\Models\Announcement;
 use App\Models\Article;
@@ -18,7 +19,7 @@ class HotelController extends Controller
           $article = Article::where('status', 'show')->latest()->limit(5)->get();
           $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
           $hotel = Hotel::where('status', 'show')->latest()->paginate(10);
-          return view('public.hotel.list', compact('video', 'article', 'agenda', 'announcement'));
+          return view('public.wisata.hotel.list', compact('hotel', 'article', 'agenda', 'announcement'));
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'>$error]);
@@ -30,8 +31,8 @@ class HotelController extends Controller
           $article = Article::where('status', 'show')->latest()->limit(5)->get();
           $announcement = Announcement::where('status', 'show')->limit(5)->get();
           $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
-          $hotel = Hotel::where('slug',$slug)->first();
-          return view('public.hotel.detail', compact('hotel','article','announcement','agenda'));
+          $penginapan = Penginapan::where('slug',$slug)->first();
+          return view('public.wisata.hotel.detail', compact('penginapan','article','announcement','agenda'));
         }catch(\Exception $e){
           $error = $e->getMessage();
           return redirect()->back()->with(['error'=>$error]);

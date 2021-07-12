@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Desa;
+use App\Models\Tempat;
 use App\Models\Agenda;
 use App\Models\Announcement;
 use App\Models\Article;
@@ -17,9 +18,10 @@ class DesaController extends Controller
           $announcement = Announcement::where('status', 'show')->latest()->limit(5)->get();
           $article = Article::where('status', 'show')->latest()->limit(5)->get();
           $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
-          $tempat = Desa::where('status', 'show')->latest()->paginate(10);
-          return view('public.desa.list', compact('desa', 'article', 'agenda', 'announcement'));
+          $tempat = Tempat::where('status', 'show')->latest()->paginate(10);
+          return view('public.desa.list', compact('tempat', 'article', 'agenda', 'announcement'));
         }catch(\Exception $e){
+          dd($e->getMessage());
           $error = $e->getMessage();
           return redirect()->back()->with(['error'>$error]);
         }
