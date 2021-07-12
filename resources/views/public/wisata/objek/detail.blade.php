@@ -1,11 +1,11 @@
-@extends('public.layout.app', ['title' => $objek->title])
+@extends('public.layout.app', ['title' => $wisata->title])
 
 @section('meta')
-  <meta name="description" content="{{htmlspecialchars($objek->description)}}" />
-  <meta name="keywords" content="{{htmlspecialchars($objek->title)}}" />
-  <meta property="og:title" content="{{$objek->title}} "/>
-  <meta property="og:type" content="{{$objek->title}}"/>
-  <meta property="og:image" content="{{($objek->img)?asset('/storage/objek/images/'.$objek->img):asset('fontend/images/grid/1.jpg')}}"/>
+  <meta name="description" content="{{htmlspecialchars($wisata->description)}}" />
+  <meta name="keywords" content="{{htmlspecialchars($wisata->title)}}" />
+  <meta property="og:title" content="{{$wisata->title}} "/>
+  <meta property="og:type" content="{{$wisata->title}}"/>
+  <meta property="og:image" content="{{($wisata->img)?asset('/storage/wisata/images/'.$wisata->img):asset('fontend/images/grid/1.jpg')}}"/>
 @endsection
 
 @section('content')
@@ -27,18 +27,44 @@
     <div class="row">
       <div class="col-sm-12 col-md-12 col-lg-8">
         
+        <!-- /.card-header -->
+        <div class="card-body">
+          <table id="example1" class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th width="5%" style="text-align:center;">No</th>
+                <th width="10%" style="text-align:center;">Judul</th>                                                           
+                <th width="20%" style="text-align:center;">Foto</th>
+                <th width="35%" style="text-align:center;">Deskripsi</th>
+              </tr>
+            </thead>
+            <tbody>
+              @php $i=1 @endphp
+              @foreach($list as $row)
+              <tr>
+                <td style="text-align:center;">{{ $i }}</td>
+                <td>{{ $row->title }}</td>
+                <td>{{ $row->img }}</td>
+                <td>{{ $row->desccription }}</td>
+              </tr>
+              @php $i++ @endphp
+              @endforeach
+            </tbody>
+          </table>
+        </div>
+              
         <div class="blog-item blog-single-item">
           <li class="list-group-item list-group-item-action">
             <div class="blog__img">
               <a href="#">
-                <img src="{{($objek->img)? asset('/storage/objek/images/'.$objek->img) : asset('backend/img/default.png')}}" alt="blog image">
+                <img src="{{($wisata->img)? asset('/storage/wisata/images/'.$wisata->img) : asset('backend/img/default.png')}}" alt="blog image">
               </a>
             </div><!-- /.entry-img -->
             <div class="blog__content">
               <div class="line-bottom"></div>
-              <h4 class="blog__title">{{ $objek->title }}</h4>
+              <h4 class="blog__title">{{ $wisata->title }}</h4>
               <div class="blog__desc">
-                {!!$objek->description !!}
+                {!!$wisata->description !!}
               </div><!-- /.blog-desc -->
             </div><!-- /.entry-content -->
           </li><!-- /.list-group -->

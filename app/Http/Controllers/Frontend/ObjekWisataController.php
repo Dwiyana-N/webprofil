@@ -19,7 +19,7 @@ class ObjekWisataController extends Controller
           $announcement = Announcement::where('status', 'show')->latest()->limit(5)->get();
           $article = Article::where('status', 'show')->latest()->limit(5)->get();
           $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
-          $objek = Objwk::where('status', 'show')->latest()->paginate(10);
+          $objek = Objek::where('status', 'show')->latest()->paginate(10);
           return view('public.wisata.objek.list', compact('objek', 'article', 'agenda', 'announcement'));
         }catch(\Exception $e){
           $error = $e->getMessage();
@@ -32,7 +32,7 @@ class ObjekWisataController extends Controller
           $article = Article::where('status', 'show')->latest()->limit(5)->get();
           $announcement = Announcement::where('status', 'show')->limit(5)->get();
           $agenda = Agenda::where('status', 'show')->latest()->limit(5)->get();
-          $wisata = ObjekWisata::where('slug',$slug)->first();
+          $wisata = Wisata::where('slug',$slug)->first();
           return view('public.wisata.objek.detail', compact('wisata','article','announcement','agenda'));
         }catch(\Exception $e){
           $error = $e->getMessage();
