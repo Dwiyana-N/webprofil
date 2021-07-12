@@ -34,6 +34,8 @@ class Controller extends BaseController
           View::share('penginapan', $this->getPenginapan());
           View::share('rm', $this->getRumahMakan());
           View::share('makanan', $this->getMakanan());
+          View::share('desa', $this->getDesa());
+          View::share('tempat', $this->getTempat());
         }
 
       public function setUsers(){
@@ -160,5 +162,13 @@ class Controller extends BaseController
     public function getMakanan(){
 			$makanan = \App\Models\Makanan::where('status','show')->get();
 			return $makanan;
+		}
+    public function getDesa(){
+			$desa = \App\Models\Desa::where('status','show')->get();
+			return $desa;
+		}
+    public function getTempat(){
+			$tempat = \App\Models\Tempat::where('status','show')->get();
+			return $tempat;
 		}
 }

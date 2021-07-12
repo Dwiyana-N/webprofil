@@ -49,7 +49,7 @@
             <div class="row">
               <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                 <!-- For Custom pagination User -->
-                <div>{{ $data->links('public.layout.pagination') }}</div>
+                <div>{{ $budaya->links('public.layout.pagination') }}</div>
               </div><!-- /.col-lg-12 -->
             </div><!-- /.row -->
           </div><!-- /.col-lg-8 -->
